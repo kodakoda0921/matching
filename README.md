@@ -1,17 +1,17 @@
 # 起動コマンド
-1.git clone https://github.com/kodakoda0921/matching.git
+git clone https://github.com/kodakoda0921/matching.git
 
-2.cd matching
+cd matching
 
-3.docker-compose build
+docker-compose build
 
-4.docker-compose up d
+docker-compose up d
 
-5.docker-compose exec php composer install
+docker-compose exec php composer install
 
-6.docker-compose exec php php artisan migrate
+docker-compose exec php php artisan migrate
 
-7.docker-compose exec php php artisan db:seed
+docker-compose exec php php artisan db:seed
 
 
 # コマンド入力後
