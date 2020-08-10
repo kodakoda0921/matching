@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    container_name: "dc-web-nginx"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/src
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    build: ./php
+    container_name: "dc-app-php"
+    ports:
+      - "10000:22"
+    volumes:
+      - ./src:/src
+      - ./php/20-xdebug.ini:/usr/local/etc/php/conf.d/20-xdebug.ini
+      - ./php/logs:/var/log
+
+  mysql:
+    image: mysql:5.7
+    container_name: "dc-db-mysql"
+    restart: always
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: root
+    ports: 
+      - 13306:3306
+    volumes:
+      - ./mysql-confd:/etc/mysql/conf.d
+
+  postgres:
+    restart: always
+    image: postgres:alpine
+    container_name: "dc-db-postgres"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 15432:5432
+
+  redis:
+    image: redis:alpine
+    container_name: "dc-db-redis"
+    ports: 
+      - 16379:6379
