@@ -1,4 +1,6 @@
 # 起動コマンド
+sudo yum install --enablerepo=remi,remi-php72 php-pecl-zip
+
 git clone https://github.com/kodakoda0921/matching.git
 
 cd matching
