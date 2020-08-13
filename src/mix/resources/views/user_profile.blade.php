@@ -16,24 +16,29 @@
         <div class="content-wrapper">
             <!--<div class="container">-->
             <!-- Content Header (Page header) -->
-            <h4>
-                {{ $login_user->name }}さんのプロフィール
-            </h4>
-            <form action="{{ url("/userProfile") }}" method="post">
-                @csrf
-                <input type="hidden" name="mixer" value="0">
-                <label for="mixer">MIX師
-                    <input type="checkbox" name="mixer" id="mixer" value="1" @if($profile->mixer === 1)checked="checked" @else @endif>
-                </label>
-                <input type="hidden" name="singer" value="0">
-                <label for="singer">歌い手
-                    <input type="checkbox" name="singer" id="singer" value="1" @if($profile->singer === 1)checked="checked" @else @endif>
-                </label>
-                </p>
-                <p>
-                    <input type="submit" value="送信する">
-                </p>
-            </form>
+            <section class="content">
+                <div class="row"></div>
+
+                {{-- ボックス --}}
+                <div class="container-fluid">
+                    <h4>
+                        {{ $login_user->name }}さんのプロフィール
+                    </h4>
+                    <form action="{{ url("/userProfile") }}" method="post">
+                        @csrf
+                        {{-- <input type="hidden" name="sex" value="0"> --}}
+                        <label for="sex">性別
+                            {{ Form::select('sex', ["その他","男性","女性"], $profile->sex, ['class' => 'sex']) }}
+                        </label>
+                        <label for="language">言語
+                            {{ Form::select('language', $list, $profile->language, ['class' => 'language']) }}
+                        </label>
+                        <p>
+                            <input type="submit" value="更新">
+                        </p>
+                    </form>
+                </div>
+            </section>
 
 
         </div>

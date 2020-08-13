@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use UserProfileViewService;
-use HomeService;
+use App\Facades\UserProfileViewService;
+use App\Facades\HomeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +17,10 @@ class UserProfileViewController extends Controller
     {
         $login_user = HomeService::getLoginUser();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
-        return view('user_profile',compact('login_user','profile'));
+        $languagesList = UserProfileViewService::getLanguagesList();
+        $list = $languagesList->pluck('language');
+        Log::debug($list);
+        return view('user_profile',compact('login_user', 'profile', 'list'));
     }
 
     /**

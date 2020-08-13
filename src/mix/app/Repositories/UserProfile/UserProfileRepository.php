@@ -61,8 +61,11 @@ class UserProfileRepository implements UserProfileRepositoryInterface
             ],
             [
                 'id' => $user->id,
-                'singer' => $request->singer,
-                'mixer' => $request->mixer,
+                'sex' => $request->sex,
+                'picture' => $request->picture,
+                'language' => $request->language,
+                'introduction' => $request->introduction,
+                'area' => $request->area,
             ]
         );
     }
@@ -75,7 +78,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
      */
     public function getUserProfile($id)
     {
-        $result = $this->userProfile->whereNotNull('id')->where('id','=',$id)->first();
+        $result = $this->userProfile->whereNotNull('id')->where('id','=',$id)->with('languages')->first();
         return $result;
     }
 }

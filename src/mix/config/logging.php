@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,7 +36,6 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'tap' => [App\Logging\CustomizeFormatter::class],
             'channels' => ['daily'],
             'ignore_exceptions' => false,
         ],
@@ -44,7 +43,7 @@ return [
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
+            'level' => '',
         ],
 
         'daily' => [

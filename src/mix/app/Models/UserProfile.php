@@ -10,16 +10,23 @@ class UserProfile extends Model
     public $timestamps = false;
     public $incrementing = false;
     /**
-     * The attributes that are mass assignable.
+     * ユーザプロフィールテーブル
      *
-     * @var array
      */
     protected $fillable = [
-         'id','singer', 'mixer', 'update_timestamp'
+         'id', 'sex', 'picture', 'language', 'introduction', 'area', 'update_timestamp'
     ];
     // 関連するモデル
     public function users()
     {
         return $this->hasOne('App\User', 'id', 'id');
+    }
+    public function languages()
+    {
+        return $this->hasOne('App\Models\Languages', 'id', 'language');
+    }
+    public function areas()
+    {
+        return $this->hasOne('App\Models\areas', 'id', 'area');
     }
 }

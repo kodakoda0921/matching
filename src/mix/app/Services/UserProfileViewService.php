@@ -3,15 +3,21 @@
 namespace App\Services;
 
 use App\Repositories\UserProfile\UserProfileRepositoryInterface;
+use App\Repositories\Languages\LanguagesRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class UserProfileViewService
 {
 
-    public function __construct(UserProfileRepositoryInterface $UserProfile)
+    public function __construct
+    (
+        UserProfileRepositoryInterface $UserProfile,
+        LanguagesRepositoryInterface $languages
+    )
     {
         $this->userProfile = $UserProfile;
+        $this->languages = $languages;
     }
 
     /**
@@ -80,6 +86,17 @@ class UserProfileViewService
     public function getUserProfile($id)
     {
         $result = $this->userProfile->getUserProfile($id);
+        return $result;
+    }
+
+    /**
+     * 言語一覧取得
+     *
+     * @return object $result
+     */
+    public function getLanguagesList()
+    {
+        $result = $this->languages->getLanguagesList();
         return $result;
     }
 }

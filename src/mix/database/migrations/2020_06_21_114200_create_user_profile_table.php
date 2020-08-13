@@ -15,8 +15,11 @@ class CreateUserProfileTable extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->integer('id')->comment('ユーザID');
-            $table->boolean('singer')->comment('歌い手フラグ');
-            $table->boolean('mixer')->comment('MIX師フラグ');
+            $table->integer('sex')->comment('性別');
+            $table->boolean('picture')->nullable(true)->comment('アイコン');
+            $table->integer('language')->comment('言語');
+            $table->string('introduction')->nullable(true)->comment('自己紹介');
+            $table->integer('area')->nullable(true)->comment('所在地名');
             $table->timestamp('update_timestamp')->comment('登録更新タイムスタンプ');
         });
     }

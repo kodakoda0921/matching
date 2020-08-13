@@ -19,9 +19,12 @@ class UserProfileTableSeeder extends Seeder
         for ($i = 1; $i < 10; $i++) {
             UserProfile::create([
                 'id' => $i,
-                'singer' => $faker->randomElement([true, false]),
-                'mixer' => $faker->randomElement([true, false]),
-                'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i'),
+                'sex' => $faker->randomElement([0, 1, 2]),
+                'picture' => null,
+                'language' => $faker->randomElement([0, 1, 2, 3, 4]),
+                'introduction' => $faker->realText(100),
+                'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
+                'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
             ]);
         }
     }
