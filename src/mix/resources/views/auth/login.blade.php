@@ -4,11 +4,6 @@
 @component('components.index.head')
 @endcomponent
 
-<!-- Google Font -->
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
@@ -55,20 +50,6 @@
                 </div>
 
             </form>
-            <div class="col text-center">
-
-                <p class="row"></p>
-                <p>- OR -</p>
-
-
-                <div class="social-auth-links text-center">
-
-                    <a href="{{ route('twitter') }}" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i>
-                        Sign
-                        in using
-                        Twitter</a>
-                </div>
-            </div>
             <!-- /.social-auth-links -->
 
             @if (Route::has('password.request'))

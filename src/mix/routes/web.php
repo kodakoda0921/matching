@@ -26,10 +26,4 @@ Route::get('/userProfile','UserProfileViewController@UserProfile')->name('userPr
 Route::post('/userProfile', 'UserProfileViewController@profileUpdate');
 Route::get('/chat', 'HomeController@chat');
 
-// ログインURL
-Route::get('auth/twitter', 'Auth\TwitterController@redirectToProvider')->name('twitter');
-// コールバックURL
-Route::get('auth/twitter/callback', 'Auth\TwitterController@handleProviderCallback');
-// ログアウトURL
-Route::get('auth/twitter/logout', 'Auth\TwitterController@logout');
 

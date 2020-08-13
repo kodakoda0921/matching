@@ -1,6 +1,6 @@
 <header class="main-header">
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="{{ url('/top') }}" class="navbar-brand"><b>勉強会への参加をマッチングする</b></a>
 

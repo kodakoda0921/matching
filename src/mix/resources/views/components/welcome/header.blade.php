@@ -1,6 +1,6 @@
 <header class="main-header">
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand"><b>MIX師を見つける</b></a>
 
@@ -12,10 +12,10 @@
                         <li class="nav-item"><a class="nav-link" id="RealtimeClockArea"></a></li>
                         @if (Route::has('login'))
                         @auth
-                        {{-- <a href="/auth/twitter/logout">ログアウト</a> --}}
+
                         <li class="nav-item"><a class="nav-link" href="{{ url('/top') }}">Home</a></li>
                         @else
-                        {{-- <a href="/auth/twitter">ログイン</a> --}}
+
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a>
                             <ion-icon name="log-in"></ion-icon>
                         </li>
