@@ -73,7 +73,7 @@ class RegisterController extends Controller
         ]);
         UserProfile::create([
             'id' => $user['id'],
-            'sex' => 2,
+            'sex' => 0,
             'picture' => null,
             'language' => 0,
             'introduction' => null

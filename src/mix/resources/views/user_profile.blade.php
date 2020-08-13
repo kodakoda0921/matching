@@ -21,8 +21,10 @@
 
                 {{-- ボックス --}}
                 <div class="container-fluid">
+
                     <div class="card bg-light mb-3">
                         <div class="card-header">
+                            <button type="button" onclick="history.back()" class="btn btn-primary pull-right">戻る</button>
                             <h3 class="card-title">{{ $login_user->name }}さんのプロフィール</h3>
                         </div>
                         <form action="{{ url("/userProfile") }}" method="post">
