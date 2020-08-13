@@ -10,14 +10,14 @@
         <h3>
             ようこそ！
         </h3>
-        <p>サジェスト機能とか付けたいなぁって思ってる</p>
+        <p>プロフィールを充実させて勉強会への参加申請をしてみましょう</p>
         <div class="row">
             <div class="col-lg-4 col">
                 <div class="small-box bg-green">
                     <div class="inner">
                         <h3>検索</h3>
 
-                        <p>活動者を検索</p>
+                        <p>勉強会を検索する</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -31,7 +31,7 @@
                     <div class="inner">
                         <h3>プロフィール更新</h3>
 
-                        <p>活動内容を更新する</p>
+                        <p>ユーザ情報を更新する</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-document"></i>
@@ -57,7 +57,7 @@
         </div>
             <div class="row"></div>
             <h3>
-                あなたにおすすめの活動者
+                あなたにおすすめの勉強会
             </h3>
             <p></p>
             <div class="clearfix"></div>

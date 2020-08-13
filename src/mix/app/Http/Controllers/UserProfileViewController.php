@@ -18,9 +18,9 @@ class UserProfileViewController extends Controller
         $login_user = HomeService::getLoginUser();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $languagesList = UserProfileViewService::getLanguagesList();
-        $list = $languagesList->pluck('language');
-        Log::debug($list);
-        return view('user_profile',compact('login_user', 'profile', 'list'));
+        $areasList = UserProfileViewService::getAreasList();
+        Log::debug($languagesList);
+        return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList'));
     }
 
     /**

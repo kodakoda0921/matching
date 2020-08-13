@@ -21,22 +21,51 @@
 
                 {{-- ボックス --}}
                 <div class="container-fluid">
-                    <h4>
-                        {{ $login_user->name }}さんのプロフィール
-                    </h4>
-                    <form action="{{ url("/userProfile") }}" method="post">
-                        @csrf
-                        {{-- <input type="hidden" name="sex" value="0"> --}}
-                        <label for="sex">性別
-                            {{ Form::select('sex', ["その他","男性","女性"], $profile->sex, ['class' => 'sex']) }}
-                        </label>
-                        <label for="language">言語
-                            {{ Form::select('language', $list, $profile->language, ['class' => 'language']) }}
-                        </label>
-                        <p>
-                            <input type="submit" value="更新">
-                        </p>
-                    </form>
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ $login_user->name }}さんのプロフィール</h3>
+                        </div>
+                        <form action="{{ url("/userProfile") }}" method="post">
+                            <div class="card-body">
+                                @csrf
+                                {{-- <input type="hidden" name="sex" value="0"> --}}
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label for="sex">性別
+                                                {{ Form::select('sex', ["その他","男性","女性"], $profile->sex, ['class' => 'form-control']) }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label for="language">言語
+                                                {{ Form::select('language', $languagesList, $profile->language, ['class' => 'form-control']) }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label for="area">所在地
+                                                {{ Form::select('area', $areasList, $profile->area, ['class' => 'form-control']) }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="introduction">自己紹介
+                                            {{ Form::textarea('introduction', $profile->introduction, ['class' => 'form-control']) }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                    <input class="btn btn-primary" type="submit" value="更新">
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </section>
 

@@ -29,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Languages\LanguagesRepositoryInterface::class,
             \App\Repositories\Languages\LanguagesRepository::class
         );
-
+        $this->app->bind(
+            \App\Repositories\Areas\AreasRepositoryInterface::class,
+            \App\Repositories\Areas\AreasRepository::class
+        );
     }
 
     /**
