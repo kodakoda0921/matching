@@ -16,7 +16,7 @@ class CreateUserProfileTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->integer('id')->comment('ユーザID');
             $table->integer('sex')->comment('性別');
-            $table->boolean('picture')->nullable(true)->comment('アイコン');
+            $table->string('picture')->nullable(true)->comment('アイコン');
             $table->integer('language')->comment('言語');
             $table->string('introduction')->nullable(true)->comment('自己紹介');
             $table->integer('area')->nullable(true)->comment('所在地名');

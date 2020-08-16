@@ -8,11 +8,10 @@ use Illuminate\Support\Facades\Log;
 use App\Repositories\UserProfile\UserProfileRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserProfileRepository implements UserProfileRepositoryInterface
 {
-    protected $t_user_plan;
-
     /**
      * @param object $t_user_plan
      *
@@ -53,8 +52,16 @@ class UserProfileRepository implements UserProfileRepositoryInterface
      */
     public function update(Request $request)
     {
-        $query = $this->userProfile->query();
         $user = Auth::user();
+        $user_profile = $this->userProfile->find($user->id);
+        $query = $this->userProfile->query();
+        if ($request->file('profile_image') == null){
+            $picture = $user_profile->picture;
+        } else {
+            Storage::delete('public/img/'.$user_profile->picture);
+            $path = $request->file('profile_image')->store('public/img');
+            $picture = basename($path);
+        }
         $query->updateOrCreate(
             [
                 'id' => $user->id,
@@ -62,7 +69,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
             [
                 'id' => $user->id,
                 'sex' => $request->sex,
-                'picture' => $request->picture,
+                'picture' => $picture,
                 'language' => $request->language,
                 'introduction' => $request->introduction,
                 'area' => $request->area,

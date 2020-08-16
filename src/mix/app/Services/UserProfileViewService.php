@@ -88,7 +88,9 @@ class UserProfileViewService
      */
     public function getUserProfile($id)
     {
+        Log::debug("START");
         $result = $this->userProfile->getUserProfile($id);
+        Log::debug("END");
         return $result;
     }
 
@@ -99,8 +101,10 @@ class UserProfileViewService
      */
     public function getLanguagesList()
     {
+        Log::debug("START");
         $list = $this->languages->getLanguagesList();
         $languagesList = $list->pluck('language');
+        Log::debug("END");
         return $languagesList;
     }
 
@@ -111,8 +115,10 @@ class UserProfileViewService
      */
     public function getAreasList()
     {
+        Log::debug("START");
         $list = $this->areas->getAreasList();
         $areasList = $list->pluck('area');
+        Log::debug("END");
         return $areasList;
     }
 }

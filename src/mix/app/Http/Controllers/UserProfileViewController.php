@@ -15,11 +15,12 @@ class UserProfileViewController extends Controller
      */
     public function UserProfile()
     {
+        Log::debug("START");
         $login_user = HomeService::getLoginUser();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
-        Log::debug($languagesList);
+        Log::debug("END");
         return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList'));
     }
 
@@ -29,10 +30,10 @@ class UserProfileViewController extends Controller
      */
     public function search(Request $request)
     {
-        Log::info("START");
+        Log::debug("START");
         // 点呼実績一覧取得
         $result = UserProfileViewService::search($request);
-        Log::info("END");
+        Log::debug("END");
         return $result;
     }
 
@@ -42,8 +43,9 @@ class UserProfileViewController extends Controller
      */
     public function profileUpdate(Request $request)
     {
-        Log::debug($request);
+        Log::debug("START");
         UserProfileViewService::update($request);
-        return redirect()->action('HomeController@top');
+        Log::debug("END");
+        return redirect()->action('HomeController@top')->with(['success' => 'プロフィールを更新しました。']);
     }
 }
