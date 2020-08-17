@@ -13,6 +13,8 @@
 
 `docker-compose exec php php artisan db:seed`
 
+`docker-compose exec php php artisan storage:link `
+
 
 # コマンド入力後
 
