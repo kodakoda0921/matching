@@ -19,6 +19,7 @@ class UserProfileTableSeeder extends Seeder
         for ($i = 1; $i < 10; $i++) {
             UserProfile::create([
                 'id' => $i,
+                'user_id' => $i,
                 'sex' => $faker->randomElement([0, 1, 2]),
                 'picture' => null,
                 'language' => $faker->randomElement([0, 1, 2, 3, 4]),

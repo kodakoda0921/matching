@@ -2,6 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Languages;
+use App\Models\UserProfile;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -24,5 +26,31 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+$factory->define(UserProfile::class, function (Faker $faker) {
+    return [
+        'user_id' => function(){
+            //UserProfileインスタンスを作成する際に、リレーションするUserインスタンスも生成する
+            return factory(User::class)->create()->id;
+        },
+        'sex' => $faker->randomElement([0, 1, 2]),
+        'picture' => 'CY5lSgbKGGq6woNq4zPsz8w1eT3QdyGEL9F9T0ba.jpeg',
+        'language' => $faker->randomElement([0, 1, 2, 3, 4]),
+        'introduction' => $faker->realText(100),
+        'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
+        'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
+    ];
+});
+$factory->define(Languages::class, function (Faker $faker) {
+    return [
+        'id' => $faker->randomElement([0, 1, 2, 3, 4]),
+        'language' => "ruby"
+    ];
+});
+$factory->define(Languages::class, function (Faker $faker) {
+    return [
+        'id' => $faker->randomElement([0, 1, 2, 3, 4]),
+        'area' => "東京"
     ];
 });

@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         UserProfile::create([
-            'id' => $user['id'],
+            'user_id' => $user['id'],
             'sex' => 0,
             'picture' => null,
             'language' => 0,

@@ -53,7 +53,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
     public function update(Request $request)
     {
         $user = Auth::user();
-        $user_profile = $this->userProfile->find($user->id);
+        $user_profile = $this->userProfile->where('user_id', '=', $user->id)->first();
         $query = $this->userProfile->query();
         if ($request->file('profile_image') == null){
             $picture = $user_profile->picture;
@@ -64,10 +64,10 @@ class UserProfileRepository implements UserProfileRepositoryInterface
         }
         $query->updateOrCreate(
             [
-                'id' => $user->id,
+                'user_id' => $user->id,
             ],
             [
-                'id' => $user->id,
+                'user_id' => $user->id,
                 'sex' => $request->sex,
                 'picture' => $picture,
                 'language' => $request->language,
@@ -85,7 +85,7 @@ class UserProfileRepository implements UserProfileRepositoryInterface
      */
     public function getUserProfile($id)
     {
-        $result = $this->userProfile->whereNotNull('id')->where('id','=',$id)->with('languages')->first();
+        $result = $this->userProfile->whereNotNull('id')->where('user_id','=',$id)->with('languages')->first();
         return $result;
     }
 }

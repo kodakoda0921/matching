@@ -31,12 +31,12 @@
                         <div class="col-sm-2">
                             <div class="card-body box-profile">
                                 <label for="picture" class="control-sidebar-subheading">プロフィール画像
-                                    @if ($profile->picture != null)
-                                    <img class="profile-user-img img-fluid img-thumbnail" alt="profile_image"
-                                        src="{{ asset('storage/img/'.$profile->picture) }}">
+                                    @if ($profile->picture == null)
+                                    <img class="profile-user-img img-fluid img-thumbnail" alt="no_profile_image"
+                                        src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
                                     @else
                                     <img class="profile-user-img img-fluid img-thumbnail" alt="profile_image"
-                                        src="{{ asset('storage/img/'.'CY5lSgbKGGq6woNq4zPsz8w1eT3QdyGEL9F9T0ba.jpeg') }}">
+                                        src="{{ asset('storage/img/'.$profile->picture) }}">
                                     @endif
                                 </label>
                             </div>

@@ -14,7 +14,8 @@ class CreateUserProfileTable extends Migration
     public function up()
     {
         Schema::create('user_profiles', function (Blueprint $table) {
-            $table->integer('id')->comment('ユーザID');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->comment('ユーザID');
             $table->integer('sex')->comment('性別');
             $table->string('picture')->nullable(true)->comment('アイコン');
             $table->integer('language')->comment('言語');

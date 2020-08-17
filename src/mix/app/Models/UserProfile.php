@@ -14,12 +14,12 @@ class UserProfile extends Model
      *
      */
     protected $fillable = [
-         'id', 'sex', 'picture', 'language', 'introduction', 'area', 'update_timestamp'
+         'id', 'user_id', 'sex', 'picture', 'language', 'introduction', 'area', 'update_timestamp'
     ];
     // 関連するモデル
     public function users()
     {
-        return $this->hasOne('App\User', 'id', 'id');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
     public function languages()
     {

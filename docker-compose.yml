@@ -32,6 +32,7 @@ services:
       - 13306:3306
     volumes:
       - ./mysql-confd:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d
 
   postgres:
     restart: always
