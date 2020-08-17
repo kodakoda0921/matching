@@ -17,7 +17,7 @@ class LanguagesTableSeeder extends Seeder
         //登録
         Languages::create([
             'id' => 0,
-            'language' => "ruby" 
+            'language' => "その他" 
         ]);
         Languages::create([
             'id' => 1,
@@ -33,7 +33,7 @@ class LanguagesTableSeeder extends Seeder
         ]);
         Languages::create([
             'id' => 4,
-            'language' => "swift" 
+            'language' => "ruby" 
         ]);
     }
 }

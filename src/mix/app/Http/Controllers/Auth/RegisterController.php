@@ -76,6 +76,7 @@ class RegisterController extends Controller
             'sex' => 0,
             'picture' => null,
             'language' => 0,
+            'area' => 0,
             'introduction' => null
 
         ]);
