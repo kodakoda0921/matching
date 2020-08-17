@@ -1,26 +1,26 @@
 # 起動コマンド
-git clone https://github.com/kodakoda0921/matching.git
+`git clone https://github.com/kodakoda0921/matching.git`
 
-cd matching
+`cd matching`
 
-docker-compose build
+`docker-compose build`
 
-docker-compose up d
+`docker-compose up -d`
 
-docker-compose exec php composer install
+`docker-compose exec php composer install`
 
-docker-compose exec php php artisan migrate
+`docker-compose exec php php artisan migrate`
 
-docker-compose exec php php artisan db:seed
+`docker-compose exec php php artisan db:seed`
 
 
 # コマンド入力後
 
-localhost:8080にアクセス
+`http://localhost:8080`にアクセス
 
 
 # 動作確認後
 
 以下コマンドを入力（コンテナを閉じる）。
 
-1.docker-compose down
+`docker-compose down`
