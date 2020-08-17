@@ -58,9 +58,6 @@ class UserProfileViewService
                 [
                     'id' => !empty($rec->users->id) ? $rec->users->id : $unregistered,
                     'user_name' => !empty($rec->users->name) ? $rec->users->name : $unregistered,
-                    'singer' => !empty($rec->singer) ? $rec->singer : $unregistered,
-                    'mixer' => !empty($rec->mixer) ? $rec->mixer : $unregistered
-
                 ]
             );
         }

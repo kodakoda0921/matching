@@ -46,20 +46,6 @@
           widthGrow:4,
 
 
-        },
-        {
-          title: "歌い手",
-          field: "singer",
-          align: "left",
-          widthGrow:2,
-
-        },
-        {
-          title: "MIX師",
-          field: "mixer",
-          align: "left",
-          widthGrow:2,
-
         }
       ],
     });

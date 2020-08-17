@@ -67,7 +67,7 @@
             <div class="col-md-4">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">メールアドレス</h3>
+                        <h3 class="box-title">ruby勉強会</h3>
                         <div class="box-tools">
                             <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
@@ -78,14 +78,14 @@
                         </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        11111111@gmail.com
+                        rubyの基礎について
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
             <div class="col-md-4">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">パスワード</h3>
+                        <h3 class="box-title">基礎学習勉強会</h3>
                         <div class="box-tools">
                             <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
@@ -96,14 +96,14 @@
                         </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        11111111
+                        pythonの基礎について
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
             <div class="col-md-4">
                 <div class="box box-warning">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Warning Box Example</h3>
+                        <h3 class="box-title">応用勉強会</h3>
                         <div class="box-tools">
                             <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
@@ -114,14 +114,14 @@
                         </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        The body of the box
+                        機械学習の応用について学ぶ
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
             <div class="col-md-4">
                 <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Success Box Example</h3>
+                        <h3 class="box-title">laravel</h3>
                         <div class="box-tools">
                             <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
@@ -132,7 +132,7 @@
                         </div>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        The body of the box
+                        laravelでポートフォリオを作ろう！
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
@@ -140,7 +140,7 @@
                 <div class="box box-danger">
 
                     <div class="box-header">
-                        <h3 class="box-title">Box Tools</h3>
+                        <h3 class="box-title">php基礎</h3>
                         <div class="box-tools">
                             <!-- This will cause the box to be removed when clicked -->
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip"
@@ -150,7 +150,7 @@
                                 title="Collapse"><i class="fa fa-minus"></i></button>
                         </div>
                         <div class="box-body">
-                            The body of the box
+                            phpの基礎を学ぶ
                         </div><!-- /.box-body -->
                     </div>
                 </div>

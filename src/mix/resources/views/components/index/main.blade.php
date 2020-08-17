@@ -5,7 +5,7 @@
 <section class="content container">
     <div class="row"></div>
     <h3>
-        MIX師一覧
+        ユーザ一覧
     </h3>
 
     <div class="row">
@@ -29,7 +29,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" id="chckbxSinger">
-                                                歌い手
+                                                作成中
                                             </label>
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" id="chckbxMixer">
-                                                MIX師
+                                                作成中
                                             </label>
                                         </div>
                                     </div>

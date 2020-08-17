@@ -8,7 +8,7 @@
                 <!-- DIRECT CHAT -->
                 <div class="card direct-chat direct-chat-primary">
                     <div class="card-header">
-                        <h3 class="card-title">reito</h3>
+                        <h3 class="card-title">チャット</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -17,7 +17,7 @@
                             <!-- Message. Default to the left -->
                             <div class="direct-chat-msg">
                                 <div class="direct-chat-infos clearfix">
-                                    <span class="direct-chat-name float-left">reito</span>
+                                    <span class="direct-chat-name float-left">佐藤</span>
                                     <span class="direct-chat-timestamp float-right">昨日 22:33</span>
                                 </div>
                                 <!-- /.direct-chat-infos -->
@@ -25,7 +25,7 @@
                                     alt="message user image">
                                 <!-- /.direct-chat-img -->
                                 <div class="direct-chat-text">
-                                    夫がうざい件についてwwwww
+                                    チャット機能
                                 </div>
                                 <!-- /.direct-chat-text -->
                             </div>
@@ -42,7 +42,7 @@
                                     alt="message user image">
                                 <!-- /.direct-chat-img -->
                                 <div class="direct-chat-text">
-                                    頭が痒い時ってどうしてる？
+                                    チャット機能は未実装です！
                                 </div>
                                 <!-- /.direct-chat-text -->
                             </div>
