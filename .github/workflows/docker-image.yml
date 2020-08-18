@@ -19,7 +19,7 @@ jobs:
     - name: docker-compose up
       run: docker-compose up -d
     - name: composer-install
-      run: docker-compose exec php composer install
+      run: composer install
     - name: migration
       run: docker-compose exec php php artisan migrate
     - name: seeder
