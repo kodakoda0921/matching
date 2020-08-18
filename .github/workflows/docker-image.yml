@@ -19,7 +19,7 @@ jobs:
     - name: docker-compose up
       run: |
             docker-compose up -d
-            composer install
+            docker-compose exec -T php bash -c "composer install"
             docker-compose exec -T php bash -c "php artisan migrate"
             docker-compose exec -T php bash -c "php artisan db:seed"
             docker-compose exec -T php bash -c "php artisan storage:link"
