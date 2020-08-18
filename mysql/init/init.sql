@@ -1,2 +1,3 @@
-CREATE DATABASE IF NOT EXISTS 'test_db';
-GRANT ALL ON test_db.* TO 'root'@'root';
+DROP DATABASE IF EXISTS test_db;
+CREATE DATABASE test_db;
+USE test_db;
