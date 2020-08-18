@@ -36,7 +36,8 @@ class MeetingsRepository implements MeetingsRepositoryInterface
                 'picture' => $picture,
                 'language' => $request->language,
                 'area' => $request->area,
-                'overview' => $request->overview
+                'overview' => $request->overview,
+                'event_date' => $request->event_date
             ]
         );
     }

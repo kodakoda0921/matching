@@ -25,7 +25,7 @@ class ProfileTest extends TestCase
         // no_routeの処理（異常系）
         $response = $this->get('/no_route');
         $response->assertStatus(404);
-        
+
         // ウェルカムページ表示
         $response = $this->get('/');
         $response->assertStatus(200);
@@ -67,7 +67,8 @@ class ProfileTest extends TestCase
             'language' => 0,
             'area' => 1,
             'overview' => 'aaaaa',
-            'meeting_image' => 'aaaaa'
+            'meeting_image' => 'aaaaa',
+            'event_date' => '2020-08-10',
         ]);
         $response->assertStatus(302);
         $response->assertRedirect('/meeting');

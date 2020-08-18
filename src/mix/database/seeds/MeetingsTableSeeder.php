@@ -25,6 +25,7 @@ class MeetingsTableSeeder extends Seeder
                 'language' => $faker->randomElement([0, 1, 2, 3, 4]),
                 'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
                 'overview' => $faker->realText(100),
+                'event_date' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d'),
                 'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
             ]);
         }
