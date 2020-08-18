@@ -25,5 +25,9 @@ Route::get('/top', 'HomeController@top')->name('top');
 Route::get('/userProfile','UserProfileViewController@UserProfile')->name('userProfile');
 Route::post('/userProfile', 'UserProfileViewController@profileUpdate');
 Route::get('/chat', 'HomeController@chat');
+Route::get('/meeting', 'HomeController@meeting')->name('meeting');
+Route::get('/meeting_regist', 'MeetingViewController@meetingRegistView');
+Route::post('/meeting_regist', 'MeetingViewController@meetingRegist');
+
 
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Services\UserProfileViewService;
 use App\Services\HomeService;
+use App\Services\MeetingViewService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind('UserProfileViewService', UserProfileViewService::class);
         $this->app->bind('HomeService', HomeService::class);
+        $this->app->bind('MeetingViewService', MeetingViewService::class);
         $this->app->bind(
             \App\Repositories\UserProfile\UserProfileRepositoryInterface::class,
             \App\Repositories\UserProfile\UserProfileRepository::class
@@ -32,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             \App\Repositories\Areas\AreasRepositoryInterface::class,
             \App\Repositories\Areas\AreasRepository::class
+        );
+        $this->app->bind(
+            \App\Repositories\Meetings\MeetingsRepositoryInterface::class,
+            \App\Repositories\Meetings\MeetingsRepository::class
         );
     }
 
