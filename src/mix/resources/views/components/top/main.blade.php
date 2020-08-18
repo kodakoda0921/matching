@@ -56,6 +56,20 @@
                         <i class="fa fa-arrow-circle-o-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-4 col">
+                <div class="small-box bg-blue">
+                    <div class="inner">
+                        <h3>勉強会</h3>
+
+                        <p>勉強会</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-book"></i>
+                    </div>
+                    <a href="{{ url('/meeting') }}" class="small-box-footer">More info
+                        <i class="fa fa-arrow-circle-o-right"></i></a>
+                </div>
+            </div>
         </div>
         <div class="row"></div>
         <h3>
