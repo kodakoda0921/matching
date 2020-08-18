@@ -47,7 +47,9 @@
                                         </div>
                                         <div class="box-footer">
                                             <a href="{{ url('/index') }}"
-                                            class="btn bg-olive btn-flat pull-right">More info</a>
+                                            class="btn bg-olive btn-flat pull-right ml-1">削除</a>
+                                            <a href="{{ url('/index') }}"
+                                            class="btn bg-olive btn-flat pull-right ml-1">編集</a>
                                         </div>
                                     </div>
                                 </div>
