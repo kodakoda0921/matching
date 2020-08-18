@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserProfileTable extends Migration
+class CreateMeetingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateUserProfileTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->comment('ユーザID');
-            $table->integer('sex')->comment('性別');
+            $table->string('title')->comment('タイトル');
             $table->string('picture')->nullable(true)->comment('アイコン');
             $table->integer('language')->comment('言語');
-            $table->string('introduction')->nullable(true)->comment('自己紹介');
             $table->integer('area')->comment('所在地名');
+            $table->string('overview')->nullable(true)->comment('概要');
             $table->timestamp('update_timestamp')->comment('登録更新タイムスタンプ');
         });
     }
@@ -32,6 +32,6 @@ class CreateUserProfileTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('meetings');
     }
 }
