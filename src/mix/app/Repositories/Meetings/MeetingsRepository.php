@@ -40,4 +40,15 @@ class MeetingsRepository implements MeetingsRepositoryInterface
             ]
         );
     }
+
+    /**
+     * ログインユーザ主催の勉強会一覧取得
+     * 
+     * @param int $login_user
+     */
+    public function getLoginUsersMeetingList($login_user)
+    {
+        $result = $this->meetings->where('user_id' , '=', $login_user)->get();
+        return $result;
+    }
 }

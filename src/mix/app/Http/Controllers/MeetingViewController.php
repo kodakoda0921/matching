@@ -33,6 +33,6 @@ class MeetingViewController extends Controller
         Log::debug("START");
         MeetingViewService::regist($request);
         Log::debug("END");
-        return redirect()->action('HomeController@top')->with(['success' => 'プロフィールを更新しました。']);
+        return redirect()->action('HomeController@meeting')->with(['success' => 'プロフィールを更新しました。']);
     }
 }

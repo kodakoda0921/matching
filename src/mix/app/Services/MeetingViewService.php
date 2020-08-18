@@ -33,4 +33,17 @@ class MeetingViewService
     {
         $this->meetings->regist($request);
     }
+
+    /**
+     * ユーザプロフィールの更新処理
+     *
+     * @param Request $request
+     * @return $result
+     */
+    public function getLoginUsersMeetingList($login_user)
+    {
+        $result = $this->meetings->getLoginUsersMeetingList($login_user);
+        return $result;
+    }
+    
 }

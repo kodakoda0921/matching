@@ -21,7 +21,7 @@
                 <div class="container-fluid">
                     <div class="card bg-light mb-3">
                         <div class="card-header">
-                            <button type="button" onclick="history.back()"
+                            <button type="button" onclick="location.href='{{ url('/meeting') }}'"
                                 class="btn btn-primary pull-right ml-1">戻る</button>
                             <h3 class="card-title">{{ $login_user->name }}さんの新規勉強会登録</h3>
                         </div>

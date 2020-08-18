@@ -12,43 +12,51 @@
         @component('components.index.header')
         @endcomponent
 
-        <!-- Full Width Column -->
+
         <div class="content-wrapper">
-            <!--<div class="container">-->
-            <!-- Content Header (Page header) -->
+
             <section class="content">
-                {{-- ボックス --}}
+
                 <div class="container-fluid">
                     <div class="card bg-light mb-3">
                         <div class="card-header">
-                            <button type="button" onclick="history.back()"
+                            <button type="button" onclick="location.href='{{ url('/top') }}'"
                                 class="btn btn-primary pull-right ml-1">戻る</button>
                             <button type="button" onclick="location.href='{{ url('/meeting_regist') }}'"
                                 class="btn btn-primary pull-right">新規</button>
                             <h3 class="card-title">{{ $login_user->name }}さんの主催勉強会</h3>
                         </div>
-
                         <div class="card-body">
-                            <div class="col-md-4">
-                                <div class="box box-success">
-                                    <div class="box-header with-border">
-                                        <h3 class="box-title">ruby勉強会</h3>
-                                    </div><!-- /.box-header -->
-                                    <div class="box-body">
-                                        rubyの基礎について
-                                        <a href="{{ url('/index') }}" class="btn bg-olive btn-flat margin pull-right ml-1">More info
-                                            {{-- <i class="fa fa-arrow-circle-o-right"></i> --}}</a>
-                                    </div><!-- /.box-body -->
+                            <div class="row">
+                                @foreach ($meetings as $meeting)
+                                <div class="col-md-3">
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
 
-
-
-                                </div><!-- /.box -->
+                                            <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            @if ($meeting->picture == null)
+                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right" alt="no_profile_image"
+                                                src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
+                                            @else
+                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right" alt="profile_image"
+                                                src="{{ asset('storage/img/'.$meeting->picture) }}">
+                                            @endif
+                                            {{ mb_strimwidth($meeting->overview,0,100,"...") }}
+                                        </div>
+                                        <div class="box-footer">
+                                            <a href="{{ url('/index') }}"
+                                            class="btn bg-olive btn-flat pull-right">More info</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
-
                         <div class="card-footer">
-
                         </div>
+
                     </div>
                 </div>
             </section>

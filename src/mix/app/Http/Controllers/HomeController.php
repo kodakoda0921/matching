@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\HomeService;
+use App\Facades\MeetingViewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -63,7 +64,9 @@ class HomeController extends Controller
     {
         Log::debug("START");
         $login_user = HomeService::getLoginUser();
+        $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
+        Log::debug($meetings);
         Log::debug("END");
-        return view('meeting', compact('login_user'));
+        return view('meeting', compact('login_user', 'meetings'));
     }
 }
