@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserProfile extends Model
 {
     public $timestamps = false;
-    public $incrementing = false;
+    public $incrementing = true;
     /**
      * ユーザプロフィールテーブル
      *
