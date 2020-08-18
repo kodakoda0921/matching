@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\Languages;
+use App\Models\Meetings;
 use App\Models\UserProfile;
 use App\User;
 use Faker\Generator as Faker;
@@ -42,6 +43,19 @@ $factory->define(UserProfile::class, function (Faker $faker) {
         'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
     ];
 });
+$factory->define(Meetings::class, function (Faker $faker) {
+    return [
+        'user_id' => function(){
+            //UserProfileインスタンスを作成する際に、リレーションするUserインスタンスも生成する
+            return factory(User::class)->create()->id;
+        },
+        'title' => $faker->text(10),
+        'picture' => null,
+        'language' => $faker->randomElement([0, 1, 2, 3, 4]),
+        'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
+        'overview' => $faker->realText(100),
+    ];
+});
 $factory->define(Languages::class, function (Faker $faker) {
     return [
         'id' => $faker->randomElement([0, 1, 2, 3, 4]),
@@ -54,3 +68,5 @@ $factory->define(Languages::class, function (Faker $faker) {
         'area' => "東京"
     ];
 });
+
+
