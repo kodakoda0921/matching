@@ -21,6 +21,7 @@ class CreateMeetingsTable extends Migration
             $table->integer('language')->comment('言語');
             $table->integer('area')->comment('所在地名');
             $table->string('overview')->nullable(true)->comment('概要');
+            $table->date('event_date')->comment('開催日');
             $table->timestamp('update_timestamp')->comment('登録更新タイムスタンプ');
         });
     }

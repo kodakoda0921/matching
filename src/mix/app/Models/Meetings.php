@@ -14,6 +14,6 @@ class Meetings extends Model
      *
      */
     protected $fillable = [
-         'id','user_id', 'title', 'picture', 'language', 'area', 'overview'
+         'id','user_id', 'title', 'picture', 'language', 'area', 'overview', 'event_date'
     ];
 }

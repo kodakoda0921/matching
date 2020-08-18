@@ -50,6 +50,13 @@
                                             </label>
                                         </div>
                                     </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label for="event_date" class="control-sidebar-subheading">日付
+                                                {{ Form::date('event_date', "", ['class' => 'form-control']) }}
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-sm-4">

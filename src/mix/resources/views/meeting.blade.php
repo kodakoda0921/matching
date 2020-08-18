@@ -34,6 +34,7 @@
                                         <div class="box-header with-border">
 
                                             <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
+
                                         </div>
                                         <div class="box-body">
                                             @if ($meeting->picture == null)
@@ -46,6 +47,9 @@
                                             {{ mb_strimwidth($meeting->overview,0,100,"...") }}
                                         </div>
                                         <div class="box-footer">
+                                            <div class="col-md-4 pull-left">
+                                                <div class="d-block">{{ $meeting->event_date }}</div>
+                                                </div>
                                             <a href="{{ url('/index') }}"
                                             class="btn bg-olive btn-flat pull-right ml-1">削除</a>
                                             <a href="{{ url('/index') }}"
