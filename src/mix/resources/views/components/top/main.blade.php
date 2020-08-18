@@ -57,11 +57,11 @@
                 </div>
             </div>
             <div class="col-lg-4 col">
-                <div class="small-box bg-blue">
+                <div class="small-box bg-purple">
                     <div class="inner">
-                        <h3>勉強会</h3>
+                        <h3>主催した勉強会</h3>
 
-                        <p>勉強会</p>
+                        <p>勉強会の作成や主催した勉強会の閲覧</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-ios-book"></i>
