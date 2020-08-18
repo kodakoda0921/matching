@@ -21,17 +21,17 @@ jobs:
     - name: composer-install
       run: composer install
     - name: migration
-      run: docker-compose exec php php artisan migrate
+      run: docker-compose exec -T php bash -c "php artisan migrate"
     - name: seeder
-      run: docker-compose exec php php artisan db:seed
+      run: docker-compose exec -T php bash -c "php artisan db:seed"
     - name: storage-link
-      run: docker-compose exec php php artisan storage:link
+      run: docker-compose exec -T php bash -c "php artisan storage:link"
     - name: key-generate
-      run: docker-compose exec php php artisan key:generate
+      run: docker-compose exec -T php bash -c "php artisan key:generate"
     - name: dump-autoload
-      run: docker-compose exec php composer dump-autoload
+      run: docker-compose exec -T php bash -c "composer dump-autoload"
     - name: php-unit
-      run: docker-compose exec php php artisan config:clear
+      run: docker-compose exec -T php bash -c "php artisan config:clear"
     - name: phpunitexit
-      run: docker-compose exec php vendor/bin/phpunit
+      run: docker-compose exec -T php bash -c "vendor/bin/phpunit"
       
