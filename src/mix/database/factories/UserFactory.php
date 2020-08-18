@@ -54,6 +54,8 @@ $factory->define(Meetings::class, function (Faker $faker) {
         'language' => $faker->randomElement([0, 1, 2, 3, 4]),
         'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
         'overview' => $faker->realText(100),
+        'event_date' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d'),
+
     ];
 });
 $factory->define(Languages::class, function (Faker $faker) {
