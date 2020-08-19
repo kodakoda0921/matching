@@ -29,14 +29,14 @@ jobs:
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && git pull origin master"
     - name: composer install
       run: | 
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "composer install""
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec php composer install"
     - name: cashe
       run: | 
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan config:cache""
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan route:cache""
     - name: migrate
       run: | 
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan migrate""
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec php php artisan migrate"
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "composer dump-autoload""
         
 
