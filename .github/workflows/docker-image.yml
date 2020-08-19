@@ -27,11 +27,11 @@ jobs:
         chmod 600 secret_key
         # ssh接続　＞　デプロイするディレクトリに行く　＞　デプロイ
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && git pull origin master
-        && docker-compose exec -T php bash -c "composer install"
-        && docker-compose exec -T php bash -c "php artisan config:cache"
-        && docker-compose exec -T php bash -c "php artisan route:cache"
-        && docker-compose exec -T php bash -c "php artisan migrate"
-        && docker-compose exec -T php bash -c "composer dump-autoload""
+        docker-compose exec -T php bash -c "composer install"
+        docker-compose exec -T php bash -c "php artisan config:cache"
+        docker-compose exec -T php bash -c "php artisan route:cache"
+        docker-compose exec -T php bash -c "php artisan migrate"
+        docker-compose exec -T php bash -c "composer dump-autoload""
         
 
 
