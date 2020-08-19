@@ -26,5 +26,5 @@ jobs:
         # パーミッションの変更    
         chmod 600 secret_key
         # ssh接続　＞　デプロイするディレクトリに行く　＞　デプロイ
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~ && git pull origin master"
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && git pull origin master"
 
