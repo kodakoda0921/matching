@@ -31,6 +31,7 @@ jobs:
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan config:cache""
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan route:cache""
         ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "php artisan migrate""
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/matching && docker-compose exec -T php bash -c "composer dump-autoload""
         
 
 
