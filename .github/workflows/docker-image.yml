@@ -18,19 +18,7 @@ jobs:
       EC2_HOST: ${{ secrets.EC2_HOST }}
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker-compose build
-    - name: docker-compose up
-      run: |
-            docker-compose up -d
-            docker-compose exec -T php bash -c "composer install"
-            docker-compose exec -T php bash -c "php artisan migrate"
-            docker-compose exec -T php bash -c "php artisan db:seed"
-            docker-compose exec -T php bash -c "php artisan storage:link"
-            docker-compose exec -T php bash -c "php artisan key:generate"
-            docker-compose exec -T php bash -c "composer dump-autoload"
-            docker-compose exec -T php bash -c "php artisan config:clear"
-            docker-compose exec -T php bash -c "vendor/bin/phpunit"
+
     - name: Deploy to EC2  
       run: |
         # 秘密鍵にファイル名secret_keyをつける
