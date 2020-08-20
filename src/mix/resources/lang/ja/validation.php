@@ -103,6 +103,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => 'タイトル',
+        'event_date' => '開催日',
+        'overview' => '勉強会概要',
+    ],
 
 ];
