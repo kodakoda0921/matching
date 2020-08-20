@@ -31,7 +31,9 @@ class MeetingViewService
      */
     public function regist(Request $request)
     {
+        Log::debug("START");
         $this->meetings->regist($request);
+        Log::debug("END");
     }
 
     /**
@@ -42,8 +44,51 @@ class MeetingViewService
      */
     public function getLoginUsersMeetingList($login_user)
     {
+        Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
+        Log::debug("END");
         return $result;
     }
     
+    /**
+     * ユーザプロフィールの更新処理
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function view($id)
+    {
+        Log::debug("START");
+        $result = $this->meetings->view($id);
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 言語取得
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function language($language_id)
+    {
+        Log::debug("START");
+        $result = $this->languages->view($language_id);
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 所在地取得
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function area($area_id)
+    {
+        Log::debug("START");
+        $result = $this->areas->view($area_id);
+        Log::debug("END");
+        return $result;
+    }
 }

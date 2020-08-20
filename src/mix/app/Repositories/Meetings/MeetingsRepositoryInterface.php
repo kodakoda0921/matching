@@ -17,4 +17,11 @@ interface MeetingsRepositoryInterface
      * @param int $login_user
      */
     public function getLoginUsersMeetingList($login_user);
+
+    /**
+     * 勉強会の詳細取得
+     * 
+     * @param int $id
+     */
+    public function view($id);
 }

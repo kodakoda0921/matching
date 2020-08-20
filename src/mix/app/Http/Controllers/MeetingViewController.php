@@ -40,4 +40,19 @@ class MeetingViewController extends Controller
         Log::debug("END");
         return redirect()->action('HomeController@meeting')->with(['success' => 'プロフィールを更新しました。']);
     }
+
+    /**
+     * 勉強会詳細画面の表示
+     *
+     */
+    public function meetingView($id)
+    {
+        Log::debug("START");
+        $login_user = HomeService::getLoginUser();
+        $meeting = MeetingViewService::view($id);
+        $language = MeetingViewService::language($meeting->language);
+        $area = MeetingViewService::area($meeting->area);
+        Log::debug("END");
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area'));
+    }
 }

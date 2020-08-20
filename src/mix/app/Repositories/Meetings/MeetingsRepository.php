@@ -52,4 +52,15 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         $result = $this->meetings->where('user_id' , '=', $login_user)->get();
         return $result;
     }
+
+    /**
+     * 勉強会の詳細取得
+     * 
+     * @param int $id
+     */
+    public function view($id)
+    {
+        $result = $this->meetings->find($id);
+        return $result;
+    }
 }

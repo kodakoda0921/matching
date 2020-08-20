@@ -50,10 +50,8 @@
                                             <div class="col-md-4 pull-left">
                                                 <div class="d-block">{{ $meeting->event_date }}</div>
                                                 </div>
-                                            <a href="{{ url('/index') }}"
-                                            class="btn bg-olive btn-flat pull-right ml-1">削除</a>
-                                            <a href="{{ url('/index') }}"
-                                            class="btn bg-olive btn-flat pull-right ml-1">編集</a>
+                                            <a href="{{ url('/meeting/view/'.$meeting->id.'/') }}"
+                                            class="btn bg-olive btn-flat pull-right ml-1">詳細</a>
                                         </div>
                                     </div>
                                 </div>
