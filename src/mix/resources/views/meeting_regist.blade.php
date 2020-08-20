@@ -32,6 +32,9 @@
                                     <div class="form-group">
                                         <label for="title" class="control-sidebar-subheading">タイトル
                                             {{ Form::text('title' , "",  ['class' => 'form-control'])}}
+                                            @error('title')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </label>
                                     </div>
                                 </div>
@@ -54,6 +57,9 @@
                                         <div class="form-group">
                                             <label for="event_date" class="control-sidebar-subheading">日付
                                                 {{ Form::date('event_date', "", ['class' => 'form-control']) }}
+                                                @error('event_date')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </label>
                                         </div>
                                     </div>
@@ -63,6 +69,9 @@
                                     <div class="form-group">
                                         <label for="textarea" class="control-sidebar-subheading">勉強会概要
                                             {{ Form::textarea('overview', "",  ['class' => 'form-control']) }}
+                                            @error('overview')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </label>
                                     </div>
                                 </div>

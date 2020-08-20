@@ -31,6 +31,11 @@ class MeetingViewController extends Controller
     public function meetingRegist(Request $request)
     {
         Log::debug("START");
+        $request->validate([
+            'title' => 'required|max:255',
+            'event_date' => 'required',
+            'overview' => 'max:1000',
+        ]);
         MeetingViewService::regist($request);
         Log::debug("END");
         return redirect()->action('HomeController@meeting')->with(['success' => 'プロフィールを更新しました。']);
