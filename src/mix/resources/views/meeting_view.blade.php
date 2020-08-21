@@ -29,54 +29,78 @@
 
                             <div class="card-body box-profile">
                                 @if ($meeting->picture == null)
-                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right" alt="no_profile_image"
-                                    src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
+                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
+                                    alt="no_profile_image" src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
                                 @else
-                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right" alt="profile_image"
-                                    src="{{ asset('storage/img/'.$meeting->picture) }}">
+                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
+                                    alt="profile_image" src="{{ asset('storage/img/'.$meeting->picture) }}">
                                 @endif
-                                <h4><strong><i class="fa fa-user mr-1"></i> 主催者:</strong>
-                                    <p class="text-muted">
-                                        {{ $login_user->name }}
-                                    </p>
-                                </h4>
-
-                                <h4><strong><i class="fa fa-book mr-1"></i> 開催地:</strong>
-                                    <p class="text-muted">
-                                        {{ $area->area }}
-                                    </p>
-                                </h4>
+                                <strong><i class="fa fa-user mr-1"></i> 主催者:</strong>
+                                <p class="text-muted">
+                                    {{ $login_user->name }}
+                                </p>
 
 
-
-                                <h4><strong><i class="fa fa-map-marker mr-1"></i> 言語:</strong>
-                                    <p class="text-muted">
-                                        {{ $language->language }}
-                                    </p>
-                                </h4>
+                                <strong><i class="fa fa-book mr-1"></i> 開催地:</strong>
+                                <p class="text-muted">
+                                    {{ $area->area }}
+                                </p>
 
 
-                                <h4><strong><i class="fa fa-file mr-1"></i> 概要:</strong>
-                                    <p class="text-muted">
-                                        {{ $meeting->overview }}
-                                    </p>
-                                </h4>
 
-                                <h4><strong><i class="fa fa-calendar mr-1"></i> 開催日付:</strong>
-                                    <p class="text-muted">
-                                        {{ $meeting->event_date }}
-                                    </p>
-                                </h4>
-                            </div>
-                            <div class="card-footer">
+
+                                <strong><i class="fa fa-map-marker mr-1"></i> 言語:</strong>
+                                <p class="text-muted">
+                                    {{ $language->language }}
+                                </p>
+
+
+
+                                <strong><i class="fa fa-file mr-1"></i> 概要:</strong>
+                                <p class="text-muted">
+                                    {{ $meeting->overview }}
+                                </p>
+
+
+                                <strong><i class="fa fa-calendar mr-1"></i> 開催日付:</strong>
+                                <p class="text-muted">
+                                    {{ $meeting->event_date }}
+                                </p>
 
                             </div>
+                        </div>
+                        <div class="card-footer">
 
+                            <button type="button" class="btn bg-olive btn-flat pull-right ml-1" data-toggle="modal"
+                                data-target="#modal-destroy">削除</button>
+                            <a href="{{ url('/meeting/view/'.$meeting->id.'/') }}"
+                                class="btn bg-olive btn-flat pull-right">詳細</a>
                         </div>
                     </div>
+                </div>
             </section>
         </div>
-
+        <!-- modal -->
+        <div class="modal fade" id="modal-destroy">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">削除確認</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <p>{{ $meeting->title }}を削除します</p>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">削除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="container">
@@ -94,6 +118,7 @@
 
     {{-- JavaScript処理の呼び出し --}}
     <script src="{{ asset('/js/userProfile/update.js') }}"></script>
+
 </body>
 
 </html>
