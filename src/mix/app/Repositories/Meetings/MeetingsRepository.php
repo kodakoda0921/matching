@@ -71,7 +71,10 @@ class MeetingsRepository implements MeetingsRepositoryInterface
      */
     public function delete($id)
     {
-        $result = $this->meetings->find($id);
-        $result->delete();
+        $query = $this->meetings->find($id);
+        if ($query->picture != null) {
+            Storage::delete('public/img/' . $query->picture);
+        }
+        $query->delete();
     }
 }

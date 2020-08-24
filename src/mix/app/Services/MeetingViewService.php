@@ -7,17 +7,16 @@ use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class MeetingViewService
 {
 
-    public function __construct
-    (
+    public function __construct(
         MeetingsRepositoryInterface $meetings,
         LanguagesRepositoryInterface $languages,
         AreasRepositoryInterface $areas
-    )
-    {
+    ) {
         $this->meetings = $meetings;
         $this->languages = $languages;
         $this->areas = $areas;
@@ -49,7 +48,7 @@ class MeetingViewService
         Log::debug("END");
         return $result;
     }
-    
+
     /**
      * ユーザプロフィールの更新処理
      *
@@ -101,7 +100,7 @@ class MeetingViewService
     public function delete($id)
     {
         Log::debug("START");
-        $this->meetings->delete($id);
+        $query = $this->meetings->delete($id);
         Log::debug("END");
     }
 }
