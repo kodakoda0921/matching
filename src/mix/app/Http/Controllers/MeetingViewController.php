@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Facades\HomeService;
 use App\Facades\MeetingViewService;
 use App\Facades\UserProfileViewService;
+use App\Models\Meetings;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
 class MeetingViewController extends Controller
@@ -45,10 +49,14 @@ class MeetingViewController extends Controller
      * 勉強会詳細画面の表示
      *
      */
-    public function meetingView($id)
+    public function meetingView($id,Meetings $meetings)
     {
         Log::debug("START");
+        // 認可
+        $this->authorize('edit', $meetings->find($id));
+        // ログインユーザの取得
         $login_user = HomeService::getLoginUser();
+
         $meeting = MeetingViewService::view($id);
         $language = MeetingViewService::language($meeting->language);
         $area = MeetingViewService::area($meeting->area);
@@ -60,9 +68,12 @@ class MeetingViewController extends Controller
      * 勉強会の削除
      *
      */
-    public function meetingDelete($id)
+    public function meetingDelete($id,Meetings $meetings)
     {
         Log::debug("START");
+        // 認可
+        $this->authorize('edit', $meetings->find($id));
+        
         MeetingViewService::delete($id);
         Log::debug("END");
         return redirect()->action('HomeController@meeting')->with(['success' => '削除しました。']);
