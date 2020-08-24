@@ -67,7 +67,7 @@ class MeetingViewService
     /**
      * 言語取得
      *
-     * @param int $id
+     * @param int $language_id
      * @return $result
      */
     public function language($language_id)
@@ -81,7 +81,7 @@ class MeetingViewService
     /**
      * 所在地取得
      *
-     * @param int $id
+     * @param int $area_id
      * @return $result
      */
     public function area($area_id)
@@ -90,5 +90,18 @@ class MeetingViewService
         $result = $this->areas->view($area_id);
         Log::debug("END");
         return $result;
+    }
+
+    /**
+     * 勉強会削除
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function delete($id)
+    {
+        Log::debug("START");
+        $this->meetings->delete($id);
+        Log::debug("END");
     }
 }

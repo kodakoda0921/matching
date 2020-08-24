@@ -11,7 +11,13 @@
 
         @component('components.index.header')
         @endcomponent
-
+        <section class="content-header container-fluid">
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible">
+                {{ session('success') }}
+            </div>
+            @endif
+        </section>
 
         <div class="content-wrapper">
 
@@ -38,20 +44,21 @@
                                         </div>
                                         <div class="box-body">
                                             @if ($meeting->picture == null)
-                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right" alt="no_profile_image"
+                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right"
+                                                alt="no_profile_image"
                                                 src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
                                             @else
-                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right" alt="profile_image"
-                                                src="{{ asset('storage/img/'.$meeting->picture) }}">
+                                            <img class="profile-user-img img-responsive img-circle img-fluid pull-right"
+                                                alt="profile_image" src="{{ asset('storage/img/'.$meeting->picture) }}">
                                             @endif
                                             {{ mb_strimwidth($meeting->overview,0,100,"...") }}
                                         </div>
                                         <div class="box-footer">
                                             <div class="col-md-4 pull-left">
                                                 <div class="d-block">{{ $meeting->event_date }}</div>
-                                                </div>
+                                            </div>
                                             <a href="{{ url('/meeting/view/'.$meeting->id.'/') }}"
-                                            class="btn bg-olive btn-flat pull-right ml-1">詳細</a>
+                                                class="btn bg-olive btn-flat pull-right ml-1">詳細</a>
                                         </div>
                                     </div>
                                 </div>

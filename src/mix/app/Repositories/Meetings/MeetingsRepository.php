@@ -63,4 +63,15 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         $result = $this->meetings->find($id);
         return $result;
     }
+
+    /**
+     * 勉強会の削除
+     * 
+     * @param int $id
+     */
+    public function delete($id)
+    {
+        $result = $this->meetings->find($id);
+        $result->delete();
+    }
 }

@@ -80,6 +80,7 @@
                 </div>
             </section>
         </div>
+
         <!-- modal -->
         <div class="modal fade" id="modal-destroy">
             <div class="modal-dialog">
@@ -91,16 +92,17 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <p>{{ $meeting->title }}を削除します</p>
+                        <p>{{ $meeting->title }}を削除します</p>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger">削除</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                        <a class="btn btn-danger" href="{{ url('/meeting/delete/'.$meeting->id.'/') }}">削除</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.modal -->
+
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="container">

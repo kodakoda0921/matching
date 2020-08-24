@@ -38,7 +38,7 @@ class MeetingViewController extends Controller
         ]);
         MeetingViewService::regist($request);
         Log::debug("END");
-        return redirect()->action('HomeController@meeting')->with(['success' => 'プロフィールを更新しました。']);
+        return redirect()->action('HomeController@meeting')->with(['success' => '勉強会を登録しました。']);
     }
 
     /**
@@ -54,5 +54,17 @@ class MeetingViewController extends Controller
         $area = MeetingViewService::area($meeting->area);
         Log::debug("END");
         return view('meeting_view', compact('login_user', 'meeting', 'language', 'area'));
+    }
+
+    /**
+     * 勉強会の削除
+     *
+     */
+    public function meetingDelete($id)
+    {
+        Log::debug("START");
+        MeetingViewService::delete($id);
+        Log::debug("END");
+        return redirect()->action('HomeController@meeting')->with(['success' => '削除しました。']);
     }
 }
