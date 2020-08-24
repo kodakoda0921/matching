@@ -6,10 +6,7 @@ use App\Facades\HomeService;
 use App\Facades\MeetingViewService;
 use App\Facades\UserProfileViewService;
 use App\Models\Meetings;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 
 class MeetingViewController extends Controller
