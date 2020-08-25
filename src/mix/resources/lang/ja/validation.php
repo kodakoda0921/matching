@@ -43,7 +43,7 @@ return [
     'ip'                   => ':attributeを正しいIPアドレスにしてください。',
     'max'                  => [
         'numeric' => ':attributeは:max以下にしてください。',
-        'file'    => ':attributeは:max KB以下のファイルにしてください。.',
+        'file'    => ':attributeは:max KB以下のファイルにしてください。',
         'string'  => ':attributeは:max文字以下にしてください。',
         'array'   => ':attributeは:max個以下にしてください。',
     ],
@@ -71,9 +71,10 @@ return [
         'array'   => ':attributeは:size個にしてください。',
     ],
     'string'               => ':attributeは文字列にしてください。',
-    'timezone'             => ':attributeは正しいタイムゾーンをしていしてください。',
+    'timezone'             => ':attributeは正しいタイムゾーンを指定してください。',
     'unique'               => ':attributeは既に存在します。',
     'url'                  => ':attributeを正しい書式にしてください。',
+    'uploaded' => ':attributeのアップロードに失敗しました。',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,6 +108,7 @@ return [
         'title' => 'タイトル',
         'event_date' => '開催日',
         'overview' => '勉強会概要',
+        'meeting_image' => 'アップロード画像',
     ],
 
 ];

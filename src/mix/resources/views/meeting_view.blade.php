@@ -72,7 +72,7 @@
                         <div class="card-footer">
                             <button type="button" class="btn bg-olive btn-flat pull-right ml-1" data-toggle="modal"
                                 data-target="#modal-destroy">削除</button>
-                            <a href="{{ url('/meeting/view/'.$meeting->id.'/') }}"
+                            <a href="{{ url('/meeting/edit/'.$meeting->id.'/') }}"
                                 class="btn bg-olive btn-flat pull-right">編集</a>
                         </div>
                     </div>

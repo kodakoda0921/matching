@@ -77,4 +77,32 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         }
         $query->delete();
     }
+
+    /**
+     * 勉強会新規編集処理
+     * 
+     * @param $request
+     */
+    public function edit($id,$request)
+    {
+        $user = Auth::user();
+        if ($request->file('meeting_image') == null) {
+            $picture = null;
+        } else {
+            Storage::delete('public/img/'.$this->meetings->picture);
+            $path = $request->file('meeting_image')->store('public/img');
+            $picture = basename($path);
+        }
+        $query=$this->meetings->find($id);
+        $query->update(
+            [
+                'title' => $request->title,
+                'picture' => $picture,
+                'language' => $request->language,
+                'area' => $request->area,
+                'overview' => $request->overview,
+                'event_date' => $request->event_date
+            ]
+        );
+    }
 }

@@ -49,6 +49,9 @@
                                         <div class="form-group">
                                             <label for="sex" class="control-sidebar-subheading">性別
                                                 {{ Form::select('sex', ["その他","男性","女性"], $profile->sex, ['class' => 'form-control']) }}
+                                                @error('sex')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </label>
                                         </div>
                                     </div>
@@ -56,6 +59,9 @@
                                         <div class="form-group">
                                             <label for="language" class="control-sidebar-subheading">言語
                                                 {{ Form::select('language', $languagesList, $profile->language, ['class' => 'form-control']) }}
+                                                @error('language')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </label>
                                         </div>
                                     </div>
@@ -63,6 +69,9 @@
                                         <div class="form-group">
                                             <label for="area" class="control-sidebar-subheading">所在地
                                                 {{ Form::select('area', $areasList, $profile->area, ['class' => 'form-control']) }}
+                                                @error('area')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </label>
                                         </div>
                                     </div>
@@ -71,13 +80,19 @@
                                     <div class="form-group">
                                         <label for="introduction" class="control-sidebar-subheading">自己紹介
                                             {{ Form::textarea('introduction', $profile->introduction, ['class' => 'form-control']) }}
+                                            @error('introduction')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="file" class="control-sidebar-subheading">プロフィール画像のアップロード
+                                        <label for="file" class="control-sidebar-subheading">プロフィール画像のアップロード(1.8MBまで)
                                             {{ Form::file('profile_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png']) }}
+                                            @error('profile_image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </label>
                                     </div>
                                 </div>

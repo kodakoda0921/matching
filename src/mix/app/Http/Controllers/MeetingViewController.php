@@ -25,6 +25,7 @@ class MeetingViewController extends Controller
         Log::debug("END");
         return view('meeting_regist', compact('login_user', 'languagesList', 'areasList'));
     }
+
     /**
      * 勉強会登録
      *
@@ -74,5 +75,44 @@ class MeetingViewController extends Controller
         MeetingViewService::delete($id);
         Log::debug("END");
         return redirect()->action('HomeController@meeting')->with(['success' => '削除しました。']);
+    }
+
+    /**
+     * 勉強会の編集
+     *
+     */
+    public function meetingEditView($id,Meetings $meetings)
+    {
+        Log::debug("START");
+        // 認可
+        $this->authorize('edit', $meetings->find($id));
+        // ログインユーザの取得
+        $login_user = HomeService::getLoginUser();
+
+        $meeting = MeetingViewService::view($id);
+        $languagesList = MeetingViewService::getLanguagesList();
+        $areasList = MeetingViewService::getAreasList();
+        Log::debug("END");
+        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting'));
+    }
+
+    /**
+     * 勉強会編集
+     *
+     */
+    public function meetingEdit($id,Request $request)
+    {
+        Log::debug("START");
+        $request->validate([
+            'title' => 'required|max:255',
+            'language' => 'required',
+            'area' => 'required',
+            'event_date' => 'required',
+            'overview' => 'max:1000',
+            'meeting_image' => 'max:1800',
+        ]);
+        MeetingViewService::edit($id,$request);
+        Log::debug("END");
+        return redirect()->action('MeetingViewController@meetingView', ['id' => $id])->with(['success' => '勉強会を更新しました。']);
     }
 }

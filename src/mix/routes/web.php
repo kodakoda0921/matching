@@ -31,6 +31,8 @@ Route::get('/meeting', 'HomeController@meeting')->name('meeting');
 Route::get('/meeting_regist', 'MeetingViewController@meetingRegistView');
 Route::post('/meeting_regist', 'MeetingViewController@meetingRegist');
 Route::get('/meeting/view/{id}','MeetingViewController@meetingView');
+Route::get('/meeting/edit/{id}','MeetingViewController@meetingEditView');
+Route::post('/meeting/edit/{id}','MeetingViewController@meetingEdit');
 Route::get('/meeting/delete/{id}','MeetingViewController@meetingDelete');
 
 

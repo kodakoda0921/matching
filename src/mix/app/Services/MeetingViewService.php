@@ -104,4 +104,45 @@ class MeetingViewService
         $query = $this->meetings->delete($id);
         Log::debug("END");
     }
+
+    /**
+     * 言語一覧取得
+     *
+     * @return object $result
+     */
+    public function getLanguagesList()
+    {
+        Log::debug("START");
+        $list = $this->languages->getLanguagesList();
+        $languagesList = $list->pluck('language');
+        Log::debug("END");
+        return $languagesList;
+    }
+
+    /**
+     * 言語一覧取得
+     *
+     * @return object $result
+     */
+    public function getAreasList()
+    {
+        Log::debug("START");
+        $list = $this->areas->getAreasList();
+        $areasList = $list->pluck('area');
+        Log::debug("END");
+        return $areasList;
+    }
+
+    /**
+     * ユーザプロフィールの更新処理
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function edit($id,Request $request)
+    {
+        Log::debug("START");
+        $this->meetings->edit($id,$request);
+        Log::debug("END");
+    }
 }
