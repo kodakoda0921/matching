@@ -38,12 +38,19 @@ class UserProfileViewController extends Controller
     }
 
     /**
-     * ジョブ更新
+     * プロフィールの更新
      *
      */
     public function profileUpdate(Request $request)
     {
         Log::debug("START");
+        $request->validate([
+            'sex' => 'required',
+            'language' => 'required',
+            'area' => 'required',
+            'introduction' => 'max:1000',
+            'profile_image' => 'max:1800',
+        ]);
         UserProfileViewService::update($request);
         Log::debug("END");
         return redirect()->action('HomeController@top')->with(['success' => 'プロフィールを更新しました。']);

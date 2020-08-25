@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Models\Areas;
 use App\Models\Languages;
 use App\Models\Meetings;
 use App\Models\UserProfile;
@@ -60,15 +61,12 @@ $factory->define(Meetings::class, function (Faker $faker) {
 });
 $factory->define(Languages::class, function (Faker $faker) {
     return [
-        'id' => $faker->randomElement([0, 1, 2, 3, 4]),
         'language' => "ruby"
     ];
 });
-$factory->define(Languages::class, function (Faker $faker) {
+$factory->define(Areas::class, function () {
     return [
-        'id' => $faker->randomElement([0, 1, 2, 3, 4]),
         'area' => "東京"
     ];
 });
-
 

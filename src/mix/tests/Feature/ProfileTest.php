@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Models\Areas;
+use App\Models\Languages;
 use App\Models\Meetings;
 use App\Models\UserProfile;
 use App\User;
@@ -22,6 +24,16 @@ class ProfileTest extends TestCase
      */
     public function testWeb()
     {
+        factory(Areas::class)->create(['id' => 0]);
+        factory(Areas::class)->create(['id' => 1]);
+        factory(Areas::class)->create(['id' => 2]);
+        factory(Areas::class)->create(['id' => 3]);
+        factory(Areas::class)->create(['id' => 4]);
+        factory(Languages::class)->create(['id' => 0]);
+        factory(Languages::class)->create(['id' => 1]);
+        factory(Languages::class)->create(['id' => 2]);
+        factory(Languages::class)->create(['id' => 3]);
+        factory(Languages::class)->create(['id' => 4]);
         // no_routeの処理（異常系）
         $response = $this->get('/no_route');
         $response->assertStatus(404);
@@ -30,7 +42,7 @@ class ProfileTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        // ユーザプロフィール表示（異常）
+        // ユーザプロフィール表示（異常系）
         $response = $this->get('/userProfile');
         $response->assertStatus(500);
 
@@ -65,12 +77,32 @@ class ProfileTest extends TestCase
         $response = $this->actingAs($user)->post('/meeting_regist', [
             'title' => 'aaaaa',
             'language' => 0,
-            'area' => 1,
+            'area' => 0,
             'overview' => 'aaaaa',
-            'meeting_image' => 'aaaaa',
             'event_date' => '2020-08-10',
         ]);
         $response->assertStatus(302);
         $response->assertRedirect('/meeting');
+        $this->withoutExceptionHandling();
+        // 勉強会詳細画面表示
+        $response = $this->actingAs($user)->get('/meeting/view/'.$meeting->user_id);
+        Log::debug($meeting->id);
+        $response->assertStatus(200);
+        
+        // 勉強会更新画面表示
+        $response = $this->actingAs($user)->get('/meeting/edit/'.$meeting->user_id);
+        $response->assertStatus(200);
+
+        // 勉強会更新画面表示
+        $response = $this->actingAs($user)->post('/meeting/edit/'.$meeting->user_id, [
+            'title' => 'aaaaa',
+            'language' => 0,
+            'area' => 1,
+            'overview' => 'aaaaa',
+            'event_date' => '2020-08-10',
+        ]);
+        $response->assertStatus(302);
+        $response->assertRedirect('/meeting/view/'.$meeting->user_id);
     }
+    
 }
