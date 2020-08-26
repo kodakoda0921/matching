@@ -115,4 +115,31 @@ class MeetingViewController extends Controller
         Log::debug("END");
         return redirect()->action('MeetingViewController@meetingView', ['id' => $id])->with(['success' => '勉強会を更新しました。']);
     }
+
+    /**
+     * 検索表示処理
+     *
+     */
+    public function search(Request $request)
+    {
+        Log::debug("START");
+        // 一覧表示
+        $result = MeetingViewService::search($request);
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * モーダルクリック後の処理
+     *
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+        // 詳細表示
+        $result = MeetingViewService::searchView($id);
+        Log::debug("END");
+        return $result;
+    }
+    
 }

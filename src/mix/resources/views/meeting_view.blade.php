@@ -39,34 +39,22 @@
                                 <p class="text-muted">
                                     {{ $login_user->name }}
                                 </p>
-
-
                                 <strong><i class="fa fa-book mr-1"></i> 開催地:</strong>
                                 <p class="text-muted">
                                     {{ $area->area }}
                                 </p>
-
-
-
-
                                 <strong><i class="fa fa-map-marker mr-1"></i> 言語:</strong>
                                 <p class="text-muted">
                                     {{ $language->language }}
                                 </p>
-
-
-
                                 <strong><i class="fa fa-file mr-1"></i> 概要:</strong>
                                 <p class="text-muted">
                                     {{ $meeting->overview }}
                                 </p>
-
-
                                 <strong><i class="fa fa-calendar mr-1"></i> 開催日付:</strong>
                                 <p class="text-muted">
                                     {{ $meeting->event_date }}
                                 </p>
-
                             </div>
                         </div>
                         <div class="card-footer">

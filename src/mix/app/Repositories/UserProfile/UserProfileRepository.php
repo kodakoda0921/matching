@@ -22,29 +22,6 @@ class UserProfileRepository implements UserProfileRepositoryInterface
     }
 
     /**
-     * 選択されたレコードを取得
-     *
-     * @return object $result
-     */
-    public function findByForm($request)
-    {
-        Log::debug("START");
-        $query = $this->userProfile->query();
-
-        if (!empty($request->singer)) {
-            $query->where('singer', '=', true);
-        }
-        if (!empty($request->mixer)) {
-            $query->where('mixer', '=', true);
-        }
-        Log::debug("END");
-        DB::enableQueryLog();
-        $result = $query->with('users')->get();
-        Log::debug(DB::getQueryLog());
-        return $result;
-    }
-
-    /**
      * ジョブの登録または更新
      *
      * @param $request

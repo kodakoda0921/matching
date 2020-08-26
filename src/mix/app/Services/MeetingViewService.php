@@ -145,4 +145,69 @@ class MeetingViewService
         $this->meetings->edit($id,$request);
         Log::debug("END");
     }
+
+    /**
+     * ユーザテーブルから一覧取得
+     *
+     * @param Request $request
+     * @return object $ret
+     */
+    public function search(Request $request)
+    {
+        Log::debug("START");
+
+        // 全件取得
+        $records = $this->meetings->findByForm($request);
+        $ret = $this->transform($records);
+        Log::debug("END");
+        return $ret;
+    }
+
+    /**
+     * taburator出力のため整形
+     *
+     * @param object $ret_temp
+     * @return object $json
+     */
+    private function transform($ret_temp)
+    {
+        Log::debug("START");
+        $unregistered = '-';
+        $result = [];
+        foreach ($ret_temp as $rec) {
+            //$license_type_validitication = $unregistered;
+            array_push(
+                $result,
+                [
+                    'id' => !empty($rec->id) ? $rec->id : $unregistered,
+                    'title' => !empty($rec->title) ? $rec->title : $unregistered,
+                    'event_date' => !empty($rec->event_date) ? $rec->event_date : $unregistered,
+                    'language' => !empty($rec->languages->language) ? $rec->languages->language : $unregistered,
+                    'area' => !empty($rec->areas->area) ? $rec->areas->area : $unregistered,
+                    'user_name' => !empty($rec->users->name) ? $rec->users->name : $unregistered,
+                    'overview' => !empty($rec->overview) ? $rec->overview : $unregistered
+                ]
+            );
+        }
+        $json = ['data' => $result];
+        Log::debug("END");
+        return $json;
+    }
+
+    /**
+     * ユーザテーブルから一覧取得
+     *
+     * @param int $id
+     * @return object $ret
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+
+        // 全件取得
+        $return = $this->meetings->searchView($id);
+        Log::debug("END");
+        return $return;
+    }
+
 }

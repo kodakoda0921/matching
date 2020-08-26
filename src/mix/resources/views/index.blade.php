@@ -38,6 +38,53 @@
         </footer>
     </div>
     <!-- ./wrapper -->
+    <div class="modal fade" id="modal-success">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h4 class="modal-title" id="title"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel">
+                            <div class="col-sm-4 pull-right">
+                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
+                                    alt="profile_image" id='meeting_image' src="">
+                            </div>
+                            <div class="row invoice-info">
+
+                                <div class="col-sm-4 invoice-col">
+                                    <h6>ユーザー</h6>
+                                    <ul id="user">
+                                    </ul>
+                                    <h6>言語</h6>
+                                    <ul id="language">
+                                    </ul>
+                                    <h6>場所</h6>
+                                    <ul id="area">
+                                    </ul>
+                                    <h6>開催日</h6>
+                                    <ul id="date">
+                                    </ul>
+                                    <h6>概要</h6>
+                                    <ul id="overview">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer pull-left">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     @component('components.index.js_read')
     @endcomponent

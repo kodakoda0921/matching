@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="{{ url('/top') }}" class="navbar-brand"><b>勉強会への参加をマッチングする</b></a>
+                <a href="{{ url('/top') }}" class="navbar-brand"><b>勉強会をマッチングする</b></a>
 
             </div>
 

@@ -6,6 +6,7 @@ use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Models\Meetings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -88,7 +89,6 @@ class MeetingsRepository implements MeetingsRepositoryInterface
     {
         $query = $this->meetings->find($id);
         if ($request->file('meeting_image') == null) {
-            Log::debug($query->picture);
             $picture = $query->picture;
         } else {
             Storage::delete('public/img/'.$query->picture);
@@ -106,5 +106,41 @@ class MeetingsRepository implements MeetingsRepositoryInterface
                 'event_date' => $request->event_date
             ]
         );
+    }
+
+    /**
+     * 選択されたレコードを取得
+     *
+     * @return object $result
+     */
+    public function findByForm($request)
+    {
+        Log::debug("START");
+        $query = $this->meetings->query();
+
+        if (!empty($request->singer)) {
+            $query->where('singer', '=', true);
+        }
+        if (!empty($request->mixer)) {
+            $query->where('mixer', '=', true);
+        }
+        Log::debug("END");
+        DB::enableQueryLog();
+        $result = $query->with('users')->with('languages')->with('areas')->get();
+        Log::debug(DB::getQueryLog());
+        return $result;
+    }
+    
+    /**
+     * 選択されたレコードを取得
+     *
+     * @return object $result
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+        $result = $this->meetings->with('users')->with('languages')->with('areas')->find($id);
+        Log::debug("END");
+        return $result;
     }
 }
