@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 // WebAPI
 Route::group(['middleware' => ['api']], function () {
-    Route::get('userProfile', 'UserProfileViewController@search');
+    Route::get('meetingSerch', 'MeetingViewController@search');
 });

@@ -16,7 +16,7 @@
       initialSort: [ //set the initial sort order of the data
         {
           column: "id",
-          dir: "asc"
+          dir: "desc"
         },
       ],
       langs: {
@@ -37,15 +37,33 @@
         {
           title: "ユーザーID",
           field: "id",
+          sorter: "number",
           visible:false
         },
         {
-          title: "名前",
+          title: "勉強会名",
+          field: "title",
+          widthGrow:1
+        },
+        {
+          title: "開催日",
+          field: "event_date",
+          widthGrow:1
+        },
+        {
+          title: "言語",
+          field: "language",
+          widthGrow:1
+        },
+        {
+          title: "場所",
+          field: "area",
+          widthGrow:1
+        },
+        {
+          title: "ユーザ名",
           field: "user_name",
-          sorter: "number",
-          widthGrow:4,
-
-
+          widthGrow:1
         }
       ],
     });
@@ -62,7 +80,7 @@ $(function() {
     if ($("#chckbxMixer").prop("checked")) {v_mixer = 1;}
 
     $.ajax({
-      url: "/api/userProfile",
+      url: "/api/meetingSerch",
       data: {
         date: $("input#date").val(),
         singer: v_singer,

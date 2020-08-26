@@ -25,19 +25,6 @@ class UserProfileViewController extends Controller
     }
 
     /**
-     * 検索表示処理
-     *
-     */
-    public function search(Request $request)
-    {
-        Log::debug("START");
-        // 点呼実績一覧取得
-        $result = UserProfileViewService::search($request);
-        Log::debug("END");
-        return $result;
-    }
-
-    /**
      * プロフィールの更新
      *
      */
