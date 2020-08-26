@@ -24,4 +24,32 @@ interface MeetingsRepositoryInterface
      * @param int $id
      */
     public function view($id);
+
+    /**
+     * 勉強会の削除
+     * 
+     * @param int $id
+     */
+    public function delete($id);
+    
+    /**
+     * 勉強会新規編集処理
+     * 
+     * @param $request
+     */
+    public function edit($id,$request);
+
+    /**
+     * 選択されたレコードを取得
+     *
+     * @return object $result
+     */
+    public function findByForm($request);
+
+    /**
+     * 選択されたレコードを取得
+     *
+     * @return object $result
+     */
+    public function searchView($id);
 }

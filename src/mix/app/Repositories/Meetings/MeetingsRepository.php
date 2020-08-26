@@ -130,7 +130,8 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         Log::debug(DB::getQueryLog());
         return $result;
     }
-        /**
+    
+    /**
      * 選択されたレコードを取得
      *
      * @return object $result

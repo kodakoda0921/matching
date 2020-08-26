@@ -123,7 +123,7 @@ class MeetingViewController extends Controller
     public function search(Request $request)
     {
         Log::debug("START");
-        // 点呼実績一覧取得
+        // 一覧表示
         $result = MeetingViewService::search($request);
         Log::debug("END");
         return $result;
@@ -136,8 +136,7 @@ class MeetingViewController extends Controller
     public function searchView($id)
     {
         Log::debug("START");
-        // 点呼実績一覧取得
-        Log::debug($id);
+        // 詳細表示
         $result = MeetingViewService::searchView($id);
         Log::debug("END");
         return $result;
