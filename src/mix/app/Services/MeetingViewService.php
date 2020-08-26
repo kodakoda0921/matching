@@ -186,6 +186,7 @@ class MeetingViewService
                     'language' => !empty($rec->languages->language) ? $rec->languages->language : $unregistered,
                     'area' => !empty($rec->areas->area) ? $rec->areas->area : $unregistered,
                     'user_name' => !empty($rec->users->name) ? $rec->users->name : $unregistered,
+                    'overview' => !empty($rec->overview) ? $rec->overview : $unregistered
                 ]
             );
         }

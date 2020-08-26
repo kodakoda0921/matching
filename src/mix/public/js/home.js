@@ -2,7 +2,7 @@
     var abnormality_tmp_main = 0;
     var table = new Tabulator("#example-table", {
       layout: "fitColumns", //fit columns to width of table
-      //responsiveLayout: "hide", //hide columns that dont fit on the table
+      responsiveLayout: "hide", //hide columns that dont fit on the table
       tooltips: true, //show tool tips on cells
       addRowPos: "top", //when adding a new row, add it to the top of the table
       history: true, //allow undo and redo actions on the table
@@ -43,27 +43,22 @@
         {
           title: "勉強会名",
           field: "title",
-          widthGrow:1
-        },
-        {
-          title: "開催日",
-          field: "event_date",
-          widthGrow:1
+          widthGrow:3
         },
         {
           title: "言語",
           field: "language",
-          widthGrow:1
+          widthGrow:2
         },
         {
           title: "場所",
           field: "area",
-          widthGrow:1
+          widthGrow:2
         },
         {
-          title: "ユーザ名",
-          field: "user_name",
-          widthGrow:1
+          title: "開催日",
+          field: "event_date",
+          widthGrow:3
         }
       ],
     });
