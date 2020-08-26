@@ -62,7 +62,7 @@
                                     <div class="col-sm-1">
                                         <div class="form-group">
                                             <label for="area" class="control-sidebar-subheading">開催地
-                                                {{ Form::select('area', $languagesList, $meeting->area,  ['class' => 'form-control']) }}
+                                                {{ Form::select('area', $areasList, $meeting->area,  ['class' => 'form-control']) }}
                                             </label>
                                         </div>
                                     </div>
