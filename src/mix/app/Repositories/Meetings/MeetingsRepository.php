@@ -6,6 +6,7 @@ use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Models\Meetings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class MeetingsRepository implements MeetingsRepositoryInterface
@@ -85,11 +86,12 @@ class MeetingsRepository implements MeetingsRepositoryInterface
      */
     public function edit($id,$request)
     {
-        $user = Auth::user();
+        $query = $this->meetings->find($id);
         if ($request->file('meeting_image') == null) {
-            $picture = null;
+            Log::debug($query->picture);
+            $picture = $query->picture;
         } else {
-            Storage::delete('public/img/'.$this->meetings->picture);
+            Storage::delete('public/img/'.$query->picture);
             $path = $request->file('meeting_image')->store('public/img');
             $picture = basename($path);
         }
