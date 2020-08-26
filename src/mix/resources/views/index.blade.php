@@ -38,6 +38,46 @@
         </footer>
     </div>
     <!-- ./wrapper -->
+    <div class="modal fade" id="modal-success">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h4 class="modal-title">タイトル</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel">
+                            <div class="row invoice-info">
+                                <div class="col-sm-4 invoice-col">
+                                    <h6>言語</h6>
+                                    <ul id="bodyTemperatureList">
+                                    </ul>
+                                    <h6>場所</h6>
+                                    <ul id="bloodPressureList">
+                                    </ul>
+                                    <h6>開催日</h6>
+                                    <ul id="bloodPressureList">
+                                    </ul>
+                                    <h6>概要</h6>
+                                    <ul id="alcoholList">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left"
+                                    data-dismiss="modal">閉じる</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     @component('components.index.js_read')
     @endcomponent

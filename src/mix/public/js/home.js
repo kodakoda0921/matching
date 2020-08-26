@@ -61,10 +61,14 @@
           widthGrow:3
         }
       ],
+      rowClick: function (e, row) {
+        var row_id = row._row.data.id;
+        console.log("row: ",row_id);
+        //setModalData(row_id);
+        $('#modal-success').modal('show');
+      },
     });
     table.setLocale("ja-ja");
-
-//
 
 $(function() {
   $("#sendUpdateButton").on("click", function(){
