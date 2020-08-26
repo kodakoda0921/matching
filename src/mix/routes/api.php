@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // WebAPI
 Route::group(['middleware' => ['api']], function () {
     Route::get('meetingSerch', 'MeetingViewController@search');
+    Route::get('meeting/search/{id}', 'MeetingViewController@searchView');
 });

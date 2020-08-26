@@ -128,4 +128,19 @@ class MeetingViewController extends Controller
         Log::debug("END");
         return $result;
     }
+
+    /**
+     * モーダルクリック後の処理
+     *
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+        // 点呼実績一覧取得
+        Log::debug($id);
+        $result = MeetingViewService::searchView($id);
+        Log::debug("END");
+        return $result;
+    }
+    
 }

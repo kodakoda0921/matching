@@ -172,7 +172,6 @@ class MeetingViewService
     private function transform($ret_temp)
     {
         Log::debug("START");
-        Log::debug($ret_temp);
         $unregistered = '-';
         $result = [];
         foreach ($ret_temp as $rec) {
@@ -193,6 +192,22 @@ class MeetingViewService
         $json = ['data' => $result];
         Log::debug("END");
         return $json;
+    }
+
+    /**
+     * ユーザテーブルから一覧取得
+     *
+     * @param int $id
+     * @return object $ret
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+
+        // 全件取得
+        $return = $this->meetings->searchView($id);
+        Log::debug("END");
+        return $return;
     }
 
 }

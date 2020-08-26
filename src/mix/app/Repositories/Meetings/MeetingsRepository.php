@@ -89,7 +89,6 @@ class MeetingsRepository implements MeetingsRepositoryInterface
     {
         $query = $this->meetings->find($id);
         if ($request->file('meeting_image') == null) {
-            Log::debug($query->picture);
             $picture = $query->picture;
         } else {
             Storage::delete('public/img/'.$query->picture);
@@ -129,6 +128,18 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         DB::enableQueryLog();
         $result = $query->with('users')->with('languages')->with('areas')->get();
         Log::debug(DB::getQueryLog());
+        return $result;
+    }
+        /**
+     * 選択されたレコードを取得
+     *
+     * @return object $result
+     */
+    public function searchView($id)
+    {
+        Log::debug("START");
+        $result = $this->meetings->with('users')->with('languages')->with('areas')->find($id);
+        Log::debug("END");
         return $result;
     }
 }
