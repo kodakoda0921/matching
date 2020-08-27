@@ -27,8 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         Log::debug("START");
+        $languagesList = MeetingViewService::getLanguagesList();
+        $areasList = MeetingViewService::getAreasList();
         Log::debug("END");
-        return view('index');
+        return view('index', compact('languagesList', 'areasList'));
     }
 
     /**

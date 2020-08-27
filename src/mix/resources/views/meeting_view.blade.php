@@ -55,6 +55,10 @@
                                 <p class="text-muted">
                                     {{ $meeting->event_date }}
                                 </p>
+                                <strong><i class="fa fa-user mr-1"></i> 参加人数:</strong>
+                                <p class="text-muted">
+                                    <a href="#" data-toggle="modal" data-target="#modal-join">{{ $count }}名</a>
+                                </p>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -84,6 +88,29 @@
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                         <a class="btn btn-danger" href="{{ url('/meeting/delete/'.$meeting->id.'/') }}">削除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+        <!-- modal -->
+        <div class="modal fade" id="modal-join">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">参加者確認</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ $meeting->title }}参加者の一覧</p>
+                        @foreach ($list as $item)
+                        <li>{{$item->users->name}}</li>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                     </div>
                 </div>
             </div>

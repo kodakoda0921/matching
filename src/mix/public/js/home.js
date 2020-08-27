@@ -143,18 +143,14 @@ $(function () {
 
 $(function () {
   $("#sendUpdateButton").on("click", function () {
-    var v_singer = 0;
-    var v_mixer = 0;
-
-    if ($("#chckbxSinger").prop("checked")) { v_singer = 1; }
-    if ($("#chckbxMixer").prop("checked")) { v_mixer = 1; }
-
+    var language = document.getElementById("selectedLanguage");
+    var area = document.getElementById("selectedArea");
     $.ajax({
       url: "meetingSerch",
       data: {
         date: $("input#date").val(),
-        singer: v_singer,
-        mixer: v_mixer,
+        language: language.value,
+        area: area.value,
       },
       type: "GET",
       dataType: 'json',

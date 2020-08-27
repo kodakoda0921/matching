@@ -59,8 +59,11 @@ class MeetingViewController extends Controller
         $meeting = MeetingViewService::view($id);
         $language = MeetingViewService::language($meeting->language);
         $area = MeetingViewService::area($meeting->area);
+        $count = MeetingViewService::getJoinsCount($id);
+        $list = MeetingViewService::getJoinedlist($id);
+        Log::debug($list);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list'));
     }
 
     /**

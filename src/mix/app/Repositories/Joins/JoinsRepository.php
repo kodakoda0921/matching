@@ -64,4 +64,17 @@ class JoinsRepository implements JoinsRepositoryInterface
             return '申請が完了しました。';
         }
     }
+
+    /**
+     * 参加承認済の一覧取得
+     * 
+     * @return $result
+     */
+    public function getJoinedlist($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 1)->with('users')->get();
+        Log::debug("END");
+        return $result;
+    }
 }
