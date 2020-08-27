@@ -47,8 +47,13 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
+        $array = [];
+        foreach ($result as $rec){
+            $a = $this->joins->getUnapprovedCountById($rec->id);
+            array_push($array,$a); 
+        };
         Log::debug("END");
-        return $result;
+        return [$result,$array];
     }
 
     /**
@@ -259,5 +264,82 @@ class MeetingViewService
         return $return;
     }
     
+    /**
+     * 参加承認済の一覧取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function getJoinedlist($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->getJoinedlist($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
 
+    /**
+     * 未承認件数を取得
+     *
+     * @return object $ret
+     */
+    public function getUnapprovedCount()
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->getUnapprovedCount();
+        Log::debug("END");
+        return $return;
+    }
+
+    /**
+     * 未承認の一覧を取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function getUnapprovedlist($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $return = $this->joins->getUnapprovedlist($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
+
+    /**
+     * 承認済ステータスへ変更
+     *
+     * @param int $join_id
+     * @return object $ret
+     */
+    public function meetingApproval($join_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $meeting_id = $this->joins->meetingApproval($join_id);
+        Log::debug("END");
+        return $meeting_id;
+    }
+
+    /**
+     * 否認ステータスへ変更
+     *
+     * @param int $join_id
+     * @return object $ret
+     */
+    public function meetingUnapproval($join_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $meeting_id = $this->joins->meetingUnapproval($join_id);
+        Log::debug("END");
+        return $meeting_id;
+    }
 }

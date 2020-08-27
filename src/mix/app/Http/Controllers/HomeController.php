@@ -27,8 +27,10 @@ class HomeController extends Controller
     public function index()
     {
         Log::debug("START");
+        $languagesList = MeetingViewService::getLanguagesList();
+        $areasList = MeetingViewService::getAreasList();
         Log::debug("END");
-        return view('index');
+        return view('index', compact('languagesList', 'areasList'));
     }
 
     /**
@@ -39,8 +41,9 @@ class HomeController extends Controller
     public function top()
     {
         Log::debug("START");
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('top');
+        return view('top', compact('count'));
     }
 
     /**
@@ -65,7 +68,6 @@ class HomeController extends Controller
         Log::debug("START");
         $login_user = HomeService::getLoginUser();
         $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
-        Log::debug($meetings);
         Log::debug("END");
         return view('meeting', compact('login_user', 'meetings'));
     }

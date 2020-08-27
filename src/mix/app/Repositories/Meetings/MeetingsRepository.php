@@ -118,11 +118,11 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         Log::debug("START");
         $query = $this->meetings->query();
 
-        if (!empty($request->singer)) {
-            $query->where('singer', '=', true);
+        if ($request->language != null){
+            $query->where('language', '=', $request->language);
         }
-        if (!empty($request->mixer)) {
-            $query->where('mixer', '=', true);
+        if ($request->area != null) {
+            $query->where('area', '=', $request->area);
         }
         Log::debug("END");
         DB::enableQueryLog();

@@ -64,4 +64,90 @@ class JoinsRepository implements JoinsRepositoryInterface
             return '申請が完了しました。';
         }
     }
+
+    /**
+     * 参加承認済の一覧取得
+     * 
+     * @return $result
+     */
+    public function getJoinedlist($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 1)->with('users')->get();
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 自分が主宰している勉強会の未承認件数の取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedCount()
+    {
+        Log::debug("START");
+        $result = $this->joins->where('approval', '=', 0)->whereHas('meetings',function($query){
+            $query->where('user_id', '=', Auth::id());})->count();
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * meeting_id別の未承認件数の取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedCountById($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 0)->count();
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 未承認の一覧取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedlist($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 0)->with('users')->get();
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 承認済へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingApproval($join_id)
+    {
+        Log::debug("START");
+        $query = $this->joins->find($join_id);
+        $query->update([
+            'approval' => 1,
+        ]);
+        Log::debug("END");
+        return $query->meeting_id;
+    }
+    
+    /**
+     * 承認済へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingUnapproval($join_id)
+    {
+        Log::debug("START");
+        $query = $this->joins->find($join_id);
+        $query->update([
+            'approval' => 2,
+        ]);
+        Log::debug("END");
+        return $query->meeting_id;
+    }
+    
 }

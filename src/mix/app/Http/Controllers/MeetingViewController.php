@@ -23,8 +23,9 @@ class MeetingViewController extends Controller
         $login_user = HomeService::getLoginUser();
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList'));
+        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count'));
     }
 
     /**
@@ -59,8 +60,12 @@ class MeetingViewController extends Controller
         $meeting = MeetingViewService::view($id);
         $language = MeetingViewService::language($meeting->language);
         $area = MeetingViewService::area($meeting->area);
+        $count = MeetingViewService::getJoinsCount($id);
+        $list = MeetingViewService::getJoinedlist($id);
+        $unapprovedList = MeetingViewService::getUnapprovedlist($id);
+        Log::debug($list);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList'));
     }
 
     /**
@@ -156,6 +161,32 @@ class MeetingViewController extends Controller
         $result = MeetingViewService::meetJoinRequest($id);
         Log::debug("END");
         return $result;
-    }    
+    }
+
+    /**
+     * 勉強会参加承認処理
+     *
+     */
+    public function meetingApproval($join_id)
+    {
+        Log::debug("START");
+        // 申請処理
+        $meeting_id = MeetingViewService::meetingApproval($join_id);
+        Log::debug("END");
+        return redirect()->action('MeetingViewController@meetingView', ['id' => $meeting_id])->with(['success' => '参加を承認しました。']);
+    }
+    
+    /**
+     * 勉強会参加否認処理
+     *
+     */
+    public function meetingUnapproval($join_id)
+    {
+        Log::debug("START");
+        // 申請処理
+        $meeting_id = MeetingViewService::meetingUnapproval($join_id);
+        Log::debug("END");
+        return redirect()->action('MeetingViewController@meetingView', ['id' => $meeting_id])->with(['success' => '参加を否認しました。']);
+    }
     
 }

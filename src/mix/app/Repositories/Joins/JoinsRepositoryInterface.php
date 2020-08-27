@@ -23,4 +23,18 @@ interface JoinsRepositoryInterface
      * @return $result
      */
     public function meetJoinRequest($meeting_id);
+
+    /**
+     * 参加承認済の一覧取得
+     * 
+     * @return $result
+     */
+    public function getJoinedlist($meeting_id);
+
+    /**
+     * 未承認件数の取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedCount();
 }

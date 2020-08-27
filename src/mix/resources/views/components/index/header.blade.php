@@ -11,7 +11,7 @@
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="nav-link" id="RealtimeClockArea"></a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" data-toggle="dropdown" href="#">
+                            {{-- <a class="nav-link" data-toggle="dropdown" href="#">
                                 <i class="fa fa-bell"></i>
                                 <span class="badge badge-warning navbar-badge">15</span>
                             </a>
@@ -35,7 +35,7 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                            </div>
+                            </div> --}}
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" 　href="{{ route('logout') }}" onclick="event.preventDefault();

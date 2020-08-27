@@ -109,7 +109,7 @@
     @endcomponent
 
     {{-- JavaScript処理の呼び出し --}}
-    <script src="{{ asset('/js/userProfile/update.js') }}"></script>
+    <script src="{{ asset('/js/meeting/clock.js') }}"></script>
 </body>
 
 </html>
