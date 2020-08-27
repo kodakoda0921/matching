@@ -7,6 +7,7 @@ use App\Facades\MeetingViewService;
 use App\Facades\UserProfileViewService;
 use App\Models\Meetings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class MeetingViewController extends Controller
@@ -140,8 +141,20 @@ class MeetingViewController extends Controller
         $result = MeetingViewService::searchView($id);
         $count = MeetingViewService::getJoinsCount($id);
         Log::debug("END");
-        Log::debug(["res" =>$result,"count" => $count]);
         return (["res" =>$result,"count" => $count]);
     }
+
+    /**
+     * 勉強会参加申請処理
+     *
+     */
+    public function meetJoinRequest($id)
+    {
+        Log::debug("START");
+        // 申請処理
+        $result = MeetingViewService::meetJoinRequest($id);
+        Log::debug("END");
+        return $result;
+    }    
     
 }

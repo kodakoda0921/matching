@@ -76,8 +76,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer pull-left">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                        <div class="modal-footer">
+                            <div class="col">
+                                <button type="button" class="btn btn-default float-left"
+                                    data-dismiss="modal">閉じる</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-primary float-right"
+                                id="join_button" value="">参加申請</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,6 +98,7 @@
 
     @component('components.index.js_read')
     @endcomponent
+    <script>const login_user = {{ Auth::id() }}</script>
 
     {{-- JavaScript処理の呼び出し --}}
     <script src="{{ asset('/js/home.js') }}"></script>

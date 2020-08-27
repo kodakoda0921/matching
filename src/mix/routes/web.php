@@ -35,5 +35,10 @@ Route::get('/meeting/edit/{id}','MeetingViewController@meetingEditView')->name('
 Route::post('/meeting/edit/{id}','MeetingViewController@meetingEdit')->name('meeting.edit');
 Route::get('/meeting/delete/{id}','MeetingViewController@meetingDelete')->name('meeting.delete');
 
+// 勉強会検索
+Route::get('meetingSerch', 'MeetingViewController@search');
+Route::get('meeting/search/{id}', 'MeetingViewController@searchView');
+Route::put('/meeting/join/{id}', 'MeetingViewController@meetJoinRequest');
+
 
 

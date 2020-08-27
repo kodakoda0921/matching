@@ -227,5 +227,21 @@ class MeetingViewService
         return $return;
     }
 
+    /**
+     * 参加申請を行う
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function meetJoinRequest($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->meetJoinRequest($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
+    
 
 }
