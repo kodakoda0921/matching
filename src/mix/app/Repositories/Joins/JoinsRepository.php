@@ -79,15 +79,15 @@ class JoinsRepository implements JoinsRepositoryInterface
     }
 
     /**
-     * 未承認件数の取得
+     * 自分が主宰している勉強会の未承認件数の取得
      * 
      * @return $result
      */
     public function getUnapprovedCount()
     {
         Log::debug("START");
-        $id = Auth::id();
-        $result = $this->joins->where('user_id', '=', $id)->where('approval', '=', 0)->count();
+        $result = $this->joins->where('approval', '=', 0)->whereHas('meetings',function($query){
+            $query->where('user_id', '=', Auth::id());})->count();
         Log::debug("END");
         return $result;
     }
