@@ -47,8 +47,13 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
+        $array = [];
+        foreach ($result as $rec){
+            $a = $this->joins->getUnapprovedCountById($rec->id);
+            array_push($array,$a); 
+        };
         Log::debug("END");
-        return $result;
+        return [$result,$array];
     }
 
     /**
@@ -290,4 +295,5 @@ class MeetingViewService
         Log::debug("END");
         return $return;
     }
+
 }

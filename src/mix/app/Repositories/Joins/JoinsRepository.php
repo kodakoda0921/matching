@@ -91,4 +91,17 @@ class JoinsRepository implements JoinsRepositoryInterface
         Log::debug("END");
         return $result;
     }
+
+    /**
+     * meeting_id別の未承認件数の取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedCountById($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 0)->count();
+        Log::debug("END");
+        return $result;
+    }
 }

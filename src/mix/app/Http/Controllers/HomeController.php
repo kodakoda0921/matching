@@ -68,6 +68,7 @@ class HomeController extends Controller
         Log::debug("START");
         $login_user = HomeService::getLoginUser();
         $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
+        Log::debug("---------------------------------");
         Log::debug($meetings);
         Log::debug("END");
         return view('meeting', compact('login_user', 'meetings'));

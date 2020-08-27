@@ -34,15 +34,19 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                @foreach ($meetings as $meeting)
+                                @php ($i = 0)
+                                @foreach ($meetings[0] as $meeting)
+
                                 <div class="col-md-3">
                                     <div class="box box-success">
                                         <div class="box-header with-border">
-                                            <a　id={{'aaa'.$meeting->id}}>
-                                                <span class="badge bg-success float-right"><i class="fas fa-clock"></i>{{ $count }}</span>
+                                            @if ($meetings[1][$i] != 0)
+                                            <a>
+                                                <span class="badge bg-success float-right"><i
+                                                        class="fas fa-clock"></i>{{ $meetings[1][$i] }}</span>
                                             </a>
+                                            @endif
                                             <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
-
                                         </div>
                                         <div class="box-body">
                                             @if ($meeting->picture == null)
@@ -64,6 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @php ($i = $i + 1)
                                 @endforeach
                             </div>
                         </div>
@@ -91,7 +96,7 @@
     @endcomponent
 
     {{-- JavaScript処理の呼び出し --}}
-    <script src="{{ asset('/js/meeting/clock.js') }}"></script>
+    <script src="{{ asset('/js/meeting/meeting.js') }}"></script>
 </body>
 
 </html>
