@@ -34,6 +34,8 @@ Route::get('/meeting/view/{id}','MeetingViewController@meetingView')->name('meet
 Route::get('/meeting/edit/{id}','MeetingViewController@meetingEditView')->name('meeting.edit');
 Route::post('/meeting/edit/{id}','MeetingViewController@meetingEdit')->name('meeting.edit');
 Route::get('/meeting/delete/{id}','MeetingViewController@meetingDelete')->name('meeting.delete');
+Route::get('/meeting/approval/{id}', 'MeetingViewController@meetingApproval');
+Route::get('/meeting/unapproval/{id}', 'MeetingViewController@meetingUnapproval');
 
 // 勉強会検索
 Route::get('meetingSerch', 'MeetingViewController@search');

@@ -104,4 +104,50 @@ class JoinsRepository implements JoinsRepositoryInterface
         Log::debug("END");
         return $result;
     }
+
+    /**
+     * 未承認の一覧取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedlist($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->joins->where('meeting_id', '=', $meeting_id)->where('approval', '=', 0)->with('users')->get();
+        Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * 承認済へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingApproval($join_id)
+    {
+        Log::debug("START");
+        $query = $this->joins->find($join_id);
+        $query->update([
+            'approval' => 1,
+        ]);
+        Log::debug("END");
+        return $query->meeting_id;
+    }
+    
+    /**
+     * 承認済へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingUnapproval($join_id)
+    {
+        Log::debug("START");
+        $query = $this->joins->find($join_id);
+        $query->update([
+            'approval' => 2,
+        ]);
+        Log::debug("END");
+        return $query->meeting_id;
+    }
+    
 }

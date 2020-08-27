@@ -11,7 +11,13 @@
 
         @component('components.index.header')
         @endcomponent
-
+        <section class="content-header container-fluid">
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible">
+                {{ session('success') }}
+            </div>
+            @endif
+        </section>
         <!-- Full Width Column -->
         <div class="content-wrapper">
             <!--<div class="container">-->
@@ -66,6 +72,10 @@
                                 data-target="#modal-destroy">削除</button>
                             <a href="{{ url('/meeting/edit/'.$meeting->id.'/') }}"
                                 class="btn bg-olive btn-flat pull-right">編集</a>
+                            @if ($unapprovedList->isNotEmpty())
+                            <button type="button" class="btn btn-primary btn-flat pull-left" data-toggle="modal"
+                                data-target="#modal-approval">申請が来ています</button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -109,6 +119,45 @@
                         <li>{{$item->users->name}}</li>
                         @endforeach
                     </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+        <!-- modal -->
+        <div class="modal fade" id="modal-approval">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">参加申請が来ています</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ $meeting->title }}への参加申請が届きました</p>
+                        <table class="table table-hover">
+                            <tr>
+                                <th>名前</th>
+                                <th>承認
+                                <th>
+                            </tr>
+                            @foreach ($unapprovedList as $item)
+                            <tr>
+                                <th>{{$item->users->name}}</th>
+                                <th>
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ url('/meeting/approval/'.$item->id.'/') }}">承認</a>
+                                    <a class="btn btn-danger btn-sm"
+                                        href="{{ url('/meeting/unapproval/'.$item->id.'/') }}">否認</a>
+                                </th>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
+
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                     </div>

@@ -283,7 +283,6 @@ class MeetingViewService
     /**
      * 未承認件数を取得
      *
-     * @param int $meeting_id
      * @return object $ret
      */
     public function getUnapprovedCount()
@@ -296,4 +295,51 @@ class MeetingViewService
         return $return;
     }
 
+    /**
+     * 未承認の一覧を取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function getUnapprovedlist($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $return = $this->joins->getUnapprovedlist($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
+
+    /**
+     * 承認済ステータスへ変更
+     *
+     * @param int $join_id
+     * @return object $ret
+     */
+    public function meetingApproval($join_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $meeting_id = $this->joins->meetingApproval($join_id);
+        Log::debug("END");
+        return $meeting_id;
+    }
+
+    /**
+     * 否認ステータスへ変更
+     *
+     * @param int $join_id
+     * @return object $ret
+     */
+    public function meetingUnapproval($join_id)
+    {
+        Log::debug("START");
+        
+        // 未承認のリスト取得
+        $meeting_id = $this->joins->meetingUnapproval($join_id);
+        Log::debug("END");
+        return $meeting_id;
+    }
 }
