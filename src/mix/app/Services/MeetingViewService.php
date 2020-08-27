@@ -5,10 +5,9 @@ namespace App\Services;
 use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
+use App\Repositories\Joins\JoinsRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class MeetingViewService
 {
@@ -16,11 +15,13 @@ class MeetingViewService
     public function __construct(
         MeetingsRepositoryInterface $meetings,
         LanguagesRepositoryInterface $languages,
-        AreasRepositoryInterface $areas
+        AreasRepositoryInterface $areas,
+        JoinsRepositoryInterface $joins
     ) {
         $this->meetings = $meetings;
         $this->languages = $languages;
         $this->areas = $areas;
+        $this->joins = $joins;
     }
 
     /**
@@ -209,5 +210,22 @@ class MeetingViewService
         Log::debug("END");
         return $return;
     }
+
+    /**
+     * 参加承認済件数を取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function getJoinsCount($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->getJoinsCount($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
+
 
 }

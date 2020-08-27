@@ -83,15 +83,17 @@ function setModalData(row_id) {
       $('#area').text('処理中...');
       $('#date').text('処理中...');
       $('#overview').text('処理中...');
-      $('#meeting_image').hide()
+      $('#join').text('処理中...');
+      $('#meeting_image').hide();
     },
     success: function (res) {
-      $('#user').text(res.users.name);
-      $('#title').text(res.title);
-      $('#language').text(res.languages.language);
-      $('#area').text(res.areas.area);
-      $('#date').text(res.event_date);
-      $('#overview').text(res.overview);
+      $('#user').text(res.res.users.name);
+      $('#title').text(res.res.title);
+      $('#language').text(res.res.languages.language);
+      $('#area').text(res.res.areas.area);
+      $('#date').text(res.res.event_date);
+      $('#overview').text(res.res.overview);
+      $('#join').text(res.count);
       if (res.picture == null) {
         $('#meeting_image').hide();
       } else {
