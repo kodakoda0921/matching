@@ -72,7 +72,7 @@ table.setLocale("ja-ja");
 
 function setModalData(row_id) {
   $.ajax({
-    url: "/api/meeting/search/" + row_id,
+    url: "meeting/search/" + row_id,
     type: "GET",
     dataType: 'json',
     //リクエストが完了するまで実行される
@@ -85,6 +85,7 @@ function setModalData(row_id) {
       $('#overview').text('処理中...');
       $('#join').text('処理中...');
       $('#meeting_image').hide();
+      $("#join_button").prop("disabled", true).text("処理中...")
     },
     success: function (res) {
       $('#user').text(res.res.users.name);
@@ -94,15 +95,51 @@ function setModalData(row_id) {
       $('#date').text(res.res.event_date);
       $('#overview').text(res.res.overview);
       $('#join').text(res.count);
-      if (res.picture == null) {
+      if (res.exist == true){
+        $('#join_button').prop("disabled", true).text("参加申請済");
+      } else {
+        $('#join_button').attr('value', res.res.id).prop("disabled", false).text("参加申請")
+      };
+      
+      if (res.res.picture == null) {
         $('#meeting_image').hide();
       } else {
-        $('#meeting_image').attr('src', 'storage/img/' + res.picture).show();
+        $('#meeting_image').attr('src', 'storage/img/' + res.res.picture).show();
       };
-
+    },
+    error: function () {
+      console.debug('error');
     }
   });
 };
+
+$(function () {
+  $("#join_button").on("click", function () {
+
+    var con = confirm("参加申請をします。よろしいですか？")
+    if (con == true) {
+      var id = document.getElementById("join_button").value;
+      $.ajax({
+        url: "meeting/join/" + id,
+        type: "PUT",
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        beforeSend: function () {
+          $("#join_button").prop("disabled", true)
+        },
+        success: function (messeage) {
+          $('#modal-success').modal('hide');
+          alert(messeage);
+        },
+        error: function () {
+          console.debug('error');
+        }
+      });
+    };
+
+  });
+});
 
 $(function () {
   $("#sendUpdateButton").on("click", function () {
@@ -113,20 +150,16 @@ $(function () {
     if ($("#chckbxMixer").prop("checked")) { v_mixer = 1; }
 
     $.ajax({
-      url: "/api/meetingSerch",
+      url: "meetingSerch",
       data: {
         date: $("input#date").val(),
         singer: v_singer,
         mixer: v_mixer,
       },
       type: "GET",
-      //async: false,
       dataType: 'json',
       success: function (data) {
-        //console.debug('sendUpdateButton:');
         var tabledata = data.data;
-        //console.debug('tabledata : ' + JSON.stringify(tabledata));
-
         table.setData(tabledata);
       },
       error: function () {
@@ -135,17 +168,6 @@ $(function () {
     });
   });
 });
-
-//先頭ゼロ付加
-function padZero(num) {
-  var result;
-  if (num < 10) {
-    result = "0" + num;
-  } else {
-    result = "" + num;
-  }
-  return result;
-}
 
 function showClock() {
   var dt = new Date();
