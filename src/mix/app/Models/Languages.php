@@ -9,6 +9,7 @@ class Languages extends Model
 {
     public $timestamps = false;
     public $incrementing = false;
+    
     /**
      * 言語テーブル
      *

@@ -138,8 +138,10 @@ class MeetingViewController extends Controller
         Log::debug("START");
         // 詳細表示
         $result = MeetingViewService::searchView($id);
+        $count = MeetingViewService::getJoinsCount($id);
         Log::debug("END");
-        return $result;
+        Log::debug(["res" =>$result,"count" => $count]);
+        return (["res" =>$result,"count" => $count]);
     }
     
 }

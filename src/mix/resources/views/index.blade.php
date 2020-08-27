@@ -70,6 +70,9 @@
                                     <h6>概要</h6>
                                     <ul id="overview">
                                     </ul>
+                                    <h6>参加人数</h6>
+                                    <ul id="join">
+                                    </ul>
                                 </div>
                             </div>
                         </div>
