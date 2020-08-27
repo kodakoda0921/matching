@@ -24,6 +24,6 @@ class Joins extends Model
     }
     public function meetings()
     {
-        return $this->hasOne('App\Models\Meetings', 'id', 'meeting_id');
+        return $this->belongsTo('App\Models\Meetings', 'meeting_id', 'id');
     }
 }

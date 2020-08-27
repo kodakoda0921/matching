@@ -30,4 +30,17 @@ class Meetings extends Model
     {
         return $this->hasOne('App\Models\areas', 'id', 'area');
     }
+    public function joins()
+    {
+        return $this->hasOne('App\Models\Joins', 'meeting_id', 'id');
+    }
+
+    // レコードが削除された際に、joinsモデルのレコードも削除
+    protected static function boot() 
+    {
+      parent::boot();
+      self::deleting(function ($meetings) {
+        $meetings->joins()->delete();
+      });
+    }
 }
