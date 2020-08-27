@@ -228,6 +228,22 @@ class MeetingViewService
     }
 
     /**
+     * 参加承認申請済か確認
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function joinsRequestedConfirm($meeting_id)
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->joinsRequestedConfirm($meeting_id);
+        Log::debug("END");
+        return $return;
+    }
+
+    /**
      * 参加申請を行う
      *
      * @param int $meeting_id

@@ -140,8 +140,9 @@ class MeetingViewController extends Controller
         // 詳細表示
         $result = MeetingViewService::searchView($id);
         $count = MeetingViewService::getJoinsCount($id);
+        $exist = MeetingViewService::joinsRequestedConfirm($id);
         Log::debug("END");
-        return (["res" =>$result,"count" => $count]);
+        return (["res" =>$result, "count" => $count, "exist" => $exist]);
     }
 
     /**

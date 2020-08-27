@@ -85,7 +85,7 @@ function setModalData(row_id) {
       $('#overview').text('処理中...');
       $('#join').text('処理中...');
       $('#meeting_image').hide();
-      $("#join_button").prop("disabled", true)
+      $("#join_button").prop("disabled", true).text("処理中...")
     },
     success: function (res) {
       $('#user').text(res.res.users.name);
@@ -95,7 +95,12 @@ function setModalData(row_id) {
       $('#date').text(res.res.event_date);
       $('#overview').text(res.res.overview);
       $('#join').text(res.count);
-      $('#join_button').attr('value', res.res.id).prop("disabled", false)
+      if (res.exist == true){
+        $('#join_button').prop("disabled", true).text("参加申請済");
+      } else {
+        $('#join_button').attr('value', res.res.id).prop("disabled", false).text("参加申請")
+      };
+      
       if (res.res.picture == null) {
         $('#meeting_image').hide();
       } else {

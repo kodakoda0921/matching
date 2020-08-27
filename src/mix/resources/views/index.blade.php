@@ -83,7 +83,7 @@
                             </div>
                             <div class="col">
                                 <button type="button" class="btn btn-primary float-right"
-                                id="join_button" value="">参加申請</button>
+                                id="join_button" value=""></button>
                             </div>
                         </div>
                     </div>

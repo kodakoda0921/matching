@@ -28,6 +28,20 @@ class JoinsRepository implements JoinsRepositoryInterface
     }
 
     /**
+     * 参加承認申請済か確認
+     * 
+     * @return $result
+     */
+    public function joinsRequestedConfirm($meeting_id)
+    {
+        Log::debug("START");
+        $id = Auth::id();
+        $check = $this->joins->where('user_id', '=', $id)->where('meeting_id', '=', $meeting_id)->exists();
+        Log::debug("END");
+        return $check;
+    }
+
+    /**
      * 参加申込処理
      * 
      * @return $result
