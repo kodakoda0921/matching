@@ -30,4 +30,11 @@ interface JoinsRepositoryInterface
      * @return $result
      */
     public function getJoinedlist($meeting_id);
+
+    /**
+     * 未承認件数の取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedCount();
 }

@@ -274,6 +274,20 @@ class MeetingViewService
         Log::debug("END");
         return $return;
     }
-    
 
+    /**
+     * 未承認件数を取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function getUnapprovedCount()
+    {
+        Log::debug("START");
+        
+        // 件数取得
+        $return = $this->joins->getUnapprovedCount();
+        Log::debug("END");
+        return $return;
+    }
 }

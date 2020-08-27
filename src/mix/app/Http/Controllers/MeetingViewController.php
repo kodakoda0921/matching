@@ -23,8 +23,9 @@ class MeetingViewController extends Controller
         $login_user = HomeService::getLoginUser();
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList'));
+        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count'));
     }
 
     /**

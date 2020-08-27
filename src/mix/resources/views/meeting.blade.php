@@ -38,7 +38,9 @@
                                 <div class="col-md-3">
                                     <div class="box box-success">
                                         <div class="box-header with-border">
-
+                                            <a　id={{'aaa'.$meeting->id}}>
+                                                <span class="badge bg-success float-right"><i class="fas fa-clock"></i>{{ $count }}</span>
+                                            </a>
                                             <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
 
                                         </div>
@@ -89,7 +91,7 @@
     @endcomponent
 
     {{-- JavaScript処理の呼び出し --}}
-    <script src="{{ asset('/js/userProfile/update.js') }}"></script>
+    <script src="{{ asset('/js/meeting/clock.js') }}"></script>
 </body>
 
 </html>

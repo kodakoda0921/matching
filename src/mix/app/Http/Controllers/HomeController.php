@@ -41,8 +41,9 @@ class HomeController extends Controller
     public function top()
     {
         Log::debug("START");
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('top');
+        return view('top', compact('count'));
     }
 
     /**
