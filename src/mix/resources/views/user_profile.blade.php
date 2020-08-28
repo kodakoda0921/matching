@@ -88,8 +88,8 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="file" class="control-sidebar-subheading">プロフィール画像のアップロード(1.8MBまで)
-                                            {{ Form::file('profile_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png']) }}
+                                        <label for="file" class="control-sidebar-subheading">プロフィール画像のアップロード(9MBまで)
+                                            {{ Form::file('profile_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png', 'id' => 'file']) }}
                                             @error('profile_image')
                                             <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <input class="btn btn-primary" type="submit" value="更新">
+                                <input class="btn btn-primary" type="submit" id="updateButton" value="更新">
                             </div>
 
                         </form>
