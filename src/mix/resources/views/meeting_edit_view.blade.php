@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="file" class="control-sidebar-subheading">アイコン画像のアップロード(9MBまで)
+                                        <label for="file" class="control-sidebar-subheading">アイコン画像のアップロード(2MBまで)
                                             {{ Form::file('meeting_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png', 'id' => 'file']) }}
                                             @error('meeting_image')
                                             <div class="text-danger">{{ $message }}</div>

@@ -115,7 +115,7 @@ class MeetingViewController extends Controller
             'area' => 'required',
             'event_date' => 'required',
             'overview' => 'max:1000',
-            'meeting_image' => 'max:9000',
+            'meeting_image' => 'max:2000',
         ]);
         MeetingViewService::edit($id,$request);
         Log::debug("END");
