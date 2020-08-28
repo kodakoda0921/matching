@@ -1,3 +1,13 @@
+$("#file").change(function(e){ 
+  document.getElementById("updateButton").disabled=true;
+  if (confirm('画像を変更しますか？')) {
+    document.getElementById("updateButton").disabled=false;
+  }else{
+    document.getElementById("file").value="";
+    document.getElementById("updateButton").disabled=false;
+  }
+});
+
 function showClock() {
     var dt = new Date();
     var y = dt.getFullYear();

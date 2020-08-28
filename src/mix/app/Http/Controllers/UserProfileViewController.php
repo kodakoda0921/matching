@@ -36,7 +36,7 @@ class UserProfileViewController extends Controller
             'language' => 'required',
             'area' => 'required',
             'introduction' => 'max:1000',
-            'profile_image' => 'max:1800',
+            'profile_image' => 'max:9000',
         ]);
         UserProfileViewService::update($request);
         Log::debug("END");
