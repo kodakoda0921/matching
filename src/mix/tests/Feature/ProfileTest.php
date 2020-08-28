@@ -57,8 +57,7 @@ class ProfileTest extends TestCase
             'sex' => 0,
             'language' => 0,
             'area' => 1,
-            'introduction' => 'aaaaa',
-            'profile_image' => 'aaaaa'
+            'introduction' => 'aaaaa'
         ]);
         $response->assertStatus(302);
         $response->assertRedirect('/top');
