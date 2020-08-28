@@ -19,7 +19,6 @@ services:
       - ./src:/src
       - ./php/20-xdebug.ini:/usr/local/etc/php/conf.d/20-xdebug.ini
       - ./php/logs:/var/log
-      - ./php/php.ini:/usr/local/etc/php/php.ini
 
   mysql:
     image: mysql:5.7
