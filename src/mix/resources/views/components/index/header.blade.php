@@ -38,11 +38,13 @@
                             </div> --}}
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('/top') }}" class="nav-link">HOME</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" 　href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 {{ __('ログアウト') }}</a>
                         </li>
-
                     </ul>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

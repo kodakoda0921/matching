@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\HomeService;
 use App\Facades\MeetingViewService;
+use App\Facades\UserProfileViewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -42,8 +43,10 @@ class HomeController extends Controller
     {
         Log::debug("START");
         $count = MeetingViewService::getUnapprovedCount();
+        $login_user = HomeService::getLoginUser();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
-        return view('top', compact('count'));
+        return view('top', compact('count', 'login_user', 'profile'));
     }
 
     /**

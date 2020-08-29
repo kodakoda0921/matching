@@ -21,7 +21,7 @@
 
                 {{-- ボックス --}}
                 <div class="container-fluid">
-
+                    <p>プロフィールを充実させて勉強会への参加申請をしてみましょう</p>
                     <div class="card bg-light mb-3">
                         <div class="card-header">
                             <button type="button" onclick="location.href='{{ url('/top') }}'"
@@ -32,10 +32,10 @@
                             <div class="card-body box-profile">
                                 <label for="picture" class="control-sidebar-subheading">プロフィール画像
                                     @if ($profile->picture == null)
-                                    <img class="profile-user-img img-fluid img-thumbnail" alt="no_profile_image"
+                                    <img class="profile-user-img img-responsive img-circle" alt="no_profile_image"
                                         src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
                                     @else
-                                    <img class="profile-user-img img-fluid img-thumbnail" alt="profile_image"
+                                    <img class="profile-user-img img-responsive img-circle" alt="profile_image"
                                         src="{{ asset('storage/img/'.$profile->picture) }}">
                                     @endif
                                 </label>
