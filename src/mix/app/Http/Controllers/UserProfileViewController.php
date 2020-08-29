@@ -6,6 +6,7 @@ use App\Facades\UserProfileViewService;
 use App\Facades\HomeService;
 use App\Facades\MeetingViewService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class UserProfileViewController extends Controller
@@ -17,7 +18,7 @@ class UserProfileViewController extends Controller
     public function UserProfile()
     {
         Log::debug("START");
-        $login_user = HomeService::getLoginUser();
+        $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();

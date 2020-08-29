@@ -6,6 +6,7 @@ use App\Facades\HomeService;
 use App\Facades\MeetingViewService;
 use App\Facades\UserProfileViewService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
@@ -31,7 +32,7 @@ class HomeController extends Controller
         $languagesList = MeetingViewService::getLanguagesList();
         $areasList = MeetingViewService::getAreasList();
         $count = MeetingViewService::getUnapprovedCount();
-        $login_user = HomeService::getLoginUser();
+        $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
         return view('index', compact('languagesList', 'areasList', 'count', 'login_user', 'profile'));
@@ -46,7 +47,7 @@ class HomeController extends Controller
     {
         Log::debug("START");
         $count = MeetingViewService::getUnapprovedCount();
-        $login_user = HomeService::getLoginUser();
+        $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
         return view('top', compact('count', 'login_user', 'profile'));
@@ -65,17 +66,17 @@ class HomeController extends Controller
     }
 
     /**
-     * チャット画面を表示する
+     * 勉強会画面を表示する
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function meeting()
     {
         Log::debug("START");
-        $login_user = HomeService::getLoginUser();
-        $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
+        $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $count = MeetingViewService::getUnapprovedCount();
+        $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
         Log::debug("END");
         return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile'));
     }

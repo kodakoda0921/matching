@@ -37,7 +37,7 @@ $factory->define(UserProfile::class, function (Faker $faker) {
             return factory(User::class)->create()->id;
         },
         'sex' => $faker->randomElement([0, 1, 2]),
-        'picture' => 'CY5lSgbKGGq6woNq4zPsz8w1eT3QdyGEL9F9T0ba.jpeg',
+        'picture' => null,
         'language' => $faker->randomElement([0, 1, 2, 3, 4]),
         'introduction' => $faker->realText(100),
         'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
