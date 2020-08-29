@@ -39,9 +39,9 @@
                             @php ($i = 0)
                             @foreach ($meetings[0] as $meeting)
 
-                            <div class="col-md-3">
-                                <div class="box box-success">
-                                    <div class="box-header with-border">
+                            <div class="col-md-4">
+                                <div class="card border-primary mb-3">
+                                    <div class="card-header">
                                         @if ($meetings[1][$i] != 0)
                                         <a>
                                             <span class="badge bg-success float-right"><i
@@ -50,7 +50,7 @@
                                         @endif
                                         <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
                                     </div>
-                                    <div class="box-body">
+                                    <div class="card-body">
                                         @if ($meeting->picture == null)
                                         <img class="profile-user-img img-fluid img-thumbnail pull-right"
                                             alt="no_profile_image" src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
@@ -60,7 +60,7 @@
                                         @endif
                                         {{ mb_strimwidth($meeting->overview,0,100,"...") }}
                                     </div>
-                                    <div class="box-footer">
+                                    <div class="card-footer">
                                         <div class="col-md-4 pull-left">
                                             <div class="d-block">{{ $meeting->event_date }}</div>
                                         </div>
