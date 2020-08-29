@@ -24,8 +24,9 @@ class MeetingViewController extends Controller
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
         $count = MeetingViewService::getUnapprovedCount();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
-        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count'));
+        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count' ,'profile'));
     }
 
     /**
@@ -60,12 +61,15 @@ class MeetingViewController extends Controller
         $meeting = MeetingViewService::view($id);
         $language = MeetingViewService::language($meeting->language);
         $area = MeetingViewService::area($meeting->area);
-        $count = MeetingViewService::getJoinsCount($id);
+        $join_count = MeetingViewService::getJoinsCount($id);
+        $count = MeetingViewService::getUnapprovedCount();
+        $login_user = HomeService::getLoginUser();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
         $list = MeetingViewService::getJoinedlist($id);
         $unapprovedList = MeetingViewService::getUnapprovedlist($id);
         Log::debug($list);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'login_user', 'profile', 'join_count'));
     }
 
     /**
@@ -98,8 +102,10 @@ class MeetingViewController extends Controller
         $meeting = MeetingViewService::view($id);
         $languagesList = MeetingViewService::getLanguagesList();
         $areasList = MeetingViewService::getAreasList();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting'));
+        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting', 'profile', 'count'));
     }
 
     /**

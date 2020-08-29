@@ -6,16 +6,14 @@
 
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
-<body class="hold-transition skin-purple-light layout-top-nav">
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
-
-        @component('components.index.header')
+        @component('components.index.header',[
+            'count' => $count,
+            'picture' => $profile->picture,
+            'name' => $login_user->name 
+        ])
         @endcomponent
-
-        <!-- Full Width Column -->
-        <div class="content-wrapper">
-            <!--<div class="container">-->
-            <!-- Content Header (Page header) -->
             <section class="content">
                 {{-- ボックス --}}
                 <div class="container-fluid">

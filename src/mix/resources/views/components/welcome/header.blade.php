@@ -1,5 +1,5 @@
 <header class="main-header">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand"><b>勉強会をマッチングする</b></a>
