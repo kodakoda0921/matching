@@ -17,9 +17,29 @@
             <!--<div class="container">-->
             <!-- Content Header (Page header) -->
 
-            @component('components.welcome.main')
-            @endcomponent
+            <section class="content-header container">
+                <h4> </h4>
 
+            </section>
+            <section class="content container-fluid">
+                <div class="row"></div>
+                <h3>
+                    welcome
+                </h3>
+                <p>以下のボタンから簡単ログインを行えます</p>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <input id="email" type="hidden" value="11111111@gmail.com" name="email"
+                        placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required
+                        autocomplete="email" autofocus>
+                    <input id="password" type="hidden" value="11111111" name="password"
+                        placeholder="{{ __('Password') }}" required autocomplete="current-password">
+                    <!-- /.col -->
+                    <div class="col">
+                        <button type="submit" class="btn btn-success">簡単(ゲスト)ログイン</button>
+                    </div>
+                </form>
+            </section>
 
         </div>
 
