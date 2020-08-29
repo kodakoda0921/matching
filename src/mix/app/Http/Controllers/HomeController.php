@@ -30,8 +30,11 @@ class HomeController extends Controller
         Log::debug("START");
         $languagesList = MeetingViewService::getLanguagesList();
         $areasList = MeetingViewService::getAreasList();
+        $count = MeetingViewService::getUnapprovedCount();
+        $login_user = HomeService::getLoginUser();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
-        return view('index', compact('languagesList', 'areasList'));
+        return view('index', compact('languagesList', 'areasList', 'count', 'login_user', 'profile'));
     }
 
     /**

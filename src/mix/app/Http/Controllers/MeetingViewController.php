@@ -24,8 +24,9 @@ class MeetingViewController extends Controller
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
         $count = MeetingViewService::getUnapprovedCount();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
-        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count'));
+        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count' ,'profile'));
     }
 
     /**
@@ -101,8 +102,10 @@ class MeetingViewController extends Controller
         $meeting = MeetingViewService::view($id);
         $languagesList = MeetingViewService::getLanguagesList();
         $areasList = MeetingViewService::getAreasList();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $count = MeetingViewService::getUnapprovedCount();
         Log::debug("END");
-        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting'));
+        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting', 'profile', 'count'));
     }
 
     /**

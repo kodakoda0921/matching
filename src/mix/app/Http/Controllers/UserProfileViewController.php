@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Facades\UserProfileViewService;
 use App\Facades\HomeService;
+use App\Facades\MeetingViewService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -20,8 +21,10 @@ class UserProfileViewController extends Controller
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
+        $count = MeetingViewService::getUnapprovedCount();
+
         Log::debug("END");
-        return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList'));
+        return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList', 'count'));
     }
 
     /**
