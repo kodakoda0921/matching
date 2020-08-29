@@ -62,9 +62,15 @@ class ProfileTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('/top');
 
+        // top表示
+        $response = $this->actingAs($user)->get('/top');
+        $response->assertStatus(200);
+
+        // 検索画面表示
+        $response = $this->actingAs($user)->get('/index');
+        $response->assertStatus(200);
+
         // 勉強会表示
-        $meeting = factory(Meetings::class)->create();
-        $user = User::find($meeting->user_id);
         $response = $this->actingAs($user)->get('/meeting');
         $response->assertStatus(200);
 
@@ -84,16 +90,15 @@ class ProfileTest extends TestCase
         $response->assertRedirect('/meeting');
         $this->withoutExceptionHandling();
         // 勉強会詳細画面表示
-        $response = $this->actingAs($user)->get('/meeting/view/'.$meeting->user_id);
-        Log::debug($meeting->id);
+        $response = $this->actingAs($user)->get('/meeting/view/'.'1');
         $response->assertStatus(200);
         
         // 勉強会更新画面表示
-        $response = $this->actingAs($user)->get('/meeting/edit/'.$meeting->user_id);
+        $response = $this->actingAs($user)->get('/meeting/edit/'.'1');
         $response->assertStatus(200);
 
         // 勉強会更新画面表示
-        $response = $this->actingAs($user)->post('/meeting/edit/'.$meeting->user_id, [
+        $response = $this->actingAs($user)->post('/meeting/edit/'.'1', [
             'title' => 'aaaaa',
             'language' => 0,
             'area' => 1,
@@ -101,7 +106,7 @@ class ProfileTest extends TestCase
             'event_date' => '2020-08-10',
         ]);
         $response->assertStatus(302);
-        $response->assertRedirect('/meeting/view/'.$meeting->user_id);
+        $response->assertRedirect('/meeting/view/'.'1');
     }
     
 }
