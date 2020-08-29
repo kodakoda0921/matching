@@ -27,18 +27,40 @@
                     welcome
                 </h3>
                 <p>以下のボタンから簡単ログインを行えます</p>
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <input id="email" type="hidden" value="11111111@gmail.com" name="email"
-                        placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required
-                        autocomplete="email" autofocus>
-                    <input id="password" type="hidden" value="11111111" name="password"
-                        placeholder="{{ __('Password') }}" required autocomplete="current-password">
-                    <!-- /.col -->
-                    <div class="col">
-                        <button type="submit" class="btn btn-success">簡単(ゲスト)ログイン</button>
+                <div class="row justify-content-md-left">
+                    <div class="col col-lg-2">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <input id="email" type="hidden" value="11111111@gmail.com" name="email"
+                                placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required
+                                autocomplete="email" autofocus>
+                            <input id="password" type="hidden" value="11111111" name="password"
+                                placeholder="{{ __('Password') }}" required autocomplete="current-password">
+                            <!-- /.col -->
+                            <div class="col">
+                                <label>ユーザ１
+                                <button type="submit" class="btn btn-success">簡単(ゲスト)ログイン</button>
+                                </label>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <div class="col col-lg-2">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <input id="email" type="hidden" value="22222222@gmail.com" name="email"
+                                placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required
+                                autocomplete="email" autofocus>
+                            <input id="password" type="hidden" value="22222222" name="password"
+                                placeholder="{{ __('Password') }}" required autocomplete="current-password">
+                            <!-- /.col -->
+                            <div class="col">
+                                <label>ユーザ２
+                                <button type="submit" class="btn btn-primary">簡単(ゲスト)ログイン</button>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
 
         </div>

@@ -38,5 +38,15 @@ class UserProfileTableSeeder extends Seeder
             'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
             'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
         ]);
+        UserProfile::create([
+            'id' => 11,
+            'user_id' => 11,
+            'sex' => $faker->randomElement([0, 1, 2]),
+            'picture' => null,
+            'language' => $faker->randomElement([0, 1, 2, 3, 4]),
+            'introduction' => "こんにちは！ポートフォリオサイトへアクセスしてくださりありがとうございます！",
+            'area' =>  $faker->randomElement([0, 1, 2, 3, 4]),
+            'update_timestamp' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d H:i')
+        ]);
     }
 }
