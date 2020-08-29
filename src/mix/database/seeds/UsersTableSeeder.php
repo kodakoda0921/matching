@@ -28,6 +28,14 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d'),
             ]);
         }
+        User::create([
+            'id' => 10,
+            'name' => "テストユーザ",
+            'email' => "11111111@gmail.com",
+            'password' => Hash::make("11111111"),
+            'remember_token' => Str::random(10),
+            'email_verified_at' => $faker->dateTimeBetween('-1 days', '1 days')->format('Y-m-d'),
+        ]);
 
     }
 }
