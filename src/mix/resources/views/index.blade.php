@@ -54,7 +54,7 @@
 
                                                 <label>
                                                     開催地
-                                                    {{ Form::select('area', $areasList->prepend('選択してください', ''), "",  ['class' => 'form-control ml-2','id' => 'selectedArea']) }}
+                                                    {{ Form::select('area', $areasList->prepend('選択してください', ''), "",  ['class' => 'form-control','id' => 'selectedArea']) }}
                                                 </label>
 
                                             </div>

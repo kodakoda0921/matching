@@ -41,27 +41,27 @@
                                 <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
                                     alt="profile_image" src="{{ asset('storage/img/'.$meeting->picture) }}">
                                 @endif
-                                <strong><i class="fa fa-user mr-1"></i> 主催者:</strong>
+                                <strong><i class="fa fa-user mr-1"></i> 主催者</strong>
                                 <p class="text-muted">
                                     {{ $login_user->name }}
                                 </p>
-                                <strong><i class="fa fa-book mr-1"></i> 開催地:</strong>
+                                <strong><i class="fa fa-book mr-1"></i> 開催地</strong>
                                 <p class="text-muted">
                                     {{ $area->area }}
                                 </p>
-                                <strong><i class="fa fa-map-marker mr-1"></i> 言語:</strong>
+                                <strong><i class="fa fa-map-marker mr-1"></i> 言語</strong>
                                 <p class="text-muted">
                                     {{ $language->language }}
                                 </p>
-                                <strong><i class="fa fa-file mr-1"></i> 概要:</strong>
+                                <strong><i class="fa fa-file mr-1"></i> 概要</strong>
                                 <p class="text-muted">
                                     {{ $meeting->overview }}
                                 </p>
-                                <strong><i class="fa fa-calendar mr-1"></i> 開催日付:</strong>
+                                <strong><i class="fa fa-calendar mr-1"></i> 開催日付</strong>
                                 <p class="text-muted">
                                     {{ $meeting->event_date }}
                                 </p>
-                                <strong><i class="fa fa-user mr-1"></i> 参加人数:</strong>
+                                <strong><i class="fa fa-user mr-1"></i> 参加人数</strong>
                                 <p class="text-muted">
                                     <a href="#" data-toggle="modal" data-target="#modal-join">{{ $count }}名</a>
                                 </p>
