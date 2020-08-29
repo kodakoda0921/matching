@@ -6,7 +6,7 @@
 
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
-<body class="hold-transition skin-purple-light layout-top-nav">
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
         @component('components.index.header')
