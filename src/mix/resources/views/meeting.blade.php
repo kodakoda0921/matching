@@ -108,7 +108,7 @@
                                         <div class="col-md-4 pull-left">
                                             <div class="d-block">{{ $meeting_joined->meetings->event_date }}</div>
                                         </div>
-                                        <a href="{{ url('/meeting/view/'.$meeting_joined->id.'/') }}"
+                                        <a href="{{ url('/meeting/view/'.$meeting_joined->meetings->id.'/') }}"
                                             class="btn bg-success btn-flat pull-right ml-1">詳細</a>
                                     </div>
                                 </div>
