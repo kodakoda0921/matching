@@ -57,18 +57,16 @@ class MeetingViewController extends Controller
         $this->authorize('edit', $meetings->find($id));
         // ログインユーザの取得
         $login_user = Auth::user();
-
         $meeting = MeetingViewService::view($id);
         $language = MeetingViewService::language($meeting->language);
         $area = MeetingViewService::area($meeting->area);
         $join_count = MeetingViewService::getJoinsCount($id);
         $count = MeetingViewService::getUnapprovedCount();
-        $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $list = MeetingViewService::getJoinedlist($id);
         $unapprovedList = MeetingViewService::getUnapprovedlist($id);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'login_user', 'profile', 'join_count'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count'));
     }
 
     /**

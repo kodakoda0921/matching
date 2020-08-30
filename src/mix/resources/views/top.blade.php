@@ -40,7 +40,7 @@
                             <div class="inner">
                                 <h4>検索</h4>
 
-                                <p>勉強会を検索する</p>
+                                <p>検索する</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -58,7 +58,7 @@
                                         class="fas fa-clock"></i>{{ $count }}</span>
                                 @endif
                                 <h4>勉強会</h4>
-                                <p>勉強会の作成や閲覧</p>
+                                <p>作成・参加履歴の閲覧</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-book"></i>
@@ -71,13 +71,13 @@
                 <div class="col-lg-6 col">
 
                     <!-- START ACCORDION & CAROUSEL-->
-                    <h5 class="mt-4 mb-2">あなたにおすすめの勉強会</h5>
+                    <h5 class="mt-4 mb-2">参加してみませんか？</h5>
 
                     <div class="row col">
 
                         <div class="card bg-light">
                             <div class="card-header">
-                                <h3 class="card-title">勉強会一覧</h3>
+                                <h3 class="card-title">あなたへのおすすめ</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

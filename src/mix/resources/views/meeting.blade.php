@@ -39,7 +39,7 @@
 
                 <div class="card bg-light">
                     <div class="card-header">
-                        <h3 class="card-title">{{ $login_user->name }}さんが主催した勉強会</h3>
+                        <h3 class="card-title">{{ $login_user->name }}さんが主催</h3>
                     </div>
                     <div class="card-body">
 
@@ -85,7 +85,7 @@
 
                 <div class="card bg-light">
                     <div class="card-header">
-                        <h3 class="card-title">参加申請をした勉強会</h3>
+                        <h3 class="card-title">参加承認済一覧</h3>
                     </div>
                     <div class="card-body">
                         <div class="row">

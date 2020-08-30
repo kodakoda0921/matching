@@ -24,6 +24,7 @@ Route::get('/index', 'HomeController@index')->name('index');
 Route::get('/top', 'HomeController@top')->name('top');
 Route::get('/userProfile','UserProfileViewController@UserProfile')->name('userProfile');
 Route::post('/userProfile', 'UserProfileViewController@profileUpdate');
+Route::get('/profile/{id}','UserProfileViewController@profileView');
 Route::get('/chat', 'HomeController@chat');
 
 // 勉強会関連

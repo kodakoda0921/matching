@@ -62,7 +62,7 @@
                     @endif
 
                     <div class="info">
-                        <a href="#" class="d-block">{{$name}}</a>
+                        <a href="{{ url('profile/'.Auth::user()->id) }}" class="d-block">{{$name}}</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -91,7 +91,7 @@
                             <a href="{{ url('/userProfile') }}" class="nav-link">
                                 <i class="nav-icon fa fa-id-badge"></i>
                                 <p>
-                                    プロフィール
+                                    プロフィール編集
                                 </p>
                             </a>
                         </li>

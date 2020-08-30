@@ -97,8 +97,8 @@
 
                                 <div class="col-sm-4 invoice-col">
                                     <h6>ユーザー</h6>
-                                    <ul id="user">
-                                    </ul>
+                                    <a id="profile"><ul id="user">
+                                    </ul></a>
                                     <h6>言語</h6>
                                     <ul id="language">
                                     </ul>
