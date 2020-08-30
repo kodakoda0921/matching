@@ -16,10 +16,15 @@
             <section class="content">
                 {{-- ボックス --}}
                 <div class="container-fluid">
-                    <div class="card bg-light mb-3">
+                    <section class="content-header container">
+                        <button type="button" onclick="location.href='{{ url('/meeting') }}'"
+                        class="btn btn-primary pull-right ml-1">戻る</button>
+                        <h3>
+                            勉強会登録
+                        </h3>
+                    </section>   
+                    <div class="card bg-light">
                         <div class="card-header">
-                            <button type="button" onclick="location.href='{{ url('/meeting') }}'"
-                                class="btn btn-primary pull-right ml-1">戻る</button>
                             <h3 class="card-title">{{ $login_user->name }}さんの新規勉強会登録</h3>
                         </div>
                         <form action="{{ url("/meeting_regist") }}" method="post" enctype="multipart/form-data">
@@ -35,7 +40,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row col">
                                     <div class="col-sm-1">
                                         <div class="form-group">
                                             <label for="language" class="control-sidebar-subheading">言語
@@ -72,7 +77,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
                                     <div class="form-group">
                                         <label for="file" class="control-sidebar-subheading">画像のアップロード(2MBまで)
                                             {{ Form::file('meeting_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png','id' => 'file']) }}
@@ -81,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <input class="btn btn-primary" id = "updateButton" type="submit" value="登録">
+                                <input class="btn btn-success" id = "updateButton" type="submit" value="登録">
                             </div>
 
                         </form>

@@ -27,7 +27,7 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell"></i>
                         @if ($count != "0")
-                        <span class="badge badge-warning navbar-badge">{{ $count }}</span>
+                        <span class="badge badge-success navbar-badge">{{ $count }}</span>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -102,7 +102,7 @@
                                     勉強会
                                 </p>
                                 @if ($count!="0")
-                                <span class="badge badge-primary float-right"><i
+                                <span class="badge badge-success float-right"><i
                                         class="fas fa-clock"></i>{{ $count }}</span>
                                 @endif
                             </a>

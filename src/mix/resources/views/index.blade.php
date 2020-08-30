@@ -32,7 +32,7 @@
                 </div>
                 <div class="box-body">
                     <label>絞り込み</label>
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
 
                             <div class="row">

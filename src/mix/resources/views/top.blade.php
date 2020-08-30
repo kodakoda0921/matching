@@ -51,24 +51,10 @@
                     </div>
                     <div class="col-lg-4 col-6">
                         <div class="small-box bg-blue">
-                            <div class="inner">
-                                <h4>プロフィール</h4>
-
-                                <p>ユーザ情報を更新する</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-document"></i>
-                            </div>
-                            <a href="{{ url('/userProfile') }}" class="small-box-footer">More info
-                                <i class="fa fa-arrow-circle-o-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-6">
-                        <div class="small-box bg-purple">
 
                             <div class="inner">
                                 @if ($count!=0)
-                                <span class="badge badge-primary float-right"><i
+                                <span class="badge badge-success float-right"><i
                                         class="fas fa-clock"></i>{{ $count }}</span>
                                 @endif
                                 <h4>勉強会</h4>
@@ -90,7 +76,7 @@
 
                 <div class="row">
                     <div class="col-md-10">
-                        <div class="card">
+                        <div class="card bg-light">
                             <div class="card-header">
                                 <h3 class="card-title">勉強会一覧</h3>
                             </div>

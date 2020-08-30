@@ -26,21 +26,29 @@
         <section class="content">
 
             <div class="container-fluid">
-                <div class="card bg-light mb-3">
+                <section class="content-header container">
+                    <button type="button" onclick="location.href='{{ url('/top') }}'"
+                        class="btn btn-primary pull-right ml-1">戻る</button>
+                    <button type="button" onclick="location.href='{{ url('/meeting_regist') }}'"
+                        class="btn btn-primary pull-right">新規</button>
+                    <h3>
+                        勉強会一覧
+                    </h3>
+                </section>
+
+
+                <div class="card bg-light">
                     <div class="card-header">
-                        <button type="button" onclick="location.href='{{ url('/top') }}'"
-                            class="btn btn-primary pull-right ml-1">戻る</button>
-                        <button type="button" onclick="location.href='{{ url('/meeting_regist') }}'"
-                            class="btn btn-primary pull-right">新規</button>
-                        <h3 class="card-title">{{ $login_user->name }}さんの主催勉強会</h3>
+                        <h3 class="card-title">{{ $login_user->name }}さんが主催した勉強会</h3>
                     </div>
                     <div class="card-body">
+
                         <div class="row">
                             @php ($i = 0)
                             @foreach ($meetings[0] as $meeting)
 
                             <div class="col-md-4">
-                                <div class="card border-primary mb-3">
+                                <div class="card card-outline card-success">
                                     <div class="card-header">
                                         @if ($meetings[1][$i] != 0)
                                         <a>
@@ -48,7 +56,7 @@
                                                     class="fas fa-clock"></i>{{ $meetings[1][$i] }}</span>
                                         </a>
                                         @endif
-                                        <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
+                                        <h4 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h4>
                                     </div>
                                     <div class="card-body">
                                         @if ($meeting->picture != null)
@@ -62,7 +70,7 @@
                                             <div class="d-block">{{ $meeting->event_date }}</div>
                                         </div>
                                         <a href="{{ url('/meeting/view/'.$meeting->id.'/') }}"
-                                            class="btn bg-olive btn-flat pull-right ml-1">詳細</a>
+                                            class="btn bg-success btn-flat pull-right ml-1">詳細</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,6 +82,21 @@
                     </div>
 
                 </div>
+
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <h3 class="card-title">参加申請をした勉強会</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+
+                </div>
+
             </div>
         </section>
     </div>
