@@ -72,8 +72,20 @@
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
                         <li class="nav-item">
+                            <a href="{{ url('/top') }}" class="nav-link">
+                                <i class="nav-icon fa fa-home"></i>
+                                <p>
+                                    HOME
+                                </p>
+                                @if ($count!="0")
+                                <span class="badge badge-primary float-right"><i
+                                        class="fas fa-clock"></i>{{ $count }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('/index') }}" class="nav-link">
-                                <i class="nav-icon fa fa-book"></i>
+                                <i class="nav-icon fa fa-search"></i>
                                 <p>
                                     検索
                                 </p>
@@ -81,7 +93,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/userProfile') }}" class="nav-link">
-                                <i class="nav-icon fa fa-image"></i>
+                                <i class="nav-icon fa fa-id-badge"></i>
                                 <p>
                                     プロフィール
                                 </p>
@@ -92,6 +104,19 @@
                                 <i class="nav-icon fa fa-book"></i>
                                 <p>
                                     勉強会
+                                </p>
+                                @if ($count!="0")
+                                <span class="badge badge-primary float-right"><i
+                                        class="fas fa-clock"></i>{{ $count }}</span>
+                                @endif
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" class="nav-link">
+                                <i class="nav-icon fa fa-sign-out"></i>
+                                <p>
+                                    ログアウト
                                 </p>
                                 @if ($count!="0")
                                 <span class="badge badge-primary float-right"><i

@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-sm-1">
                                         <div class="form-group">
-                                            <label for="area" class="control-sidebar-subheading">開催地
+                                            <label for="area" class="control-sidebar-subheading">場所
                                                 {{ Form::select('area', $areasList, "",  ['class' => 'form-control']) }}
                                             </label>
                                         </div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="file" class="control-sidebar-subheading">アイコン画像のアップロード(2MBまで)
+                                        <label for="file" class="control-sidebar-subheading">画像のアップロード(2MBまで)
                                             {{ Form::file('meeting_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png','id' => 'file']) }}
                                         </label>
                                     </div>
