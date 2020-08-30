@@ -135,7 +135,7 @@ class JoinsRepository implements JoinsRepositoryInterface
     }
     
     /**
-     * 承認済へステータス変更
+     * 否認へステータス変更
      * 
      * @return $result
      */
@@ -148,6 +148,17 @@ class JoinsRepository implements JoinsRepositoryInterface
         ]);
         Log::debug("END");
         return $query->meeting_id;
+    }
+
+    /**
+     * ログインユーザが参加している勉強会一覧取得
+     * 
+     * @param int $login_user
+     */
+    public function getLoginUsersJoinedList($login_user)
+    {
+        $result = $this->joins->where('user_id' , '=', $login_user)->where('approval', '=', 1)->with('meetings')->get();
+        return $result;
     }
     
 }

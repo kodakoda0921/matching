@@ -38,9 +38,9 @@ class MeetingViewService
     }
 
     /**
-     * ユーザプロフィールの更新処理
+     * ログインユーザが主宰の勉強会一覧取得
      *
-     * @param Request $request
+     * @param int $login_user
      * @return $result
      */
     public function getLoginUsersMeetingList($login_user)
@@ -54,6 +54,20 @@ class MeetingViewService
         };
         Log::debug("END");
         return [$result,$array];
+    }
+
+    /**
+     * ログインユーザが参加している勉強会一覧取得
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function getLoginUsersJoinedList($login_user)
+    {
+        Log::debug("START");
+        $result = $this->joins->getLoginUsersJoinedList($login_user);
+        Log::debug("END");
+        return $result;
     }
 
     /**

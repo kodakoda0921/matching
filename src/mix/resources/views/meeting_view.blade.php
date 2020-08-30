@@ -44,7 +44,7 @@
                             @endif
                             <strong><i class="fa fa-user mr-1"></i> 主催者</strong>
                             <p class="text-muted">
-                                {{ $login_user->name }}
+                                <a href="{{ url('profile/'.$meeting->user_id) }}">{{ $user->name }}</a>
                             </p>
                             <strong><i class="fa fa-book mr-1"></i> 場所</strong>
                             <p class="text-muted">
@@ -69,6 +69,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                        @if($meeting->user_id == $login_user->id)
                         <button type="button" class="btn bg-success btn-flat pull-right ml-1" data-toggle="modal"
                             data-target="#modal-destroy">削除</button>
                         <a href="{{ url('/meeting/edit/'.$meeting->id.'/') }}"
@@ -76,6 +77,7 @@
                         @if ($unapprovedList->isNotEmpty())
                         <button type="button" class="btn btn-primary btn-flat pull-left" data-toggle="modal"
                             data-target="#modal-approval">申請が来ています</button>
+                        @endif
                         @endif
                     </div>
                 </div>

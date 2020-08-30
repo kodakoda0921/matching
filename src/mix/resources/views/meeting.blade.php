@@ -89,7 +89,31 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-
+                            @foreach ($meetings_joined as $meeting_joined)
+                            <div class="col-md-4">
+                                <div class="card card-outline card-success">
+                                    <div class="card-header">
+                                        <h4 class="box-title">{{ mb_strimwidth($meeting_joined->meetings->title,0,34,"...") }}
+                                        </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        @if ($meeting_joined->meetings->picture != null)
+                                        <img class="profile-user-img img-fluid img-thumbnail pull-right"
+                                            alt="profile_image"
+                                            src="{{ asset('storage/img/'.$meeting_joined->meetings->picture) }}">
+                                        @endif
+                                        {{ mb_strimwidth($meeting_joined->meetings->overview,0,100,"...") }}
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="col-md-4 pull-left">
+                                            <div class="d-block">{{ $meeting_joined->meetings->event_date }}</div>
+                                        </div>
+                                        <a href="{{ url('/meeting/view/'.$meeting_joined->id.'/') }}"
+                                            class="btn bg-success btn-flat pull-right ml-1">詳細</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="card-footer">

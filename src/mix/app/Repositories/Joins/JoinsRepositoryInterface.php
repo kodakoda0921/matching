@@ -37,4 +37,32 @@ interface JoinsRepositoryInterface
      * @return $result
      */
     public function getUnapprovedCount();
+    
+    /**
+     * 未承認の一覧取得
+     * 
+     * @return $result
+     */
+    public function getUnapprovedlist($meeting_id);
+
+    /**
+     * 承認済へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingApproval($join_id);
+        
+    /**
+     * 否認へステータス変更
+     * 
+     * @return $result
+     */
+    public function meetingUnapproval($join_id);
+
+    /**
+     * ログインユーザが参加している勉強会一覧取得
+     * 
+     * @param int $login_user
+     */
+    public function getLoginUsersJoinedList($login_user);
 }
