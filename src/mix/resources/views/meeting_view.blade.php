@@ -33,10 +33,7 @@
                     <div class="card-body">
 
                         <div class="card-body box-profile">
-                            @if ($meeting->picture == null)
-                            <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
-                                alt="no_profile_image" src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
-                            @else
+                            @if ($meeting->picture != null)
                             <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
                                 alt="profile_image" src="{{ asset('storage/img/'.$meeting->picture) }}">
                             @endif
@@ -44,7 +41,7 @@
                             <p class="text-muted">
                                 {{ $login_user->name }}
                             </p>
-                            <strong><i class="fa fa-book mr-1"></i> 開催地</strong>
+                            <strong><i class="fa fa-book mr-1"></i> 場所</strong>
                             <p class="text-muted">
                                 {{ $area->area }}
                             </p>

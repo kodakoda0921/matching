@@ -27,6 +27,7 @@
                         <h3 class="card-title">{{ $login_user->name }}さんのプロフィール</h3>
                     </div>
                     <div class="col-sm-2">
+                        @if ($profile->picture != null)
                         <div class="card-body box-profile">
                             <label for="picture" class="control-sidebar-subheading">プロフィール画像
                                 @if ($profile->picture == null)
@@ -38,6 +39,7 @@
                                 @endif
                             </label>
                         </div>
+                        @endif
                     </div>
                     <form action="{{ url("/userProfile") }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -86,7 +88,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label for="file" class="control-sidebar-subheading">プロフィール画像のアップロード(2MBまで)
+                                    <label for="file" class="control-sidebar-subheading">画像のアップロード(2MBまで)
                                         {{ Form::file('profile_image', ['class' => 'form-control', 'accept' =>'.jpg,.jpeg,.png', 'id' => 'file']) }}
                                         @error('profile_image')
                                         <div class="text-danger">{{ $message }}</div>

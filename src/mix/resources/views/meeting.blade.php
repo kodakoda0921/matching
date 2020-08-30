@@ -51,10 +51,7 @@
                                         <h3 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h3>
                                     </div>
                                     <div class="card-body">
-                                        @if ($meeting->picture == null)
-                                        <img class="profile-user-img img-fluid img-thumbnail pull-right"
-                                            alt="no_profile_image" src="{{ asset('storage/img/'.'no_picture.jpeg') }}">
-                                        @else
+                                        @if ($meeting->picture != null)
                                         <img class="profile-user-img img-fluid img-thumbnail pull-right"
                                             alt="profile_image" src="{{ asset('storage/img/'.$meeting->picture) }}">
                                         @endif

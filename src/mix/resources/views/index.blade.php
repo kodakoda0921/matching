@@ -16,63 +16,51 @@
         @endcomponent
 
         <section class="content-header container">
-            <h4></h4>
-        </section>
-        <!-- Main content -->
-        <section class="content container">
             <button type="button" onclick="location.href='{{ url('/top') }}'"
                 class="btn btn-primary pull-right ml-1">戻る</button>
-            <div class="row"></div>
             <h3>
                 勉強会一覧
             </h3>
-
-            <div class="row">
-
+        </section>
+        <!-- Main content -->
+        <section class="container">
+            <div class="box">
                 <!-- general form elements -->
                 <div class="box box-header">
                     <!-- /.box-header -->
                     <!-- form start -->
+                </div>
+                <div class="box-body">
+                    <label>絞り込み</label>
+                    <div class="card">
+                        <div class="card-body">
 
-                    <form role="form">
-                        <div class="box-body">
+                            <div class="row">
 
-                            <label>絞り込みオプション</label>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                                <!-- checkbox -->
+                                <div class="form-group">
+                                    <form role="form">
+                                        <label>
+                                            言語
+                                            {{ Form::select('language', $languagesList->prepend('選択してください', ''), "",  ['class' => 'form-control','id' => 'selectedLanguage']) }}
+                                        </label>
 
-                                    <div class="row">
-
-                                        <!-- checkbox -->
-                                        <div class="form-group">
-                                            <label>
-                                                言語
-                                                {{ Form::select('language', $languagesList->prepend('選択してください', ''), "",  ['class' => 'form-control','id' => 'selectedLanguage']) }}
-                                            </label>
-
-                                            <label>
-                                                開催地
-                                                {{ Form::select('area', $areasList->prepend('選択してください', ''), "",  ['class' => 'form-control','id' => 'selectedArea']) }}
-                                            </label>
-
-                                        </div>
-                                    </div>
+                                        <label>
+                                            場所
+                                            {{ Form::select('area', $areasList->prepend('選択してください', ''), "",  ['class' => 'form-control','id' => 'selectedArea']) }}
+                                        </label>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /.box-body -->
-
-                        <div class="box-footer">
                             <button id="sendUpdateButton" type="button" class="btn btn-success pull-right">検索</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
-                <!-- /.box -->
 
             </div>
-            <!-- /.row -->
+
         </section>
-        <section class="content container-fluid">
+        <section class="container">
             <div class="row">
                 <div id="example-table"></div>
             </div>
