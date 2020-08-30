@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <input class="btn btn-primary" type="submit" id="updateButton" value="更新">
+                            <input class="btn btn-success" type="submit" id="updateButton" value="更新">
                         </div>
 
                     </form>

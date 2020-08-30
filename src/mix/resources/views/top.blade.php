@@ -28,14 +28,14 @@
         <section class="content">
 
             {{-- ボックス --}}
-            <div class="container-fluid">
+            <div class="container">
 
                 <h3 class="box-title">
                     ようこそ！
                 </h3>
 
-                <div class="row">
-                    <div class="col-lg-4 col-6">
+                <div class="row col">
+                    <div class="col-lg-3 col-6">
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <h4>検索</h4>
@@ -49,7 +49,7 @@
                                 <i class="fa fa-arrow-circle-o-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-3 col-6">
                         <div class="small-box bg-blue">
 
                             <div class="inner">
@@ -58,7 +58,7 @@
                                         class="fas fa-clock"></i>{{ $count }}</span>
                                 @endif
                                 <h4>勉強会</h4>
-                                <p>勉強会の作成や主催した勉強会の閲覧</p>
+                                <p>勉強会の作成や閲覧</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-ios-book"></i>
@@ -68,14 +68,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col">
+                <div class="col-lg-6 col">
 
-                <!-- START ACCORDION & CAROUSEL-->
-                <h5 class="mt-4 mb-2">あなたにおすすめの勉強会</h5>
+                    <!-- START ACCORDION & CAROUSEL-->
+                    <h5 class="mt-4 mb-2">あなたにおすすめの勉強会</h5>
 
-                <div class="row">
-                    <div class="col-md-10">
+                    <div class="row col">
+
                         <div class="card bg-light">
                             <div class="card-header">
                                 <h3 class="card-title">勉強会一覧</h3>
@@ -102,13 +101,14 @@
                             </div>
                             <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
-                    </div>
 
+
+                    </div>
+                    <!-- /.row -->
+                    <!-- END ACCORDION & CAROUSEL-->
                 </div>
-                <!-- /.row -->
-                <!-- END ACCORDION & CAROUSEL-->
             </div>
+
         </section>
 
 
