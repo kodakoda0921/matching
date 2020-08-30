@@ -1,5 +1,5 @@
 <header class="main-header">
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="{{ url('/') }}" class="navbar-brand"><b>勉強会をマッチングする</b></a>
@@ -9,7 +9,7 @@
             <div class="navbar-custom-menu">
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" id="RealtimeClockArea"></a></li>
+                        {{-- <li class="nav-item"><a class="nav-link" id="RealtimeClockArea"></a></li> --}}
                         @if (Route::has('login'))
                         @auth
 
