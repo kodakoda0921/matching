@@ -77,10 +77,6 @@
                                 <p>
                                     HOME
                                 </p>
-                                @if ($count!="0")
-                                <span class="badge badge-primary float-right"><i
-                                        class="fas fa-clock"></i>{{ $count }}</span>
-                                @endif
                             </a>
                         </li>
                         <li class="nav-item">
@@ -118,10 +114,6 @@
                                 <p>
                                     ログアウト
                                 </p>
-                                @if ($count!="0")
-                                <span class="badge badge-primary float-right"><i
-                                        class="fas fa-clock"></i>{{ $count }}</span>
-                                @endif
                             </a>
                         </li>
                     </ul>
