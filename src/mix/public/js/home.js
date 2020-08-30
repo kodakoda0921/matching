@@ -88,7 +88,8 @@ function setModalData(row_id) {
       $("#join_button").prop("disabled", true).text("処理中...")
     },
     success: function (res) {
-      $('#user').text(res.res.users.name);
+      $('#user').text(res.res.users.name)
+      $('#profile').attr("href", "/profile/"+res.res.users.id);
       $('#title').text(res.res.title);
       $('#language').text(res.res.languages.language);
       $('#area').text(res.res.areas.area);

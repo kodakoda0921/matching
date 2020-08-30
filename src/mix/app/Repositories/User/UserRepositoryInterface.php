@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\User;
 
 interface UserRepositoryInterface
@@ -9,4 +10,11 @@ interface UserRepositoryInterface
      * @return object $result
      */
     public function getLoginUser();
+
+    /**
+     *  ユーザの取得
+     * @param int $id
+     * @return object $result
+     */
+    public function getUser($id);
 }

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\UserProfile\UserProfileRepositoryInterface;
 use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -15,12 +16,14 @@ class UserProfileViewService
     (
         UserProfileRepositoryInterface $UserProfile,
         LanguagesRepositoryInterface $languages,
-        AreasRepositoryInterface $areas
+        AreasRepositoryInterface $areas,
+        UserRepositoryInterface $users
     )
     {
         $this->userProfile = $UserProfile;
         $this->languages = $languages;
         $this->areas = $areas;
+        $this->users = $users;
     }
 
     /**
@@ -74,5 +77,19 @@ class UserProfileViewService
         $areasList = $list->pluck('area');
         Log::debug("END");
         return $areasList;
+    }
+
+    /**
+     * ユーザ情報の取得
+     *
+     * @param int $id
+     * @return object $result
+     */
+    public function getUser($id)
+    {
+        Log::debug("START");
+        $result = $this->users->getUser($id);
+        Log::debug("END");
+        return $result;
     }
 }

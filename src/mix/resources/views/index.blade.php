@@ -6,7 +6,7 @@
 
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @component('components.index.header',[
         'count' => $count,
@@ -32,7 +32,7 @@
                 </div>
                 <div class="box-body">
                     <label>絞り込み</label>
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
 
                             <div class="row">
@@ -97,8 +97,8 @@
 
                                 <div class="col-sm-4 invoice-col">
                                     <h6>ユーザー</h6>
-                                    <ul id="user">
-                                    </ul>
+                                    <a id="profile"><ul id="user">
+                                    </ul></a>
                                     <h6>言語</h6>
                                     <ul id="language">
                                     </ul>

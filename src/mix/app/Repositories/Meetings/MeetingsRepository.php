@@ -126,7 +126,7 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         }
         Log::debug("END");
         DB::enableQueryLog();
-        $result = $query->with('users')->with('languages')->with('areas')->get();
+        $result = $query->where('user_id', '!=', Auth::id())->with('users')->with('languages')->with('areas')->get();
         Log::debug(DB::getQueryLog());
         return $result;
     }

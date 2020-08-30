@@ -27,7 +27,7 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell"></i>
                         @if ($count != "0")
-                        <span class="badge badge-warning navbar-badge">{{ $count }}</span>
+                        <span class="badge badge-success navbar-badge">{{ $count }}</span>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -62,7 +62,7 @@
                     @endif
 
                     <div class="info">
-                        <a href="#" class="d-block">{{$name}}</a>
+                        <a href="{{ url('profile/'.Auth::user()->id) }}" class="d-block">{{$name}}</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -91,7 +91,7 @@
                             <a href="{{ url('/userProfile') }}" class="nav-link">
                                 <i class="nav-icon fa fa-id-badge"></i>
                                 <p>
-                                    プロフィール
+                                    プロフィール編集
                                 </p>
                             </a>
                         </li>
@@ -102,7 +102,7 @@
                                     勉強会
                                 </p>
                                 @if ($count!="0")
-                                <span class="badge badge-primary float-right"><i
+                                <span class="badge badge-success float-right"><i
                                         class="fas fa-clock"></i>{{ $count }}</span>
                                 @endif
                             </a>

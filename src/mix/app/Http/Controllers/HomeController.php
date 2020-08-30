@@ -77,7 +77,8 @@ class HomeController extends Controller
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $count = MeetingViewService::getUnapprovedCount();
         $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
+        $meetings_joined = MeetingViewService::getLoginUsersJoinedList($login_user->id);
         Log::debug("END");
-        return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile'));
+        return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile', 'meetings_joined'));
     }
 }

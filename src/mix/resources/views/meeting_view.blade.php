@@ -6,7 +6,7 @@
 
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @component('components.index.header',[
         'count' => $count,
@@ -24,10 +24,15 @@
         <section class="content">
             {{-- ボックス --}}
             <div class="container-fluid">
-                <div class="card bg-light mb-3">
+                <section class="content-header container">
+                    <button type="button" onclick="location.href='{{ url('/meeting') }}'"
+                        class="btn btn-primary pull-right ml-1">戻る</button>
+                    <h3>
+                        勉強会詳細
+                    </h3>
+                </section>
+                <div class="card bg-light">
                     <div class="card-header">
-                        <button type="button" onclick="location.href='{{ url('/meeting') }}'"
-                            class="btn btn-primary pull-right ml-1">戻る</button>
                         <h3 class="card-title">{{ $meeting->title }}</h3>
                     </div>
                     <div class="card-body">
@@ -39,7 +44,7 @@
                             @endif
                             <strong><i class="fa fa-user mr-1"></i> 主催者</strong>
                             <p class="text-muted">
-                                {{ $login_user->name }}
+                                <a href="{{ url('profile/'.$meeting->user_id) }}">{{ $user->name }}</a>
                             </p>
                             <strong><i class="fa fa-book mr-1"></i> 場所</strong>
                             <p class="text-muted">
@@ -64,13 +69,15 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn bg-olive btn-flat pull-right ml-1" data-toggle="modal"
+                        @if($meeting->user_id == $login_user->id)
+                        <button type="button" class="btn bg-success btn-flat pull-right ml-1" data-toggle="modal"
                             data-target="#modal-destroy">削除</button>
                         <a href="{{ url('/meeting/edit/'.$meeting->id.'/') }}"
-                            class="btn bg-olive btn-flat pull-right">編集</a>
+                            class="btn bg-success btn-flat pull-right">編集</a>
                         @if ($unapprovedList->isNotEmpty())
                         <button type="button" class="btn btn-primary btn-flat pull-left" data-toggle="modal"
                             data-target="#modal-approval">申請が来ています</button>
+                        @endif
                         @endif
                     </div>
                 </div>

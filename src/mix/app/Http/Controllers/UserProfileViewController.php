@@ -46,4 +46,22 @@ class UserProfileViewController extends Controller
         Log::debug("END");
         return redirect()->action('HomeController@top')->with(['success' => 'プロフィールを更新しました。']);
     }
+
+    /**
+     * プロフィール画面の表示
+     *
+     */
+    public function profileView($id)
+    {
+        Log::debug("START");
+        $login_user = Auth::user();
+        $user = UserProfileViewService::getUser($id);
+        $user_profile = UserProfileViewService::getUserProfile($user->id);
+        $language = MeetingViewService::language($user_profile->language);
+        $area = MeetingViewService::area($user_profile->area);
+        $count = MeetingViewService::getUnapprovedCount();
+        $profile = UserProfileViewService::getUserProfile($login_user->id);
+        Log::debug("END");
+        return view('profile_view', compact('login_user', 'language', 'area', 'count', 'profile', 'user_profile', 'user'));
+    }
 }
