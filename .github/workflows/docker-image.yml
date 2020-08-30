@@ -42,7 +42,8 @@ jobs:
         docker-compose up -d
         docker-compose exec -T php composer install
         docker-compose exec -T php php artisan migrate
-        docker-compose exec -T php composer dump-autoload"
+        docker-compose exec -T php composer dump-autoload
+        docker-compose exec -T php php artisan config:clear
         
 
 
