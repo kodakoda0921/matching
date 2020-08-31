@@ -64,8 +64,9 @@ class HomeController extends Controller
         $count = MeetingViewService::getUnapprovedCount();
         $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $meeting = MeetingViewService::view($id);
         Log::debug("END");
-        return view('meeting_chat', compact('id', 'count', 'login_user', 'profile'));
+        return view('meeting_chat', compact('id', 'count', 'login_user', 'profile','meeting'));
     }
 
     /**
@@ -89,10 +90,9 @@ class HomeController extends Controller
     public function meetingChatPut(Request $request)
     {
         Log::debug("START");
-        Log::debug($request);
-        MeetingViewService::meetingChatCommentsPut($request);
+        $result = MeetingViewService::meetingChatCommentsPut($request);
         Log::debug("END");
-        return redirect()->action('HomeController@meetingChatView', ['id' => $request->meeting_id]);
+        return $result;
     }
 
     /**

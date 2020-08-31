@@ -34,11 +34,15 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
      */
     public function meetingChatCommentsPut(Request $request)
     {
-        $this->meetingComments->create([
-            'user_id' => Auth::id(),
-            'meeting_id' => $request->meeting_id,
-            'comment' => $request->comment
-        ]);
+        if ($request->comment != null) {
+            $this->meetingComments->create([
+                'user_id' => Auth::id(),
+                'meeting_id' => $request->meeting_id,
+                'comment' => $request->comment
+            ]);
+            return "送信しました";
+        } else {
+            return "空白の入力はできません";
+        }
     }
-    
 }

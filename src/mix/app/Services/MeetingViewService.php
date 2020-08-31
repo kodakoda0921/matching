@@ -387,8 +387,9 @@ class MeetingViewService
     {
         Log::debug("START");
         // 未承認のリスト取得
-        $this->meetingComments->meetingChatCommentsPut($request);
+        $result = $this->meetingComments->meetingChatCommentsPut($request);
         Log::debug("END");
+        return $result;
     }
     
 }
