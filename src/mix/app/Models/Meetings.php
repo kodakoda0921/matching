@@ -20,19 +20,19 @@ class Meetings extends Model
     // 関連するモデル
     public function users()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id');
+        return $this->belongsTo('App\User', 'user_id');
     }
     public function languages()
     {
-        return $this->hasOne('App\Models\Languages', 'language', 'id');
+        return $this->hasOne('App\Models\Languages', 'id','language');
     }
     public function areas()
     {
-        return $this->hasOne('App\Models\areas', 'area', 'id');
+        return $this->hasOne('App\Models\areas', 'id','area');
     }
     public function joins()
     {
-        return $this->hasOne('App\Models\Joins', 'id', 'meeting_id');
+        return $this->hasOne('App\Models\Joins', 'meeting_id');
     }
 
     // レコードが削除された際に、joinsモデルのレコードも削除
