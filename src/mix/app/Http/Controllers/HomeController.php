@@ -86,11 +86,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function meetingChatPut($request)
+    public function meetingChatPut(Request $request)
     {
         Log::debug("START");
+        Log::debug($request);
         MeetingViewService::meetingChatCommentsPut($request);
         Log::debug("END");
+        return redirect()->action('HomeController@meetingChatView', ['id' => $request->meeting_id]);
     }
 
     /**

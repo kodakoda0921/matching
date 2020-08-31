@@ -91,9 +91,9 @@
                                     <form action="#" method="post">
                                         <div class="input-group">
                                             <input type="text" name="message" placeholder="Type Message ..."
-                                                class="form-control">
+                                                class="form-control" id="input_text">
                                             <span class="input-group-append">
-                                                <button type="button" class="btn btn-primary">Send</button>
+                                                <button type="button" class="btn btn-primary" id="send">Send</button>
                                             </span>
                                         </div>
                                     </form>

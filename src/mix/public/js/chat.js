@@ -49,6 +49,29 @@ function get_data() {
     });
     setTimeout("get_data()", 10000);
 };
+$(function () {
+    $("#send").click(function (e) {
+        var input_message = document.getElementById("input_text").value;
+        $.ajax({
+            url: "put/",
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'text',
+            data: {
+                meeting_id: meeting_id,
+                comment: input_message
+            },
+            success: function () {
+                console.log('success');
+            },
+            error: function () {
+                console.log('error');
+            }
+        });
+    });
+});
 
 function showClock() {
     var dt = new Date();

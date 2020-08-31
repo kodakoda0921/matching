@@ -4,6 +4,8 @@ namespace App\Repositories\MeetingComments;
 
 use App\Repositories\MeetingComments\MeetingCommentsRepositoryInterface;
 use App\Models\MeetingComments;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
@@ -20,7 +22,7 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
      */
     public function meetingChatComments($meeting_id)
     {
-        $result = $this->meetingComments->where('meeting_id', '=', $meeting_id)->with('users')->with('users.userProfiles')->orderBy('update_timestamp', 'asc')->get();
+        $result = $this->meetingComments->where('meeting_id', '=', $meeting_id)->with('users')->with('users.userProfiles')->orderBy('update_timestamp', 'desc')->get();
         Log::debug($result);
         return $result;
     }
@@ -30,14 +32,13 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
      * 
      * @param Request $request
      */
-    public function meetingChatCommentsPut($request)
+    public function meetingChatCommentsPut(Request $request)
     {
-        $result = $this->meetingComments->create([
-            'user_id' => $request->user_id,
+        $this->meetingComments->create([
+            'user_id' => Auth::id(),
             'meeting_id' => $request->meeting_id,
             'comment' => $request->comment
         ]);
-        return redirect()->route('home');
     }
     
 }

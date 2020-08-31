@@ -383,7 +383,7 @@ class MeetingViewService
      * @param int $meeting_id
      * @return object $ret
      */
-    public function meetingChatCommentsPut($request)
+    public function meetingChatCommentsPut(Request $request)
     {
         Log::debug("START");
         // 未承認のリスト取得
