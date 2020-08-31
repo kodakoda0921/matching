@@ -58,7 +58,7 @@
                             <p class="text-muted">
                                 {{ $meeting->overview }}
                             </p>
-                            <strong><i class="fa fa-calendar mr-1"></i> 開催日付</strong>
+                            <strong><i class="fa fa-calendar mr-1"></i> 開催日</strong>
                             <p class="text-muted">
                                 {{ $meeting->event_date }}
                             </p>

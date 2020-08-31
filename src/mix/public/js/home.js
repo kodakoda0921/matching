@@ -85,11 +85,17 @@ function setModalData(row_id) {
       $('#overview').text('処理中...');
       $('#join').text('処理中...');
       $('#meeting_image').hide();
-      $("#join_button").prop("disabled", true).text("処理中...")
+      $("#join_button").prop("disabled", true).text("処理中...");
+      $('#user2').text('処理中...');
+      $('#sex').text('処理中...');
+      $('#user_language').text('処理中...');
+      $('#user_area').text('処理中...');
+      $('#introduction').text('処理中...');
+      $('#user_image').hide();
     },
     success: function (res) {
-      $('#user').text(res.res.users.name)
-      $('#profile').attr("href", "/profile/"+res.res.users.id);
+      $('#user').text(res.res.users.name);
+      //$('#profile').attr("href", "/profile/"+res.res.users.id);
       $('#title').text(res.res.title);
       $('#language').text(res.res.languages.language);
       $('#area').text(res.res.areas.area);
@@ -106,6 +112,22 @@ function setModalData(row_id) {
         $('#meeting_image').hide();
       } else {
         $('#meeting_image').attr('src', 'storage/img/' + res.res.picture).show();
+      };
+      $('#user2').text(res.res.users.name);
+      if (res.res.users.user_profiles.sex == "0"){
+        $('#sex').text("その他");
+      } else if(res.res.users.user_profiles.sex == "1"){
+        $('#sex').text("男性");;
+      } else {
+        $('#sex').text("女性");;
+      };
+      $('#user_language').text(res.res.users.user_profiles.languages.language);
+      $('#user_area').text(res.res.users.user_profiles.areas.area);
+      $('#introduction').text(res.res.users.user_profiles.introduction);
+      if (res.res.users.user_profiles.picture == null) {
+        $('#user_image').hide();
+      } else {
+        $('#user_image').attr('src', 'storage/img/' + res.res.users.user_profiles.picture).show();
       };
     },
     error: function () {

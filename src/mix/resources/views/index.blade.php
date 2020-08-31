@@ -82,37 +82,70 @@
     <div class="modal fade" id="modal-success">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <h4 class="modal-title" id="title"></h4>
                 </div>
+                <ul class="nav nav-tabs nav-tabs-line" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" data-toggle="tab" href="#exampleLine1"
+                        aria-controls="exampleLine1" role="tab">概要</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-toggle="tab" href="#exampleLine2"
+                        aria-controls="exampleLine2" role="tab">ユーザ情報</a></li>
+                  </ul>
                 <div class="modal-body">
                     <div class="tab-content">
-                        <div class="tab-pane active" role="tabpanel">
+                        <div class="tab-pane active" role="tabpanel" id="exampleLine1">
                             <div class="col-sm-4 pull-right">
                                 <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
                                     alt="profile_image" id='meeting_image' src="">
                             </div>
                             <div class="row invoice-info">
 
-                                <div class="col-sm-4 invoice-col">
-                                    <h6>ユーザー</h6>
-                                    <a id="profile"><ul id="user">
+                                <div class="col-10 invoice-col">
+                                    <h6><i class="fa fa-user mr-1"></i>ユーザー</h6>
+                                    <ul id="user">
                                     </ul></a>
-                                    <h6>言語</h6>
+                                    <h6><i class="fa fa-book mr-1"></i>言語</h6>
                                     <ul id="language">
                                     </ul>
-                                    <h6>場所</h6>
+                                    <h6><i class="fa fa-map-marker mr-1"></i>場所</h6>
                                     <ul id="area">
                                     </ul>
-                                    <h6>開催日</h6>
+                                    <h6><i class="fa fa-calendar mr-1"></i>開催日</h6>
                                     <ul id="date">
                                     </ul>
-                                    <h6>概要</h6>
+                                    <h6><i class="fa fa-file mr-1"></i>概要</h6>
                                     <ul id="overview">
                                     </ul>
-                                    <h6>参加人数</h6>
+                                    <h6><i class="fa fa-user mr-1"></i>参加人数</h6>
                                     <ul id="join">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="exampleLine2">
+                            <div class="col-sm-4 pull-right">
+                                <img class="profile-user-img img-fluid img-thumbnail rounded float-right"
+                                    alt="profile_image" id='user_image' src="">
+                            </div>
+                            <div class="row invoice-info">
+
+                                <div class="col-10 invoice-col">
+                                    <h6><i class="fa fa-user mr-1"></i>ユーザー</h6>
+                                    <ul id="user2">
+                                    </ul></a>
+                                    <h6><i class="fa fa-user mr-1"></i>性別</h6>
+                                    <ul id="sex">
+                                    </ul>
+                                    <h6><i class="fa fa-book mr-1"></i>言語</h6>
+                                    <ul id="user_language">
+                                    </ul>
+                                    <h6><i class="fa fa-map-marker mr-1"></i>所在地</h6>
+                                    <ul id="user_area">
+                                    </ul>
+                                    <h6><i class="fa fa-file mr-1"></i>自己紹介</h6>
+                                    <ul id="introduction">
                                     </ul>
                                 </div>
                             </div>
