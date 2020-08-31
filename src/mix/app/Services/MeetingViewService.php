@@ -63,6 +63,7 @@ class MeetingViewService
             $a = $this->meetingReads->getUnreadCountById($rec->id);
             array_push($array_read,$a); 
         };
+        Log::debug($array_read);
         Log::debug("END");
         return [$result,$array,$array_read];
     }

@@ -26,14 +26,14 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell"></i>
-                        @if ($count != "0")
+                        @if ($count != "0" || $meeting_chat_unread_count != "0")
                         <span class="badge badge-success navbar-badge">{{ $meeting_chat_unread_count + $count }}</span>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">{{ $meeting_chat_unread_count + $count }} Notifications</span>
                         <div class="dropdown-divider"></div>
-                        @if ($count != "0")
+                        @if ($count != "0" || $meeting_chat_unread_count != "0")
                         <a href="{{ url('/meeting') }}" class="dropdown-item">
                             <i class="nav-icon fa fa-book mr-2"></i> {{ $count }} 件の参加申請
                         </a>
@@ -101,7 +101,7 @@
                                 <p>
                                     勉強会
                                 </p>
-                                @if ($count!="0")
+                                @if ($count != "0" || $meeting_chat_unread_count != "0")
                                 <span class="badge badge-success float-right"><i
                                         class="fa fa-bell"></i>{{ $meeting_chat_unread_count + $count }}</span>
                                 @endif

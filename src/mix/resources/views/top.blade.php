@@ -54,7 +54,7 @@
                         <div class="small-box bg-blue">
 
                             <div class="inner">
-                                @if ($count!=0)
+                                @if ($count != "0" || $meeting_chat_unread_count != "0")
                                 <span class="badge badge-success float-right"><i
                                         class="fa fa-bell"></i>{{ $meeting_chat_unread_count +$count }}</span>
                                 @endif
