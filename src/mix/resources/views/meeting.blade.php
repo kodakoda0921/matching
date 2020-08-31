@@ -12,7 +12,8 @@
         @component('components.index.header',[
         'count' => $count,
         'picture' => $profile->picture,
-        'name' => $login_user->name
+        'name' => $login_user->name,
+        'meeting_chat_unread_count' => $meeting_chat_unread_count
         ])
         @endcomponent
 
@@ -50,10 +51,10 @@
                             <div class="col-md-4">
                                 <div class="card card-outline card-success">
                                     <div class="card-header">
-                                        @if ($meetings[1][$i] != 0)
+                                        @if ($meetings[1][$i] != 0 || $meetings[2][$i] != 0)
                                         <a>
                                             <span class="badge bg-success float-right"><i
-                                                    class="fas fa-clock"></i>{{ $meetings[1][$i] }}</span>
+                                                    class="fa fa-bell"></i>{{ $meetings[2][$i] + $meetings[1][$i] }}</span>
                                         </a>
                                         @endif
                                         <h4 class="box-title">{{ mb_strimwidth($meeting->title,0,34,"...") }}</h4>
@@ -89,10 +90,17 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($meetings_joined as $meeting_joined)
+                            @php ($i = 0)
+                            @foreach ($meetings_joined[0] as $meeting_joined)
                             <div class="col-md-4">
                                 <div class="card card-outline card-success">
                                     <div class="card-header">
+                                        @if ($meetings_joined[1][$i] != 0)
+                                        <a>
+                                            <span class="badge bg-success float-right"><i
+                                                    class="fa fa-bell"></i>{{ $meetings_joined[1][$i] }}</span>
+                                        </a>
+                                        @endif
                                         <h4 class="box-title">{{ mb_strimwidth($meeting_joined->meetings->title,0,34,"...") }}
                                         </h4>
                                     </div>
@@ -113,6 +121,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @php ($i = $i + 1)
                             @endforeach
                         </div>
                     </div>

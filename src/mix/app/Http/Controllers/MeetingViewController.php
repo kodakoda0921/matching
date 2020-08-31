@@ -25,8 +25,9 @@ class MeetingViewController extends Controller
         $areasList = UserProfileViewService::getAreasList();
         $count = MeetingViewService::getUnapprovedCount();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         Log::debug("END");
-        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count' ,'profile'));
+        return view('meeting_regist', compact('login_user', 'languagesList', 'areasList' ,'count' ,'profile','meeting_chat_unread_count'));
     }
 
     /**
@@ -64,8 +65,10 @@ class MeetingViewController extends Controller
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $list = MeetingViewService::getJoinedlist($id);
         $unapprovedList = MeetingViewService::getUnapprovedlist($id);
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
+        $meetings_unread_count = MeetingViewService::getUnreadCountById($id);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user', 'meeting_chat_unread_count','meetings_unread_count'));
     }
 
     /**
@@ -100,8 +103,9 @@ class MeetingViewController extends Controller
         $areasList = MeetingViewService::getAreasList();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $count = MeetingViewService::getUnapprovedCount();
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         Log::debug("END");
-        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting', 'profile', 'count'));
+        return view('meeting_edit_view', compact('login_user', 'languagesList', 'areasList', 'meeting', 'profile', 'count', 'meeting_chat_unread_count'));
     }
 
     /**

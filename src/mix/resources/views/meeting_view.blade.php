@@ -11,7 +11,8 @@
         @component('components.index.header',[
         'count' => $count,
         'picture' => $profile->picture,
-        'name' => $login_user->name
+        'name' => $login_user->name,
+        'meeting_chat_unread_count' => $meeting_chat_unread_count
         ])
         @endcomponent
         <section class="content-header container-fluid">
@@ -66,9 +67,18 @@
                             <p class="text-muted">
                                 <a href="#" data-toggle="modal" data-target="#modal-join">{{ $join_count }}名</a>
                             </p>
+
+
+
                             <a href="{{ url('/meeting/chat/'.$meeting->id.'/') }}"
-                                class="btn bg-warning btn-flat pull-right ml-1">チャット</a>
+                                class="btn bg-warning btn-flat pull-right ml-1">
+                                @if ($meetings_unread_count != 0)
+                                <span class="badge bg-success pull-right"><i
+                                        class="fa fa-bell"></i>{{ $meetings_unread_count }}</span>
+                                @endif
+                                チャット</a>
                         </div>
+
                     </div>
                     <div class="card-footer">
                         @if($meeting->user_id == $login_user->id)

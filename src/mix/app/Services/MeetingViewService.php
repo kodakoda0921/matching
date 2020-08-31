@@ -7,6 +7,7 @@ use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
 use App\Repositories\Joins\JoinsRepositoryInterface;
 use App\Repositories\MeetingComments\MeetingCommentsRepositoryInterface;
+use App\Repositories\MeetingReads\MeetingReadsRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -18,13 +19,15 @@ class MeetingViewService
         LanguagesRepositoryInterface $languages,
         AreasRepositoryInterface $areas,
         JoinsRepositoryInterface $joins,
-        MeetingCommentsRepositoryInterface $meetingComments
+        MeetingCommentsRepositoryInterface $meetingComments,
+        MeetingReadsRepositoryInterface $meetingReads
     ) {
         $this->meetings = $meetings;
         $this->languages = $languages;
         $this->areas = $areas;
         $this->joins = $joins;
         $this->meetingComments = $meetingComments;
+        $this->meetingReads = $meetingReads;
     }
 
     /**
@@ -51,12 +54,17 @@ class MeetingViewService
         Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
         $array = [];
+        $array_read =[];
         foreach ($result as $rec){
             $a = $this->joins->getUnapprovedCountById($rec->id);
             array_push($array,$a); 
         };
+        foreach ($result as $rec){
+            $a = $this->meetingReads->getUnreadCountById($rec->id);
+            array_push($array_read,$a); 
+        };
         Log::debug("END");
-        return [$result,$array];
+        return [$result,$array,$array_read];
     }
 
     /**
@@ -69,8 +77,14 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->joins->getLoginUsersJoinedList($login_user);
+        $array_read =[];
+        foreach ($result as $rec){
+            Log::debug('aaaaaa'.$result);
+            $a = $this->meetingReads->getUnreadCountById($rec->meetings->id);
+            array_push($array_read,$a); 
+        };
         Log::debug("END");
-        return $result;
+        return  [$result,$array_read];
     }
 
     /**
@@ -387,9 +401,36 @@ class MeetingViewService
     {
         Log::debug("START");
         // 未承認のリスト取得
-        $result = $this->meetingComments->meetingChatCommentsPut($request);
+        $joined_list = $this->getJoinedlist($request->meeting_id);
+        $result = $this->meetingComments->meetingChatCommentsPut($request,$joined_list);
         Log::debug("END");
         return $result;
     }
     
+    /**
+     * ログインユーザの勉強会チャットの全体通知
+     *
+     * @return $result
+     */
+    public function getUnreadCount()
+    {
+        Log::debug("START");
+        $result = $this->meetingReads->getUnreadCount();
+        Log::debug("END");
+        return $result;
+    }
+    
+    /**
+     * 勉強会チャットの勉強会別通知
+     *
+     * @param int $meeting_id
+     * @return $result
+     */
+    public function getUnreadCountById($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->meetingReads->getUnreadCountById($meeting_id);
+        Log::debug("END");
+        return $result;
+    }
 }

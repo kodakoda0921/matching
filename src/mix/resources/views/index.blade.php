@@ -11,7 +11,8 @@
         @component('components.index.header',[
         'count' => $count,
         'picture' => $profile->picture,
-        'name' => $login_user->name
+        'name' => $login_user->name,
+        'meeting_chat_unread_count' => $meeting_chat_unread_count
         ])
         @endcomponent
 

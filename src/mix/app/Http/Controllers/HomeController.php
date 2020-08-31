@@ -34,8 +34,9 @@ class HomeController extends Controller
         $count = MeetingViewService::getUnapprovedCount();
         $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         Log::debug("END");
-        return view('index', compact('languagesList', 'areasList', 'count', 'login_user', 'profile'));
+        return view('index', compact('languagesList', 'areasList', 'count', 'login_user', 'profile', 'meeting_chat_unread_count'));
     }
 
     /**
@@ -47,10 +48,11 @@ class HomeController extends Controller
     {
         Log::debug("START");
         $count = MeetingViewService::getUnapprovedCount();
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         Log::debug("END");
-        return view('top', compact('count', 'login_user', 'profile'));
+        return view('top', compact('count', 'login_user', 'profile','meeting_chat_unread_count'));
     }
 
     /**
@@ -62,11 +64,12 @@ class HomeController extends Controller
     {
         Log::debug("START");
         $count = MeetingViewService::getUnapprovedCount();
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
         $meeting = MeetingViewService::view($id);
         Log::debug("END");
-        return view('meeting_chat', compact('id', 'count', 'login_user', 'profile','meeting'));
+        return view('meeting_chat', compact('id', 'count', 'login_user', 'profile','meeting', 'meeting_chat_unread_count'));
     }
 
     /**
@@ -108,7 +111,9 @@ class HomeController extends Controller
         $count = MeetingViewService::getUnapprovedCount();
         $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
         $meetings_joined = MeetingViewService::getLoginUsersJoinedList($login_user->id);
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
+        Log::debug($meetings);
         Log::debug("END");
-        return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile', 'meetings_joined'));
+        return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile', 'meetings_joined', 'meeting_chat_unread_count'));
     }
 }

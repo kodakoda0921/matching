@@ -20,11 +20,11 @@ class Meetings extends Model
     // 関連するモデル
     public function users()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User','user_id','id');
     }
     public function languages()
     {
-        return $this->hasOne('App\Models\Languages', 'id','language');
+        return $this->hasOne('App\Models\Languages','id','language');
     }
     public function areas()
     {
@@ -32,15 +32,20 @@ class Meetings extends Model
     }
     public function joins()
     {
-        return $this->hasOne('App\Models\Joins', 'meeting_id');
+        return $this->hasOne('App\Models\Joins', 'meeting_id','id');
+    }
+    public function meeting_comments()
+    {
+        return $this->hasOne('App\Models\MeetingComments','meeting_id','id');
     }
 
     // レコードが削除された際に、joinsモデルのレコードも削除
     protected static function boot() 
     {
       parent::boot();
-      self::deleting(function ($meetings) {
+      static::deleting(function ($meetings) {
         $meetings->joins()->delete();
+        $meetings->meeting_comments()->delete();
       });
     }
 }
