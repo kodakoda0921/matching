@@ -3,6 +3,7 @@
 namespace App\Repositories\Meetings;
 
 use App\Models\Joins;
+use App\Models\MeetingReads;
 use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Models\Meetings;
 use Illuminate\Http\Request;
@@ -13,10 +14,11 @@ use Illuminate\Support\Facades\Storage;
 
 class MeetingsRepository implements MeetingsRepositoryInterface
 {
-    public function __construct(Meetings $meetings,Joins $joins)
+    public function __construct(Meetings $meetings, Joins $joins, MeetingReads $meetingReads)
     {
         $this->meetings = $meetings;
         $this->joins = $joins;
+        $this->meetingReads = $meetingReads;
     }
 
     /**
@@ -58,7 +60,7 @@ class MeetingsRepository implements MeetingsRepositoryInterface
      */
     public function getLoginUsersMeetingList($login_user)
     {
-        $result = $this->meetings->where('user_id' , '=', $login_user)->get();
+        $result = $this->meetings->where('user_id', '=', $login_user)->get();
         return $result;
     }
 
@@ -84,6 +86,10 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         if ($query->picture != null) {
             Storage::delete('public/img/' . $query->picture);
         }
+        $q = $this->meetingReads
+            ->whereHas('meeting_comments', function ($query) use ($id) {
+                $query->where('meeting_id', '=', $id);
+            })->delete();
         $query->delete();
     }
 
@@ -92,17 +98,17 @@ class MeetingsRepository implements MeetingsRepositoryInterface
      * 
      * @param $request
      */
-    public function edit($id,$request)
+    public function edit($id, $request)
     {
         $query = $this->meetings->find($id);
         if ($request->file('meeting_image') == null) {
             $picture = $query->picture;
         } else {
-            Storage::delete('public/img/'.$query->picture);
+            Storage::delete('public/img/' . $query->picture);
             $path = $request->file('meeting_image')->store('public/img');
             $picture = basename($path);
         }
-        $query=$this->meetings->find($id);
+        $query = $this->meetings->find($id);
         $query->update(
             [
                 'title' => $request->title,
@@ -125,7 +131,7 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         Log::debug("START");
         $query = $this->meetings->query();
 
-        if ($request->language != null){
+        if ($request->language != null) {
             $query->where('language', '=', $request->language);
         }
         if ($request->area != null) {
@@ -137,7 +143,7 @@ class MeetingsRepository implements MeetingsRepositoryInterface
         Log::debug(DB::getQueryLog());
         return $result;
     }
-    
+
     /**
      * 選択されたレコードを取得
      *

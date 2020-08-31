@@ -43,8 +43,9 @@ class Meetings extends Model
     protected static function boot() 
     {
       parent::boot();
-      self::deleting(function ($meetings) {
+      static::deleting(function ($meetings) {
         $meetings->joins()->delete();
+        $meetings->meeting_comments()->delete();
       });
     }
 }
