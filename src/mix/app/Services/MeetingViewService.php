@@ -54,12 +54,17 @@ class MeetingViewService
         Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
         $array = [];
+        $array_read =[];
         foreach ($result as $rec){
             $a = $this->joins->getUnapprovedCountById($rec->id);
             array_push($array,$a); 
         };
+        foreach ($result as $rec){
+            $a = $this->meetingReads->getUnreadCountById($rec->id);
+            array_push($array_read,$a); 
+        };
         Log::debug("END");
-        return [$result,$array];
+        return [$result,$array,$array_read];
     }
 
     /**
@@ -72,8 +77,13 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->joins->getLoginUsersJoinedList($login_user);
+        $array_read =[];
+        foreach ($result as $rec){
+            $a = $this->meetingReads->getUnreadCountById($rec->meetings->id);
+            array_push($array_read,$a); 
+        };
         Log::debug("END");
-        return $result;
+        return  [$result,$array_read];
     }
 
     /**
@@ -405,6 +415,20 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->meetingReads->getUnreadCount();
+        Log::debug("END");
+        return $result;
+    }
+    
+    /**
+     * 勉強会チャットの勉強会別通知
+     *
+     * @param int $meeting_id
+     * @return $result
+     */
+    public function getUnreadCountById($meeting_id)
+    {
+        Log::debug("START");
+        $result = $this->meetingReads->getUnreadCountById($meeting_id);
         Log::debug("END");
         return $result;
     }

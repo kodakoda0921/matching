@@ -103,7 +103,7 @@
                                 </p>
                                 @if ($count!="0")
                                 <span class="badge badge-success float-right"><i
-                                        class="fas fa-clock"></i>{{ $meeting_chat_unread_count + $count }}</span>
+                                        class="fa fa-bell"></i>{{ $meeting_chat_unread_count + $count }}</span>
                                 @endif
                             </a>
                         </li>

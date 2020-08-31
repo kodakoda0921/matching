@@ -112,6 +112,7 @@ class HomeController extends Controller
         $meetings = MeetingViewService::getLoginUsersMeetingList($login_user->id);
         $meetings_joined = MeetingViewService::getLoginUsersJoinedList($login_user->id);
         $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
+        Log::debug($meetings);
         Log::debug("END");
         return view('meeting', compact('login_user', 'meetings' ,'count' ,'profile', 'meetings_joined', 'meeting_chat_unread_count'));
     }

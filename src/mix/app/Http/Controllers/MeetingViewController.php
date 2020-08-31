@@ -66,8 +66,9 @@ class MeetingViewController extends Controller
         $list = MeetingViewService::getJoinedlist($id);
         $unapprovedList = MeetingViewService::getUnapprovedlist($id);
         $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
+        $meetings_unread_count = MeetingViewService::getUnreadCountById($id);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user', 'meeting_chat_unread_count'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user', 'meeting_chat_unread_count','meetings_unread_count'));
     }
 
     /**

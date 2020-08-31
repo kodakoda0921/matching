@@ -31,17 +31,18 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
             ->with('meetingReads')
             ->orderBy('update_timestamp', 'desc')
             ->get();
-        $read_rec = $this->meetingComments
-            ->where('meeting_id', '=', $meeting_id)
-            ->whereHas('meetingReads', function ($q) {
+        $read_rec = $this->meetingReads
+            ->where('user_id', '=', Auth::id())
+            ->whereHas('meeting_comments', function ($q) use ($meeting_id) {
                 $q->where('read_flg', '=', 0);
-                $q->where('user_id', '=', Auth::id());
+                $q->where('meeting_id', '=', $meeting_id);
             })->get();
+        Log::debug('aaaaaaaa' . $read_rec);
         foreach ($read_rec as $rec) {
-            $query = $this->meetingReads->find($rec->meetingReads->id);
-            $query->update([
-                'read_flg' => 1,
-            ]);
+                $query = $this->meetingReads->find($rec->id);
+                $query->update([
+                    'read_flg' => 1,
+                ]);
         }
         return $result;
     }
