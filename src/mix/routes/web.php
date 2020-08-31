@@ -25,7 +25,6 @@ Route::get('/top', 'HomeController@top')->name('top');
 Route::get('/userProfile','UserProfileViewController@UserProfile')->name('userProfile');
 Route::post('/userProfile', 'UserProfileViewController@profileUpdate');
 Route::get('/profile/{id}','UserProfileViewController@profileView');
-Route::get('/chat', 'HomeController@chat');
 
 // 勉強会関連
 Route::get('/meeting', 'HomeController@meeting')->name('meeting');
@@ -37,6 +36,7 @@ Route::post('/meeting/edit/{id}','MeetingViewController@meetingEdit')->name('mee
 Route::get('/meeting/delete/{id}','MeetingViewController@meetingDelete')->name('meeting.delete');
 Route::get('/meeting/approval/{id}', 'MeetingViewController@meetingApproval');
 Route::get('/meeting/unapproval/{id}', 'MeetingViewController@meetingUnapproval');
+Route::get('/meeting/chat/{id}', 'HomeController@meetingChat');
 
 // 勉強会検索
 Route::get('meetingSerch', 'MeetingViewController@search');

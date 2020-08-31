@@ -24,15 +24,15 @@ class Meetings extends Model
     }
     public function languages()
     {
-        return $this->hasOne('App\Models\Languages', 'id', 'language');
+        return $this->hasOne('App\Models\Languages', 'language', 'id');
     }
     public function areas()
     {
-        return $this->hasOne('App\Models\areas', 'id', 'area');
+        return $this->hasOne('App\Models\areas', 'area', 'id');
     }
     public function joins()
     {
-        return $this->hasOne('App\Models\Joins', 'meeting_id', 'id');
+        return $this->hasOne('App\Models\Joins', 'id', 'meeting_id');
     }
 
     // レコードが削除された際に、joinsモデルのレコードも削除
