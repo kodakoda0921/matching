@@ -4,16 +4,20 @@ namespace App\Repositories\Joins;
 
 use App\Repositories\Joins\JoinsRepositoryInterface;
 use App\Models\Joins;
+use App\Models\MeetingComments;
+use App\Models\MeetingReads;
 use App\Models\Meetings;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class JoinsRepository implements JoinsRepositoryInterface
 {
-    public function __construct(Joins $joins, Meetings $meetings)
+    public function __construct(Joins $joins, Meetings $meetings, MeetingComments $meeting_comments, MeetingReads $meeting_reads)
     {
         $this->joins = $joins;
         $this->meetings = $meetings;
+        $this->meeting_comments = $meeting_comments;
+        $this->meeting_reads = $meeting_reads;
     }
 
     /**
@@ -137,6 +141,15 @@ class JoinsRepository implements JoinsRepositoryInterface
         $query->update([
             'approval' => 1,
         ]);
+        $q = $this->meeting_comments->where('meeting_id', '=', $query->meeting_id)->get();
+        foreach ($q as $rec) {
+            $this->meeting_reads->create([
+                'user_id' => $query->user_id,
+                'meeting_comment_id' => $rec->id,
+                'read_flg' => 0,
+            ]);
+            Log::debug($query->user_id);
+        }
         Log::debug("END");
         return $query->meeting_id;
     }

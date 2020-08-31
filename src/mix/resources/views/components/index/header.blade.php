@@ -27,11 +27,11 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell"></i>
                         @if ($count != "0")
-                        <span class="badge badge-success navbar-badge">{{ $count }}</span>
+                        <span class="badge badge-success navbar-badge">{{ $meeting_chat_unread_count + $count }}</span>
                         @endif
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">{{ $count }} Notifications</span>
+                        <span class="dropdown-item dropdown-header">{{ $meeting_chat_unread_count + $count }} Notifications</span>
                         <div class="dropdown-divider"></div>
                         @if ($count != "0")
                         <a href="{{ url('/meeting') }}" class="dropdown-item">
@@ -103,7 +103,7 @@
                                 </p>
                                 @if ($count!="0")
                                 <span class="badge badge-success float-right"><i
-                                        class="fas fa-clock"></i>{{ $count }}</span>
+                                        class="fas fa-clock"></i>{{ $meeting_chat_unread_count + $count }}</span>
                                 @endif
                             </a>
                         </li>

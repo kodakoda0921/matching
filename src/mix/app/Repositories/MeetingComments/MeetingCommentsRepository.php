@@ -24,14 +24,19 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
      */
     public function meetingChatComments($meeting_id)
     {
-        $result = $this->meetingComments->where('meeting_id', '=', $meeting_id)->with('users')->with('users.userProfiles')->orderBy('update_timestamp', 'desc')->get();
+        $result = $this->meetingComments
+            ->where('meeting_id', '=', $meeting_id)
+            ->with('users')
+            ->with('users.userProfiles')
+            ->with('meetingReads')
+            ->orderBy('update_timestamp', 'desc')
+            ->get();
         $read_rec = $this->meetingComments
             ->where('meeting_id', '=', $meeting_id)
             ->whereHas('meetingReads', function ($q) {
                 $q->where('read_flg', '=', 0);
                 $q->where('user_id', '=', Auth::id());
-            })->with('meetingReads')->get();
-            Log::debug('aaaaa'.$read_rec);
+            })->get();
         foreach ($read_rec as $rec) {
             $query = $this->meetingReads->find($rec->meetingReads->id);
             $query->update([

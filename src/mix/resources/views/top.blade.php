@@ -11,7 +11,8 @@
         @component('components.index.header',[
         'count' => $count,
         'picture' => $profile->picture,
-        'name' => $login_user->name
+        'name' => $login_user->name,
+        'meeting_chat_unread_count' => $meeting_chat_unread_count
         ])
         @endcomponent
 
@@ -55,7 +56,7 @@
                             <div class="inner">
                                 @if ($count!=0)
                                 <span class="badge badge-success float-right"><i
-                                        class="fas fa-clock"></i>{{ $count }}</span>
+                                        class="fas fa-clock"></i>{{ $meeting_chat_unread_count +$count }}</span>
                                 @endif
                                 <h4>勉強会</h4>
                                 <p>作成・参加履歴の閲覧</p>

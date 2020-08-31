@@ -396,4 +396,16 @@ class MeetingViewService
         return $result;
     }
     
+    /**
+     * ログインユーザの勉強会チャットの全体通知
+     *
+     * @return $result
+     */
+    public function getUnreadCount()
+    {
+        Log::debug("START");
+        $result = $this->meetingReads->getUnreadCount();
+        Log::debug("END");
+        return $result;
+    }
 }

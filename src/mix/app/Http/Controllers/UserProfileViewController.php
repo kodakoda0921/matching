@@ -23,9 +23,10 @@ class UserProfileViewController extends Controller
         $languagesList = UserProfileViewService::getLanguagesList();
         $areasList = UserProfileViewService::getAreasList();
         $count = MeetingViewService::getUnapprovedCount();
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
 
         Log::debug("END");
-        return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList', 'count'));
+        return view('user_profile',compact('login_user', 'profile', 'languagesList', 'areasList', 'count','meeting_chat_unread_count'));
     }
 
     /**
@@ -61,7 +62,8 @@ class UserProfileViewController extends Controller
         $area = MeetingViewService::area($user_profile->area);
         $count = MeetingViewService::getUnapprovedCount();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
+        $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         Log::debug("END");
-        return view('profile_view', compact('login_user', 'language', 'area', 'count', 'profile', 'user_profile', 'user'));
+        return view('profile_view', compact('login_user', 'language', 'area', 'count', 'profile', 'user_profile', 'user','meeting_chat_unread_count'));
     }
 }

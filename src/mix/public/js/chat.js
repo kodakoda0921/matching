@@ -3,7 +3,7 @@ $('#direct_chat').hide();
 get_data();
 $(function () {
     $("#reload").click(function (e) {
-    get_data();
+        get_data();
     });
 });
 
@@ -17,7 +17,6 @@ function get_data() {
                 .remove();
             $('#direct_chat').show();
             result.forEach(function (res) {
-                console.log(login_user);
                 var html = `
                 <div class="direct-chat-msg comment-visible">
                 <div class="direct-chat-infos clearfix">
@@ -26,7 +25,6 @@ function get_data() {
                 </div>
                 <div class="direct-chat-text">${res.comment}
                 </div>
-
                 </div>`;
                 var html_image = `
                 <div class="direct-chat-msg comment-visible">
@@ -37,7 +35,6 @@ function get_data() {
                 <img class="direct-chat-img" src="../../storage/img/${res.users.user_profiles.picture}">
                 <div class="direct-chat-text">${res.comment}
                 </div>
-
                 </div>`;
                 var html_login_user = `
                 <div class="direct-chat-msg right comment-visible">
@@ -48,6 +45,7 @@ function get_data() {
                     <div class="direct-chat-text">
                     ${res.comment}
                     </div>
+                    <span class="direct-chat-timestamp float-right">${res.meeting_reads.read_flg}</span>
 
                 </div>`;
                 var html_login_user_image = `
@@ -61,6 +59,7 @@ function get_data() {
                     <div class="direct-chat-text">
                     ${res.comment}
                     </div>
+                    <span class="direct-chat-timestamp float-right">${res.meeting_reads.read_flg}</span>
                 </div>`;
                 if (res.users.user_profiles.picture != null) {
                     if (res.user_id == login_user) {
@@ -75,7 +74,6 @@ function get_data() {
                         $("#comment_data").append(html);
                     }
                 }
-
             });
         },
         error: function () {
