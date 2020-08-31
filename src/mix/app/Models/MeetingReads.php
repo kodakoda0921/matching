@@ -19,7 +19,7 @@ class MeetingReads extends Model
     // 関連するモデル
     public function users()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id','id');
     }
 
     public function meeting_comments()

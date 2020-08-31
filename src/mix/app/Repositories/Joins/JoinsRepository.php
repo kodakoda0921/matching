@@ -8,6 +8,7 @@ use App\Models\MeetingComments;
 use App\Models\MeetingReads;
 use App\Models\Meetings;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class JoinsRepository implements JoinsRepositoryInterface
@@ -177,7 +178,9 @@ class JoinsRepository implements JoinsRepositoryInterface
      */
     public function getLoginUsersJoinedList($login_user)
     {
+        DB::enableQueryLog();
         $result = $this->joins->where('user_id', '=', $login_user)->where('approval', '=', 1)->with('meetings')->get();
+        Log::debug(DB::getQueryLog());
         return $result;
     }
 }

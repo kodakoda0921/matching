@@ -79,6 +79,7 @@ class MeetingViewService
         $result = $this->joins->getLoginUsersJoinedList($login_user);
         $array_read =[];
         foreach ($result as $rec){
+            Log::debug('aaaaaa'.$result);
             $a = $this->meetingReads->getUnreadCountById($rec->meetings->id);
             array_push($array_read,$a); 
         };

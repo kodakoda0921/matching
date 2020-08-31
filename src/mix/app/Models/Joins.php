@@ -20,10 +20,10 @@ class Joins extends Model
     // 関連するモデル
     public function users()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
     public function meetings()
     {
-        return $this->belongsTo('App\Models\Meetings', 'meeting_id');
+        return $this->belongsTo('App\Models\Meetings', 'meeting_id','id');
     }
 }
