@@ -58,15 +58,39 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function meetingChat($id)
+    public function meetingChatView($id)
     {
         Log::debug("START");
         $count = MeetingViewService::getUnapprovedCount();
         $login_user = Auth::user();
         $profile = UserProfileViewService::getUserProfile($login_user->id);
+        Log::debug("END");
+        return view('meeting_chat', compact('id', 'count', 'login_user', 'profile'));
+    }
+
+    /**
+     * チャットを表示する
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function meetingChatGet($id)
+    {
+        Log::debug("START");
         $comments = MeetingViewService::meetingChatComments($id);
         Log::debug("END");
-        return view('meeting_chat', compact('count', 'login_user', 'profile', 'comments'));
+        return $comments;
+    }
+
+    /**
+     * チャットを追加する
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function meetingChatPut($request)
+    {
+        Log::debug("START");
+        MeetingViewService::meetingChatCommentsPut($request);
+        Log::debug("END");
     }
 
     /**

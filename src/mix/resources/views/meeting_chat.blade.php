@@ -29,7 +29,7 @@
                 <div class="row">
                     <!-- Left col -->
                     <section class="col-8 connectedSortable pull-left">
-                        <div class="card direct-chat direct-chat-success">
+                        <div class="card direct-chat direct-chat-success" id="direct_chat">
                             <div class="card-header">
                                 <h3 class="card-title">Direct Chat</h3>
 
@@ -41,26 +41,9 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body" id="card_body">
                                 <!-- Conversations are loaded here -->
-                                <div class="direct-chat-messages">
-                                    <!-- Message. Default to the left -->
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">{{ $comments[0]->users->name }}</span>
-                                            <span class="direct-chat-timestamp float-right">{{ $comments[0]->update_timestamp }}</span>
-                                        </div>
-                                        <!-- /.direct-chat-infos -->
-                                        <img class="direct-chat-img" src="{{ $comments[0]->users->userProfiles->picture }}"
-                                            alt="message user image">
-                                        <!-- /.direct-chat-img -->
-                                        <div class="direct-chat-text">
-                                            {{ $comments[0]->comment }}
-                                        </div>
-                                        <!-- /.direct-chat-text -->
-                                    </div>
-                                    <!-- /.direct-chat-msg -->
-
+                                <div class="direct-chat-messages" id="comment_data">
                                     <!-- Message to the right -->
                                     <div class="direct-chat-msg right">
                                         <div class="direct-chat-infos clearfix">
@@ -78,7 +61,7 @@
                                     </div>
                                     <!-- /.direct-chat-msg -->
 
-                                    <!-- Contacts are loaded here -->
+                                    {{-- <!-- Contacts are loaded here -->
                                     <div class="direct-chat-contacts">
                                         <ul class="contacts-list">
                                             <li>
@@ -101,7 +84,7 @@
                                         </ul>
                                         <!-- /.contacts-list -->
                                     </div>
-                                    <!-- /.direct-chat-pane -->
+                                    <!-- /.direct-chat-pane --> --}}
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
@@ -138,7 +121,9 @@
 
     @component('components.index.js_read')
     @endcomponent
-
+    {{-- JavaScript処理の呼び出し --}}
+    <script>const meeting_id = {{ $id }};</script>
+    <script src="{{ asset('/js/chat.js') }}"></script>
 </body>
 
 </html>

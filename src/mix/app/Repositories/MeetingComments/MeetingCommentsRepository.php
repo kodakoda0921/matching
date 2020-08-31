@@ -14,7 +14,7 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
     }
 
     /**
-     * 勉強会の削除
+     * チャット情報の取得
      * 
      * @param int $meeting_id
      */
@@ -24,4 +24,20 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
         Log::debug($result);
         return $result;
     }
+
+    /**
+     * チャットコメントの追加
+     * 
+     * @param Request $request
+     */
+    public function meetingChatCommentsPut($request)
+    {
+        $result = $this->meetingComments->create([
+            'user_id' => $request->user_id,
+            'meeting_id' => $request->meeting_id,
+            'comment' => $request->comment
+        ]);
+        return redirect()->route('home');
+    }
+    
 }
