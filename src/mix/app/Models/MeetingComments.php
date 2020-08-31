@@ -22,4 +22,8 @@ class MeetingComments extends Model
     {
         return $this->belongsTo('App\Models\Meetings', 'meeting_id');
     }
+    public function meetingReads()
+    {
+        return $this->belongsTo('App\Models\MeetingReads', 'id', 'meeting_comment_id');
+    }
 }

@@ -47,6 +47,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\MeetingComments\MeetingCommentsRepositoryInterface::class,
             \App\Repositories\MeetingComments\MeetingCommentsRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\MeetingReads\MeetingReadsRepositoryInterface::class,
+            \App\Repositories\MeetingReads\MeetingReadsRepository::class
+        );
     }
 
     /**

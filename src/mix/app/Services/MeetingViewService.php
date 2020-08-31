@@ -7,6 +7,7 @@ use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
 use App\Repositories\Joins\JoinsRepositoryInterface;
 use App\Repositories\MeetingComments\MeetingCommentsRepositoryInterface;
+use App\Repositories\MeetingReads\MeetingReadsRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -18,13 +19,15 @@ class MeetingViewService
         LanguagesRepositoryInterface $languages,
         AreasRepositoryInterface $areas,
         JoinsRepositoryInterface $joins,
-        MeetingCommentsRepositoryInterface $meetingComments
+        MeetingCommentsRepositoryInterface $meetingComments,
+        MeetingReadsRepositoryInterface $meetingReads
     ) {
         $this->meetings = $meetings;
         $this->languages = $languages;
         $this->areas = $areas;
         $this->joins = $joins;
         $this->meetingComments = $meetingComments;
+        $this->meetingReads = $meetingReads;
     }
 
     /**
@@ -387,7 +390,8 @@ class MeetingViewService
     {
         Log::debug("START");
         // 未承認のリスト取得
-        $result = $this->meetingComments->meetingChatCommentsPut($request);
+        $joined_list = $this->getJoinedlist($request->meeting_id);
+        $result = $this->meetingComments->meetingChatCommentsPut($request,$joined_list);
         Log::debug("END");
         return $result;
     }

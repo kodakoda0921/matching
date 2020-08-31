@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Meetings;
 
+use App\Models\Joins;
 use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Models\Meetings;
 use Illuminate\Http\Request;
@@ -12,9 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class MeetingsRepository implements MeetingsRepositoryInterface
 {
-    public function __construct(Meetings $meetings)
+    public function __construct(Meetings $meetings,Joins $joins)
     {
         $this->meetings = $meetings;
+        $this->joins = $joins;
     }
 
     /**
@@ -31,7 +33,7 @@ class MeetingsRepository implements MeetingsRepositoryInterface
             $path = $request->file('meeting_image')->store('public/img');
             $picture = basename($path);
         }
-        $this->meetings->create(
+        $new = $this->meetings->create(
             [
                 'user_id' => $user->id,
                 'title' => $request->title,
@@ -42,6 +44,11 @@ class MeetingsRepository implements MeetingsRepositoryInterface
                 'event_date' => $request->event_date
             ]
         );
+        $this->joins->create([
+            'user_id' => $user->id,
+            'meeting_id' => $new->id,
+            'approval' => 1
+        ]);
     }
 
     /**
