@@ -375,4 +375,21 @@ class MeetingViewService
         Log::debug("END");
         return $result;
     }
+
+
+    /**
+     * チャットIDの取得
+     *
+     * @param int $meeting_id
+     * @return object $ret
+     */
+    public function meetingChatCommentsPut(Request $request)
+    {
+        Log::debug("START");
+        // 未承認のリスト取得
+        $result = $this->meetingComments->meetingChatCommentsPut($request);
+        Log::debug("END");
+        return $result;
+    }
+    
 }

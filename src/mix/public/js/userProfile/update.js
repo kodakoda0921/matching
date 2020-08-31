@@ -8,16 +8,6 @@ $("#file").change(function(e){
   }
 });
 
-function sleep(waitMsec) {
-  var startMsec = new Date();
- 
-  // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
-  while (new Date() - startMsec < waitMsec);
-}
-sleep(1000);
-document.getElementById("updateButton").disabled=false; 
-
-
 function showClock() {
     var dt = new Date();
     var y = dt.getFullYear();

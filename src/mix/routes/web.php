@@ -36,7 +36,9 @@ Route::post('/meeting/edit/{id}','MeetingViewController@meetingEdit')->name('mee
 Route::get('/meeting/delete/{id}','MeetingViewController@meetingDelete')->name('meeting.delete');
 Route::get('/meeting/approval/{id}', 'MeetingViewController@meetingApproval');
 Route::get('/meeting/unapproval/{id}', 'MeetingViewController@meetingUnapproval');
-Route::get('/meeting/chat/{id}', 'HomeController@meetingChat');
+Route::get('/meeting/chat/{id}', 'HomeController@meetingChatView');
+Route::get('/meeting/chat/get/{id}', 'HomeController@meetingChatGet');
+Route::post('/meeting/chat/put', 'HomeController@meetingChatPut');
 
 // 勉強会検索
 Route::get('meetingSerch', 'MeetingViewController@search');

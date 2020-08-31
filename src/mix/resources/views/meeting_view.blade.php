@@ -66,6 +66,8 @@
                             <p class="text-muted">
                                 <a href="#" data-toggle="modal" data-target="#modal-join">{{ $join_count }}名</a>
                             </p>
+                            <a href="{{ url('/meeting/chat/'.$meeting->id.'/') }}"
+                                class="btn bg-warning btn-flat pull-right ml-1">チャット</a>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -73,7 +75,7 @@
                         <button type="button" class="btn bg-success btn-flat pull-right ml-1" data-toggle="modal"
                             data-target="#modal-destroy">削除</button>
                         <a href="{{ url('/meeting/edit/'.$meeting->id.'/') }}"
-                            class="btn bg-success btn-flat pull-right">編集</a>
+                            class="btn bg-success btn-flat pull-right ml-1">編集</a>
                         @if ($unapprovedList->isNotEmpty())
                         <button type="button" class="btn btn-primary btn-flat pull-left" data-toggle="modal"
                             data-target="#modal-approval">申請が来ています</button>
@@ -149,7 +151,7 @@
                         </tr>
                         @foreach ($unapprovedList as $item)
                         <tr>
-                            <th>{{$item->users->name}}</th>
+                            <th><a href="{{ url('profile/'.$item->users->id.'/') }}">{{$item->users->name}}</a></th>
                             <th>
                                 <a class="btn btn-primary btn-sm"
                                     href="{{ url('/meeting/approval/'.$item->id.'/') }}">承認</a>

@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class MeetingComments extends Model
 {
+    public $timestamps = false;
+    public $incrementing = true;
+
     protected $fillable = [
-        'user_id', 'meeting_id', 'comment'
+        'id', 'user_id', 'meeting_id', 'comment'
     ];
 
     // 関連するモデル
