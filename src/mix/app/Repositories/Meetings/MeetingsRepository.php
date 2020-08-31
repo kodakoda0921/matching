@@ -139,7 +139,8 @@ class MeetingsRepository implements MeetingsRepositoryInterface
     public function searchView($id)
     {
         Log::debug("START");
-        $result = $this->meetings->with('users')->with('languages')->with('areas')->find($id);
+        $result = $this->meetings->with('users')->with('users.userProfiles')->with('languages')->with('areas')->with('users.userProfiles.languages')->with('users.userProfiles.areas')->find($id);
+        Log::debug($result);
         Log::debug("END");
         return $result;
     }

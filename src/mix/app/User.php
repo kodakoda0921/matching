@@ -65,4 +65,10 @@ class User extends Authenticatable
     {
         $this->attributes['login_password'] = Crypt::encrypt($value);
     }
+
+    // 関連するモデル
+    public function userProfiles()
+    {
+        return $this->hasOne('App\Models\UserProfile', 'user_id', 'id');
+    }
 }

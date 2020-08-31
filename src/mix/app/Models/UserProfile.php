@@ -19,7 +19,7 @@ class UserProfile extends Model
     // 関連するモデル
     public function users()
     {
-        return $this->hasOne('App\User', 'id', 'user_id');
+        return $this->belongsTo('App\User', 'id', 'user_id');
     }
     public function languages()
     {
