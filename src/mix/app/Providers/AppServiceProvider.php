@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Services\UserProfileViewService;
 use App\Services\HomeService;
 use App\Services\MeetingViewService;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -60,6 +61,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        URL::forceScheme('https');
     }
 }
