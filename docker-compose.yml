@@ -6,8 +6,8 @@ services:
     container_name: "dc-web-nginx"
     environment:
       TZ: "Asia/Tokyo"
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
     volumes:
       - ./src:/src
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
@@ -57,3 +57,25 @@ services:
     container_name: "dc-db-redis"
     ports: 
       - 16379:6379
+
+  #本番環境用
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - "80:80"
+      - '443:443'
+    restart: always
+    environment:
+      DOMAINS: 'study-meeting.com -> http://nginx'
+      STAGE: production
+
+  # #開発環境用
+  # https-portal:
+  #   image: steveltn/https-portal:1
+  #   ports:
+  #     - "80:80"
+  #     - '443:443'
+  #   restart: always
+  #   environment:
+  #     DOMAINS: 'localhost -> http://nginx'
+  #     STAGE: local
