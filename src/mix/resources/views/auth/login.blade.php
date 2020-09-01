@@ -11,7 +11,7 @@
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">ログインしてください</p>
+            <a href="{{ url('/') }}"><p class="login-box-msg">topページに戻る</p></a>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
