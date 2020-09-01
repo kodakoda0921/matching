@@ -92,6 +92,7 @@
                         <div class="row">
                             @php ($i = 0)
                             @foreach ($meetings_joined[0] as $meeting_joined)
+                            @if($meeting_joined->meetings->user_id != Auth::id())
                             <div class="col-md-4">
                                 <div class="card card-outline card-success">
                                     <div class="card-header">
@@ -101,7 +102,8 @@
                                                     class="fa fa-bell"></i>{{ $meetings_joined[1][$i] }}</span>
                                         </a>
                                         @endif
-                                        <h4 class="box-title">{{ mb_strimwidth($meeting_joined->meetings->title,0,34,"...") }}
+                                        <h4 class="box-title">
+                                            {{ mb_strimwidth($meeting_joined->meetings->title,0,34,"...") }}
                                         </h4>
                                     </div>
                                     <div class="card-body">
@@ -121,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             @php ($i = $i + 1)
                             @endforeach
                         </div>

@@ -45,8 +45,6 @@ function get_data() {
                     <div class="direct-chat-text">
                     ${res.comment}
                     </div>
-                    <span class="direct-chat-timestamp float-right">${res.meeting_reads.read_flg}</span>
-
                 </div>`;
                 var html_login_user_image = `
                 <div class="direct-chat-msg right comment-visible">
@@ -59,7 +57,6 @@ function get_data() {
                     <div class="direct-chat-text">
                     ${res.comment}
                     </div>
-                    <span class="direct-chat-timestamp float-right">${res.meeting_reads.read_flg}</span>
                 </div>`;
                 if (res.users.user_profiles.picture != null) {
                     if (res.user_id == login_user) {
@@ -97,14 +94,18 @@ $(function () {
                 meeting_id: meeting_id,
                 comment: input_message
             },
+            beforeSend: function () {
+                $("#send").prop('disabled', true);
+            },
             success: function (result) {
                 if (result != "") {
                     get_data();
-                    alert(result);
+                    $("#send").prop('disabled', false);
                 }
             },
             error: function (result) {
                 console.log('error');
+                $("#send").prop('disabled', false);
             }
         });
     });
