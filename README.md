@@ -1,3 +1,6 @@
+# URL
+https://study-meeting.com/
+
 # アプリケーションの概要
 ログインユーザが開催したい勉強会を投稿することができます。
 
@@ -17,7 +20,8 @@
   - 通知機能(未読チャットと申請時の通知)
 
 * 使用言語
- PHP、laravel、javaScript、jQuerry、bootstrap(主にAdminLteライブラリを使用)
+
+  - PHP、laravel、javaScript、jQuerry、bootstrap(主にAdminLteライブラリを使用)
  
 * インフラには何を使っているのか
   - AWS、docker、また常時SSL化（常時HTTPS化）しております
