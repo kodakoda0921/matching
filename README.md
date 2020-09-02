@@ -1,28 +1,30 @@
-# 起動コマンド
-`git clone https://github.com/kodakoda0921/matching.git`
+押さえておくポイント
 
-`cd matching`
+# アプリケーションの概要
+ログインユーザが開催したい勉強会を投稿することができます。
+言語や場所で絞り込んで検索を行うことができ、参加したい勉強会を見つけたら「参加申請」を行えます。
+「参加申請」を受け取った勉強会の主催者が「承認」するとグループチャットルームに入ることができ、
+詳しい時間や場所、準備等を話し合う交流をすることができます。
 
-`docker-compose build`
+# アプリケーションの機能と使用技術
+* どんな機能を実装しているか
+  - 勉強会投稿機能
+  - プロフィール編集機能
+  - 画像アップロード機能
+  - 認証機能
+  - 検索機能(非同期通信)
+  - チャット機能(非同期通信)
+  - 通知機能(未読チャットと申請時の通知)
 
-`docker-compose up -d`
+* 使用言語
+ PHP、laravel、javaScript、jQuerry、bootstrap(主にAdminLteライブラリを使用)
+ 
+* インフラには何を使っているのか
+  - AWS、docker、また常時SSL化（常時HTTPS化）しております
 
-`docker-compose exec php composer install`
+* データベースには何を使っているのか
+  - dockerを活用し、MySQLコンテナを使用
 
-`docker-compose exec php php artisan migrate`
-
-`docker-compose exec php php artisan db:seed`
-
-`docker-compose exec php php artisan storage:link `
-
-
-# コマンド入力後
-
-`http://localhost:8080`にアクセス
-
-
-# 動作確認後
-
-以下コマンドを入力（コンテナを閉じる）。
-
-`docker-compose down`
+* デプロイはどのように行なっているのか
+  - dockerとGithub Actionを使用し、自動テスト(CI)を行なった後、自動でデプロイを行う機能(CD)をコード化し、
+    masterブランチへコミットプッシュすると自動でAWSへデプロイされます
