@@ -183,4 +183,25 @@ class JoinsRepository implements JoinsRepositoryInterface
         Log::debug(DB::getQueryLog());
         return $result;
     }
+
+    /**
+     * チャット権限有無チェック
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function authorizedCheck($id)
+    {
+        $query = $this->joins->where('meeting_id', '=', $id)->get();
+        if ($query->isEmpty()) {
+            return false;
+        } else {
+            foreach ($query as $q) {
+                if ($q->user_id == Auth::id()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 }

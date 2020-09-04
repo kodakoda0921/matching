@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Joins;
 use App\Repositories\Meetings\MeetingsRepositoryInterface;
 use App\Repositories\Languages\LanguagesRepositoryInterface;
 use App\Repositories\Areas\AreasRepositoryInterface;
@@ -54,18 +55,18 @@ class MeetingViewService
         Log::debug("START");
         $result = $this->meetings->getLoginUsersMeetingList($login_user);
         $array = [];
-        $array_read =[];
-        foreach ($result as $rec){
+        $array_read = [];
+        foreach ($result as $rec) {
             $a = $this->joins->getUnapprovedCountById($rec->id);
-            array_push($array,$a); 
+            array_push($array, $a);
         };
-        foreach ($result as $rec){
+        foreach ($result as $rec) {
             $a = $this->meetingReads->getUnreadCountById($rec->id);
-            array_push($array_read,$a); 
+            array_push($array_read, $a);
         };
         Log::debug($array_read);
         Log::debug("END");
-        return [$result,$array,$array_read];
+        return [$result, $array, $array_read];
     }
 
     /**
@@ -78,14 +79,13 @@ class MeetingViewService
     {
         Log::debug("START");
         $result = $this->joins->getLoginUsersJoinedList($login_user);
-        $array_read =[];
-        foreach ($result as $rec){
-            Log::debug('aaaaaa'.$result);
+        $array_read = [];
+        foreach ($result as $rec) {
             $a = $this->meetingReads->getUnreadCountById($rec->meetings->id);
-            array_push($array_read,$a); 
+            array_push($array_read, $a);
         };
         Log::debug("END");
-        return  [$result,$array_read];
+        return  [$result, $array_read];
     }
 
     /**
@@ -177,10 +177,10 @@ class MeetingViewService
      * @param Request $request
      * @return void
      */
-    public function edit($id,Request $request)
+    public function edit($id, Request $request)
     {
         Log::debug("START");
-        $this->meetings->edit($id,$request);
+        $this->meetings->edit($id, $request);
         Log::debug("END");
     }
 
@@ -257,7 +257,7 @@ class MeetingViewService
     public function getJoinsCount($meeting_id)
     {
         Log::debug("START");
-        
+
         // 件数取得
         $return = $this->joins->getJoinsCount($meeting_id);
         Log::debug("END");
@@ -273,7 +273,7 @@ class MeetingViewService
     public function joinsRequestedConfirm($meeting_id)
     {
         Log::debug("START");
-        
+
         // 件数取得
         $return = $this->joins->joinsRequestedConfirm($meeting_id);
         Log::debug("END");
@@ -289,13 +289,13 @@ class MeetingViewService
     public function meetJoinRequest($meeting_id)
     {
         Log::debug("START");
-        
+
         // 件数取得
         $return = $this->joins->meetJoinRequest($meeting_id);
         Log::debug("END");
         return $return;
     }
-    
+
     /**
      * 参加承認済の一覧取得
      *
@@ -305,7 +305,7 @@ class MeetingViewService
     public function getJoinedlist($meeting_id)
     {
         Log::debug("START");
-        
+
         // 件数取得
         $return = $this->joins->getJoinedlist($meeting_id);
         Log::debug("END");
@@ -320,7 +320,7 @@ class MeetingViewService
     public function getUnapprovedCount()
     {
         Log::debug("START");
-        
+
         // 件数取得
         $return = $this->joins->getUnapprovedCount();
         Log::debug("END");
@@ -336,7 +336,7 @@ class MeetingViewService
     public function getUnapprovedlist($meeting_id)
     {
         Log::debug("START");
-        
+
         // 未承認のリスト取得
         $return = $this->joins->getUnapprovedlist($meeting_id);
         Log::debug("END");
@@ -352,7 +352,7 @@ class MeetingViewService
     public function meetingApproval($join_id)
     {
         Log::debug("START");
-        
+
         // 未承認のリスト取得
         $meeting_id = $this->joins->meetingApproval($join_id);
         Log::debug("END");
@@ -368,7 +368,7 @@ class MeetingViewService
     public function meetingUnapproval($join_id)
     {
         Log::debug("START");
-        
+
         // 未承認のリスト取得
         $meeting_id = $this->joins->meetingUnapproval($join_id);
         Log::debug("END");
@@ -384,7 +384,7 @@ class MeetingViewService
     public function meetingChatComments($meeting_id)
     {
         Log::debug("START");
-        
+
         // 未承認のリスト取得
         $result = $this->meetingComments->meetingChatComments($meeting_id);
         Log::debug("END");
@@ -403,11 +403,11 @@ class MeetingViewService
         Log::debug("START");
         // 未承認のリスト取得
         $joined_list = $this->getJoinedlist($request->meeting_id);
-        $result = $this->meetingComments->meetingChatCommentsPut($request,$joined_list);
+        $result = $this->meetingComments->meetingChatCommentsPut($request, $joined_list);
         Log::debug("END");
         return $result;
     }
-    
+
     /**
      * ログインユーザの勉強会チャットの全体通知
      *
@@ -420,7 +420,7 @@ class MeetingViewService
         Log::debug("END");
         return $result;
     }
-    
+
     /**
      * 勉強会チャットの勉強会別通知
      *
@@ -432,6 +432,18 @@ class MeetingViewService
         Log::debug("START");
         $result = $this->meetingReads->getUnreadCountById($meeting_id);
         Log::debug("END");
+        return $result;
+    }
+
+    /**
+     * チャット権限有無チェック
+     *
+     * @param int $id
+     * @return $result
+     */
+    public function authorizedCheck($id)
+    {
+        $result = $this->joins->authorizedCheck($id);
         return $result;
     }
 }

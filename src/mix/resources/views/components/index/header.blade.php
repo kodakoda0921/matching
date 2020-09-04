@@ -33,9 +33,14 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">{{ $meeting_chat_unread_count + $count }} Notifications</span>
                         <div class="dropdown-divider"></div>
-                        @if ($count != "0" || $meeting_chat_unread_count != "0")
+                        @if ($count != "0")
                         <a href="{{ url('/meeting') }}" class="dropdown-item">
                             <i class="nav-icon fa fa-book mr-2"></i> {{ $count }} 件の参加申請
+                        </a>
+                        @endif
+                        @if ($meeting_chat_unread_count != "0")
+                        <a href="{{ url('/meeting') }}" class="dropdown-item">
+                            <i class="nav-icon fa fa-envelope mr-2"></i> {{ $meeting_chat_unread_count }} 件の未読チャット
                         </a>
                         @endif
                     </div>
