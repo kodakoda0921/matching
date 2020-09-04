@@ -67,8 +67,9 @@ class MeetingViewController extends Controller
         $unapprovedList = MeetingViewService::getUnapprovedlist($id);
         $meeting_chat_unread_count = MeetingViewService::getUnreadCount();
         $meetings_unread_count = MeetingViewService::getUnreadCountById($id);
+        $authorized = MeetingViewService::authorizedCheck($id);
         Log::debug("END");
-        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user', 'meeting_chat_unread_count','meetings_unread_count'));
+        return view('meeting_view', compact('login_user', 'meeting', 'language', 'area', 'count', 'list', 'unapprovedList' , 'profile', 'join_count', 'user', 'meeting_chat_unread_count','meetings_unread_count', 'authorized'));
     }
 
     /**
@@ -112,9 +113,10 @@ class MeetingViewController extends Controller
      * 勉強会編集
      *
      */
-    public function meetingEdit($id,Request $request)
+    public function meetingEdit($id,Request $request,Meetings $meetings)
     {
         Log::debug("START");
+        $this->authorize('edit', $meetings->find($id));
         $request->validate([
             'title' => 'required|max:255',
             'language' => 'required',
@@ -163,6 +165,7 @@ class MeetingViewController extends Controller
     public function meetJoinRequest($id)
     {
         Log::debug("START");
+        
         // 申請処理
         $result = MeetingViewService::meetJoinRequest($id);
         Log::debug("END");
@@ -173,11 +176,12 @@ class MeetingViewController extends Controller
      * 勉強会参加承認処理
      *
      */
-    public function meetingApproval($join_id)
+    public function meetingApproval($join_id,Meetings $meetings)
     {
         Log::debug("START");
         // 申請処理
         $meeting_id = MeetingViewService::meetingApproval($join_id);
+        $this->authorize('edit', $meetings->find($meeting_id));
         Log::debug("END");
         return redirect()->action('MeetingViewController@meetingView', ['id' => $meeting_id])->with(['success' => '参加を承認しました。']);
     }
@@ -186,11 +190,12 @@ class MeetingViewController extends Controller
      * 勉強会参加否認処理
      *
      */
-    public function meetingUnapproval($join_id)
+    public function meetingUnapproval($join_id,Meetings $meetings)
     {
         Log::debug("START");
         // 申請処理
         $meeting_id = MeetingViewService::meetingUnapproval($join_id);
+        $this->authorize('edit', $meetings->find($meeting_id));
         Log::debug("END");
         return redirect()->action('MeetingViewController@meetingView', ['id' => $meeting_id])->with(['success' => '参加を否認しました。']);
     }

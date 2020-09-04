@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Joins;
 use App\Models\Meetings;
+use App\Policies\JoinPolicy;
 use App\Policies\MeetingPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
          Meetings::class => MeetingPolicy::class,
+         Joins::class => JoinPolicy::class,
     ];
 
     /**

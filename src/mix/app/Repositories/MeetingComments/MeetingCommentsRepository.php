@@ -37,7 +37,6 @@ class MeetingCommentsRepository implements MeetingCommentsRepositoryInterface
                 $q->where('read_flg', '=', 0);
                 $q->where('meeting_id', '=', $meeting_id);
             })->get();
-        Log::debug('aaaaaaaa' . $read_rec);
         foreach ($read_rec as $rec) {
                 $query = $this->meetingReads->find($rec->id);
                 $query->update([

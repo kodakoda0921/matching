@@ -67,9 +67,7 @@
                             <p class="text-muted">
                                 <a href="#" data-toggle="modal" data-target="#modal-join">{{ $join_count }}名</a>
                             </p>
-
-
-
+                            @if($authorized)
                             <a href="{{ url('/meeting/chat/'.$meeting->id.'/') }}"
                                 class="btn bg-warning btn-flat pull-right ml-1">
                                 @if ($meetings_unread_count != 0)
@@ -77,6 +75,7 @@
                                         class="fa fa-bell"></i>{{ $meetings_unread_count }}</span>
                                 @endif
                                 チャット</a>
+                            @endif
                         </div>
 
                     </div>
